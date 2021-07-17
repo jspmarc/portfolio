@@ -2,10 +2,6 @@
   import Home from './views/Home.svelte';
 </script>
 
-<style lang="scss">
-  @import './App.scss';
-</style>
-
-<main>
+<div class="main-container">
   <Home />
-</main>
+</div>
