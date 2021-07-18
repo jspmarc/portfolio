@@ -3,4 +3,6 @@
 /public/global.css
 /.vscode
 
+/yarn-error.log
+
 .DS_Store

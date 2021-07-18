@@ -1,5 +1,6 @@
 <script lang="ts">
   import Navbar from '../components/shared/Navbar.svelte';
+  import '@fortawesome/fontawesome-free/js/all.min';
 </script>
 
 <div class="container">
@@ -14,9 +15,17 @@
       <p class="action">Scroll to learn more about me!</p>
     </div>
   </div>
+  <div class="more">
+    <p>Learn more</p>
+    <i class="fas fa-angle-double-down"></i>
+  </div>
 </div>
 
 <style lang="scss">
+  p {
+    margin: 0;
+  }
+
   .container {
     background-color: var(--cyan);
     color: var(--white);
@@ -44,7 +53,6 @@
 
       .intro-container {
         .intro {
-          margin: 0;
           font-size: 2.25rem;
 
           .role {
@@ -68,6 +76,36 @@
           text-align: center;
           font-size: 1.5rem;
         }
+      }
+    }
+
+    .more {
+      @keyframes toSolid {
+        from { opacity: var(--original-opacity); }
+        to { opacity: 100%; }
+      }
+
+      @keyframes toTransparent {
+        from { opacity: 100%; }
+        to { opacity: var(--original-opacity); }
+      }
+      --original-opacity: 50%;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 1.5rem;
+      opacity: var(--original-opacity);
+      margin-bottom: 1rem;
+      cursor: pointer;
+
+      animation: toTransparent 0.2s;
+
+      &:hover {
+        animation: toSolid 0.5s;
+        opacity: 100%;
       }
     }
   }
