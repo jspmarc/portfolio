@@ -6,7 +6,6 @@ Inspiration:
 <script lang="ts">
   import '@fortawesome/fontawesome-free/js/all.min';
   import { createEventDispatcher } from 'svelte';
-
   import NavItems from '../../data/NavItem.js';
 
   export let selected: string;

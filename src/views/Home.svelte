@@ -15,10 +15,6 @@
       <p class="action">Scroll to learn more about me!</p>
     </div>
   </div>
-  <!-- <div class="more">
-    <p>Learn more</p>
-    <i class="fas fa-angle-double-down" />
-  </div> -->
   <footer>
     Made with <i class="fas fa-heart" /> using
     <img src="./assets/svelte-logo.svg" alt="Svelte" class="svelte-icon" />
@@ -83,26 +79,6 @@
         }
       }
     }
-
-    // .more {
-    //   --original-opacity: 50%;
-
-    //   display: flex;
-    //   flex-direction: column;
-    //   align-items: center;
-    //   justify-content: center;
-
-    //   font-size: 1.5rem;
-    //   opacity: 50%;
-    //   margin-bottom: 1rem;
-    //   cursor: pointer;
-
-    //   transition: 0.3s;
-    //   &:hover {
-    //     transition: 0.3s;
-    //     opacity: 100%;
-    //   }
-    // }
 
     footer {
       color: var(--cyan);

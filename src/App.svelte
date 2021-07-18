@@ -5,12 +5,12 @@
   let defaultNavItem = NavItems[0];
   let currentPage = defaultNavItem.page;
 
-  const changePage = (event) => {
+  const changePage = event => {
     currentPage = event.detail.page;
   };
 </script>
 
-<!--Alerady rapped in <nav> tag-->
+<!--Alerady wrapped in <nav> tag-->
 <Navbar selected={defaultNavItem.name} on:changePage={changePage} />
 <main>
   <svelte:component this={currentPage} />

@@ -2,10 +2,14 @@
 // Dengan perubahan secukupnya
 
 $breakpoints: (
-  'phone': 720px, // HP
-  'tablet': 721px, // tablet
-  'desktop': 961px, // desktop
-  'large': 1201px, // big screen
+  'phone': 720px,
+  // HP
+  'tablet': 721px,
+  // tablet
+  'desktop': 961px,
+  // desktop
+  'large': 1201px,
+  // big screen
 ) !default;
 
 /// Mixin to manage responsive breakpoints
@@ -23,18 +27,15 @@ $breakpoints: (
         @media (max-width: map-get($breakpoints, $breakpoint)) {
           @content;
         }
-      }
-      @else if $breakpoint == 'tablet' {
+      } @else if $breakpoint == 'tablet' {
         @media (min-width: map-get($breakpoints, 'tablet')) and (max-width: map-get($breakpoints, 'desktop') - 1px) {
           @content;
         }
-      }
-      @else if $breakpoint == 'desktop' {
+      } @else if $breakpoint == 'desktop' {
         @media (min-width: map-get($breakpoints, 'desktop')) and (max-width: map-get($breakpoints, 'large') - 1px) {
           @content;
         }
-      }
-      @else if $breakpoint == 'large' {
+      } @else if $breakpoint == 'large' {
         @media (min-width: map-get($breakpoints, $breakpoint)) {
           @content;
         }
