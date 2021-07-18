@@ -8,15 +8,22 @@
     <div class="intro-container">
       <p class="intro">Hello!</p>
       <p class="intro">I'm Josep Marcello,</p>
-      <p class="intro">a <span class="role">programmer</span> from Jakarta, Indonesia</p>
+      <p class="intro">
+        a <span class="role">programmer</span> from Jakarta, Indonesia
+      </p>
       <hr class="separator" />
       <p class="action">Scroll to learn more about me!</p>
     </div>
   </div>
-  <div class="more">
+  <!-- <div class="more">
     <p>Learn more</p>
-    <i class="fas fa-angle-double-down"></i>
-  </div>
+    <i class="fas fa-angle-double-down" />
+  </div> -->
+  <footer>
+    Made with <i class="fas fa-heart" /> using
+    <img src="./assets/svelte-logo.svg" alt="Svelte" class="svelte-icon" />
+    and icons from <i class="fab fa-font-awesome" />
+  </footer>
 </div>
 
 <style lang="scss">
@@ -25,7 +32,7 @@
   }
 
   .container {
-    background: linear-gradient(180deg, var(--cyan) 50%, #17CCCC 100%);
+    background: linear-gradient(180deg, var(--cyan) 50%, #17cccc 100%);
     color: var(--white);
     height: 100vh;
 
@@ -77,23 +84,32 @@
       }
     }
 
-    .more {
-      --original-opacity: 50%;
+    // .more {
+    //   --original-opacity: 50%;
 
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+    //   display: flex;
+    //   flex-direction: column;
+    //   align-items: center;
+    //   justify-content: center;
 
-      font-size: 1.5rem;
-      opacity: 50%;
-      margin-bottom: 1rem;
-      cursor: pointer;
+    //   font-size: 1.5rem;
+    //   opacity: 50%;
+    //   margin-bottom: 1rem;
+    //   cursor: pointer;
 
-      transition: 0.3s;
-      &:hover {
-        transition: 0.3s;
-        opacity: 100%;
+    //   transition: 0.3s;
+    //   &:hover {
+    //     transition: 0.3s;
+    //     opacity: 100%;
+    //   }
+    // }
+
+    footer {
+      color: var(--cyan);
+      text-align: center;
+
+      .svelte-icon {
+        width: 1rem;
       }
     }
   }
