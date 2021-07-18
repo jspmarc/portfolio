@@ -5,6 +5,10 @@
   --white: #f1f1e6;
   --blue: #9cd5e0;
   --brown: #8a6a55;
+
+  --navbar-width: 5rem;
+
+  font-size: 16px;
 }
 
 h1,

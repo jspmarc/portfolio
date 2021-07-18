@@ -1,10 +1,8 @@
 <script lang="ts">
-  import Navbar from '../components/shared/Navbar.svelte';
   import '@fortawesome/fontawesome-free/js/all.min';
 </script>
 
 <div class="container">
-  <Navbar isAtHome={true} />
   <div class="content">
     <img src="./assets/profil.jpg" alt="Foto profil" class="foto-profil" />
     <div class="intro-container">
