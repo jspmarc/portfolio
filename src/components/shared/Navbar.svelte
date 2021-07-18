@@ -14,11 +14,9 @@
 <style lang="scss">
   .container {
     margin: 0;
-    padding: 1.3rem 2rem;
+    padding: 1rem 2rem;
     background-color: rgba(#002d33, 0.25);
     color: var(--white);
-
-    font-size: 1.25rem;
 
     display: flex;
     flex-direction: row;
@@ -29,6 +27,13 @@
       margin: 0 1.5rem;
       color: var(--white);
       text-decoration: none;
+
+      transition: 1s;
+
+      &:hover {
+        transform: translateY(-0.15rem);
+        transition: 0.3s;
+      }
     }
   }
 </style>

@@ -27,7 +27,7 @@
   }
 
   .container {
-    background-color: var(--cyan);
+    background: linear-gradient(180deg, var(--cyan) 50%, #17CCCC 100%);
     color: var(--white);
     height: 100vh;
 
@@ -74,21 +74,12 @@
 
         .action {
           text-align: center;
-          font-size: 1.5rem;
+          font-size: 1.2rem;
         }
       }
     }
 
     .more {
-      @keyframes toSolid {
-        from { opacity: var(--original-opacity); }
-        to { opacity: 100%; }
-      }
-
-      @keyframes toTransparent {
-        from { opacity: 100%; }
-        to { opacity: var(--original-opacity); }
-      }
       --original-opacity: 50%;
 
       display: flex;
@@ -97,14 +88,13 @@
       justify-content: center;
 
       font-size: 1.5rem;
-      opacity: var(--original-opacity);
+      opacity: 50%;
       margin-bottom: 1rem;
       cursor: pointer;
 
-      animation: toTransparent 0.2s;
-
+      transition: 0.3s;
       &:hover {
-        animation: toSolid 0.5s;
+        transition: 0.3s;
         opacity: 100%;
       }
     }
