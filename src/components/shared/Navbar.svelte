@@ -42,7 +42,6 @@ Inspiration:
 <style lang="scss">
   nav {
     --navbar-open-width: 12rem;
-    --transition-speed: 300ms;
 
     margin: 0;
     background-color: var(--cyan);
