@@ -71,7 +71,7 @@ Inspiration:
       width: var(--navbar-width);
       height: var(--navbar-width);
 
-      // margin-bottom: 1rem;
+      outline: none; // TODO: cursed...
 
       &:hover {
         color: var(--blue);

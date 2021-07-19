@@ -1,20 +1,46 @@
 <script lang="ts">
   import '@fortawesome/fontawesome-free/js/all.min';
+  import { slide } from 'svelte/transition';
+  import { quartInOut } from 'svelte/easing';
+
+  const roles = [
+    'full-stack developer',
+    'student',
+    'software developer',
+    'tech-enthusiast',
+  ];
+  let i = 0;
+  let activeIndex = 0;
+
+  setInterval(() => {
+    i = (i + 1) % roles.length;
+    activeIndex = i;
+  }, 1500);
 </script>
 
 <div class="container">
-  <div class="content">
+  <article class="content">
     <img src="./assets/profil.jpg" alt="Foto profil" class="foto-profil" />
     <div class="intro-container">
-      <p class="intro">Hello!</p>
-      <p class="intro">I'm Josep Marcello,</p>
-      <p class="intro">
-        a <span class="role">programmer</span> from Jakarta, Indonesia
-      </p>
+      <p>I'm Josep Marcello, a</p>
+      {#each roles as role, idx}
+        {#if activeIndex == idx}
+          <p
+            transition:slide={{
+              duration: 200,
+              easing: quartInOut,
+            }}
+            class="role"
+          >
+            {role}
+          </p>
+        {/if}
+      {/each}
+      <p>from Banten, Indonesia</p>
       <hr class="separator" />
-      <p class="action">Scroll to learn more about me!</p>
+      <p class="action">Scroll down to learn more about me!</p>
     </div>
-  </div>
+  </article>
   <footer>
     Made with <i class="fas fa-heart" /> using
     <img src="./assets/svelte-logo.svg" alt="Svelte" class="svelte-icon" />
@@ -45,7 +71,7 @@
       width: 90vw;
 
       .foto-profil {
-        --foto-wh: 400px;
+        --foto-wh: 300px;
         width: var(--foto-wh);
         height: var(--foto-wh);
         border-radius: 100%;
@@ -53,18 +79,17 @@
       }
 
       .intro-container {
-        .intro {
-          font-size: 2.25rem;
+        font-size: 2rem;
+        .role {
+          // background-color: var(--blue);
+          // border-radius: 1rem;
+          // color: var(--cyan);
+          // padding: 0 1.2rem;
+          width: 25rem;
 
-          .role {
-            display: inline-block;
+          font-family: 'Fira Mono', monospace;
 
-            background-color: var(--blue);
-            border-radius: 1rem;
-            color: var(--cyan);
-            padding: 0 1.2rem;
-            width: 20rem;
-          }
+          white-space: nowrap;
         }
 
         .separator {
