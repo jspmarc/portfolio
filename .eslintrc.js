@@ -14,8 +14,10 @@ module.exports = {
   plugins: [
     '@typescript-eslint',
     'svelte3',
+    'prettier',
   ],
   rules: {
+    'prettier/prettier': 'error',
   },
   overrides: [
     {
