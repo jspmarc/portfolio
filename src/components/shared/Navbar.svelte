@@ -5,31 +5,17 @@ Inspiration:
 -->
 <script lang="ts">
   import '@fortawesome/fontawesome-free/js/all.min';
-  import { createEventDispatcher } from 'svelte';
+  import { link as routerLink } from 'svelte-spa-router';
+  import active from 'svelte-spa-router/active';
   import NavItems from '../../data/NavItem.js';
-
-  export let selected: string;
-
-  const dispatch = createEventDispatcher();
-
-  const handleChange = (name: string, page: any) => {
-    selected = name;
-    dispatch('changePage', {
-      page,
-    });
-  };
 </script>
 
 <nav>
   <ul class="container">
-    {#each NavItems as { name, text, link, icon, page }}
+    {#each NavItems as { text, link, icon }}
       <li class="item">
-        <a
-          href={link}
-          class:selected={selected == name}
-          on:click|preventDefault={() => handleChange(name, page)}
-        >
-          <i class="fas fa-{icon} icon fa-2x" />
+        <a href={link} use:routerLink use:active>
+          <i class="fas fa-{icon} fa-2x icon" />
           <span class="text">
             {text}
           </span>
@@ -88,7 +74,7 @@ Inspiration:
       display: none;
     }
 
-    .selected {
+    :global(.active) {
       background-color: var(--white);
       transition: var(--transition-speed);
 

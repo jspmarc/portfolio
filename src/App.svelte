@@ -1,19 +1,22 @@
 <script lang="ts">
+  import Router from 'svelte-spa-router';
   import Navbar from './components/shared/Navbar.svelte';
-  import NavItems from './data/NavItem';
+  import { ComingSoon, Home } from './views/index';
 
-  let defaultNavItem = NavItems[0];
-  let currentPage = defaultNavItem.page;
-
-  const changePage = event => {
-    currentPage = event.detail.page;
+  const routes = {
+    '/': Home,
+    '/about': ComingSoon,
+    '/about/contact': ComingSoon,
+    '/projects': ComingSoon,
+    '/blog': ComingSoon,
+    '*': ComingSoon,
   };
 </script>
 
 <!--Alerady wrapped in <nav> tag-->
-<Navbar selected={defaultNavItem.name} on:changePage={changePage} />
+<Navbar />
 <main>
-  <svelte:component this={currentPage} />
+  <Router {routes} />
 </main>
 
 <style lang="scss">
