@@ -13,7 +13,7 @@
   const routes = {
     '/': Home,
     '/about': About,
-    '/about/contact': Contact,
+    // '/about/contact': Contact,
     '/projects': Projects,
     '/blog': Blog,
     '*': ComingSoon,

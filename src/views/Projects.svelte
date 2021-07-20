@@ -8,7 +8,7 @@
       currentTarget: EventTarget & HTMLDivElement;
     }
   ) => {
-    if (e.deltaY < 0) push('/about/contact');
+    if (e.deltaY < 0) push('/about');
     else if (e.deltaY > 0) push('/blog');
   };
 </script>

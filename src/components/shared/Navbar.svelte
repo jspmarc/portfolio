@@ -8,12 +8,13 @@ Inspiration:
   import { link as routerLink } from 'svelte-spa-router';
   import active from 'svelte-spa-router/active';
   import NavItems from '../../data/NavItem.js';
+  import SocialMedias from '../../data/SocialMedia';
 </script>
 
 <nav>
   <ul class="container">
     {#each NavItems as { text, link, icon }}
-      <li class="item">
+      <li class="item nav-item">
         <a href={link} use:routerLink use:active>
           <i class="fas fa-{icon} fa-2x icon" />
           <span class="text">
@@ -22,6 +23,21 @@ Inspiration:
         </a>
       </li>
     {/each}
+
+    <li class="nav-item">
+      <ul class="social-medias">
+        {#each SocialMedias as { text, link, icon, isBrand }}
+          <li class="social-item">
+            <a href={link} target="_blank">
+              <i class="{isBrand ? 'fab' : 'fas'} fa-{icon} fa-2x icon" />
+              <span class="text">
+                {text}
+              </span>
+            </a>
+          </li>
+        {/each}
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -42,9 +58,18 @@ Inspiration:
       align-items: flex-start;
       display: flex;
       flex-direction: column;
+      height: 100%;
       list-style: none;
       margin: 0;
       padding: 0;
+    }
+
+    .item {
+      width: 100%;
+    }
+
+    .nav-item:last-child {
+      margin-top: auto;
     }
 
     a {
@@ -68,6 +93,11 @@ Inspiration:
     .icon {
       margin: 0 1.5rem;
       width: 2rem;
+    }
+
+    .social-medias {
+      list-style: none;
+      padding: 0;
     }
 
     .text {

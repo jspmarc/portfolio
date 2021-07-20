@@ -17,13 +17,13 @@ const NavItem: INavItem[] = [
     icon: 'address-card',
     page: ComingSoon,
   },
-  {
-    name: 'contact',
-    text: 'Contact',
-    link: '/about/contact',
-    icon: 'at',
-    page: ComingSoon,
-  },
+  // {
+  //   name: 'contact',
+  //   text: 'Contact',
+  //   link: '/about/contact',
+  //   icon: 'at',
+  //   page: ComingSoon,
+  // },
   {
     name: 'projects',
     text: 'Projects',

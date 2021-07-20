@@ -9,7 +9,7 @@
     }
   ) => {
     if (e.deltaY < 0) push('/');
-    else if (e.deltaY > 0) push('/about/contact');
+    else if (e.deltaY > 0) push('/projects');
   };
 </script>
 
