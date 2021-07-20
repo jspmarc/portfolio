@@ -1,4 +1,3 @@
-<svelte:head>Coming Soon | Josep Marcello</svelte:head>
 <div>
   <h1>Welcome!</h1>
   <h2>Unfortunately, this page is still in the making.</h2>

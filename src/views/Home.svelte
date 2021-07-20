@@ -1,7 +1,8 @@
 <script lang="ts">
   import '@fortawesome/fontawesome-free/js/all.min';
-  import { slide } from 'svelte/transition';
+  import { fly, slide } from 'svelte/transition';
   import { quartInOut } from 'svelte/easing';
+  import { push } from 'svelte-spa-router';
 
   const roles = [
     'full-stack developer',
@@ -16,13 +17,26 @@
     i = (i + 1) % roles.length;
     activeIndex = i;
   }, 1500);
+
+  const changePageWheel = (
+    e: WheelEvent & {
+      currentTarget: EventTarget & HTMLDivElement;
+    }
+  ) => {
+    if (e.deltaY > 0) push('/about');
+  };
 </script>
 
 <svelte:head>
   <title>Hello | Josep Marcello</title>
 </svelte:head>
 
-<div class="container">
+<div
+  class="container"
+  on:wheel|preventDefault={changePageWheel}
+  on:scroll
+  in:fly={{ duration: 300, x: -100 }}
+>
   <article class="content">
     <img src="./assets/profil.jpg" alt="Foto profil" class="foto-profil" />
     <div class="intro-container">
@@ -30,7 +44,7 @@
       {#each roles as role, idx}
         {#if activeIndex == idx}
           <p
-            transition:slide={{
+            transition:slide|local={{
               duration: 200,
               easing: quartInOut,
             }}
