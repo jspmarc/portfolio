@@ -43,38 +43,38 @@ Inspiration:
   nav {
     --navbar-open-width: 12rem;
 
-    margin: 0;
+    position: fixed;
+
     background-color: var(--cyan);
     height: 100vh;
+    margin: 0;
     width: var(--navbar-width);
-    position: fixed;
 
     transition: 0.3s;
 
     .container {
+      align-items: flex-start;
+      display: flex;
+      flex-direction: column;
       list-style: none;
       margin: 0;
       padding: 0;
-
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
     }
 
     a {
-      display: flex;
       align-items: center;
+      display: flex;
       justify-content: flex-start;
+      height: var(--navbar-width);
+      outline: none; // TODO: cursed...
+      width: var(--navbar-width);
 
       color: var(--white);
       text-decoration: none;
-      width: var(--navbar-width);
-      height: var(--navbar-width);
-
-      outline: none; // TODO: cursed...
 
       &:hover {
         color: var(--blue);
+
         transition: var(--transition-speed);
       }
     }
@@ -90,27 +90,30 @@ Inspiration:
 
     .selected {
       background-color: var(--white);
-      color: var(--cyan) !important;
       transition: var(--transition-speed);
+
+      color: var(--cyan) !important;
     }
 
     /* Handle hover */
 
     &:hover {
       width: var(--navbar-open-width);
+
       color: var(--cyan);
 
       transition: var(--transition-speed);
 
       a {
         width: var(--navbar-open-width);
+
         transition: var(--transition-speed);
       }
 
       .text {
         display: block;
-        margin-left: 1rem;
         flex-grow: 1;
+        margin-left: 1rem;
       }
     }
   }

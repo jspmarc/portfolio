@@ -18,6 +18,10 @@
   }, 1500);
 </script>
 
+<svelte:head>
+  <title>Hello | Josep Marcello</title>
+</svelte:head>
+
 <div class="container">
   <article class="content">
     <img src="./assets/profil.jpg" alt="Foto profil" class="foto-profil" />
@@ -55,47 +59,43 @@
 
   .container {
     background: linear-gradient(180deg, var(--cyan) 50%, #17cccc 100%);
-    color: var(--white);
-    height: 100vh;
-
     display: flex;
     flex-direction: column;
+    height: 100vh;
+
+    color: var(--white);
 
     .content {
-      display: flex;
-      justify-content: center;
       align-items: center;
+      display: flex;
       gap: 2rem;
-
+      justify-content: center;
       margin: auto;
       width: 90vw;
 
       .foto-profil {
         --foto-wh: 300px;
-        width: var(--foto-wh);
-        height: var(--foto-wh);
+
         border-radius: 100%;
+        height: var(--foto-wh);
         object-fit: cover;
+        width: var(--foto-wh);
       }
 
       .intro-container {
         font-size: 2rem;
         .role {
-          // background-color: var(--blue);
-          // border-radius: 1rem;
-          // color: var(--cyan);
-          // padding: 0 1.2rem;
+          white-space: nowrap;
           width: 25rem;
 
           font-family: 'Fira Mono', monospace;
-
-          white-space: nowrap;
         }
 
         .separator {
           background-color: var(--blue);
-          color: var(--blue);
           height: 0.2rem;
+
+          color: var(--blue);
         }
 
         .action {
@@ -107,6 +107,7 @@
 
     footer {
       color: var(--cyan);
+
       text-align: center;
 
       .svelte-icon {
