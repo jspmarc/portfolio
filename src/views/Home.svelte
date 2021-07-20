@@ -27,10 +27,6 @@
   };
 </script>
 
-<svelte:head>
-  <title>Hello | Josep Marcello</title>
-</svelte:head>
-
 <div
   class="container"
   on:wheel|preventDefault={changePageWheel}

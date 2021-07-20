@@ -13,8 +13,6 @@
   };
 </script>
 
-<svelte:head>Contact | Josep Marcello</svelte:head>
-
 <div on:wheel={changePageWheel} in:fly={{ duration: 300, x: -100 }}>
   <ComingSoon />
 </div>
