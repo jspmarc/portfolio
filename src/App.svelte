@@ -1,19 +1,11 @@
 <script lang="ts">
   import Router from 'svelte-spa-router';
   import Navbar from './components/shared/Navbar.svelte';
-  import {
-    About,
-    Contact,
-    Blog,
-    ComingSoon,
-    Home,
-    Projects,
-  } from './views/index';
+  import { About, Blog, ComingSoon, Home, Projects } from './views/index';
 
   const routes = {
     '/': Home,
     '/about': About,
-    // '/about/contact': Contact,
     '/projects': Projects,
     '/blog': Blog,
     '*': ComingSoon,

@@ -1,13 +1,14 @@
 <script lang="ts">
   import '@fortawesome/fontawesome-free/js/all.min';
-  import { fly, slide } from 'svelte/transition';
+  import { slide } from 'svelte/transition';
   import { quartInOut } from 'svelte/easing';
-  import { push } from 'svelte-spa-router';
+  import ViewContainer from '../components/shared/ViewContainer.svelte';
 
   const roles = [
     'full-stack developer',
-    'student',
+    'devops engineer',
     'software developer',
+    'student',
     'tech-enthusiast',
   ];
   let i = 0;
@@ -17,50 +18,39 @@
     i = (i + 1) % roles.length;
     activeIndex = i;
   }, 1500);
-
-  const changePageWheel = (
-    e: WheelEvent & {
-      currentTarget: EventTarget & HTMLDivElement;
-    }
-  ) => {
-    if (e.deltaY > 0) push('/about');
-  };
 </script>
 
-<div
-  class="container"
-  on:wheel|preventDefault={changePageWheel}
-  on:scroll
-  in:fly={{ duration: 300, x: -100 }}
->
-  <article class="content">
-    <img src="./assets/profil.jpg" alt="Foto profil" class="foto-profil" />
-    <div class="intro-container">
-      <p>I'm Josep Marcello, a</p>
-      {#each roles as role, idx}
-        {#if activeIndex == idx}
-          <p
-            transition:slide|local={{
-              duration: 200,
-              easing: quartInOut,
-            }}
-            class="role"
-          >
-            {role}
-          </p>
-        {/if}
-      {/each}
-      <p>from Banten, Indonesia</p>
-      <hr class="separator" />
-      <p class="action">Scroll down to learn more about me!</p>
-    </div>
-  </article>
-  <footer>
-    Made with <i class="fas fa-heart" /> using
-    <img src="./assets/svelte-logo.svg" alt="Svelte" class="svelte-icon" />
-    and icons from <i class="fab fa-font-awesome" />
-  </footer>
-</div>
+<ViewContainer nextViewPath="/about">
+  <div class="container">
+    <article class="content">
+      <img src="./assets/profil.jpg" alt="Foto profil" class="foto-profil" />
+      <div class="intro-container">
+        <p>I'm Josep Marcello, a</p>
+        {#each roles as role, idx}
+          {#if activeIndex == idx}
+            <p
+              transition:slide|local={{
+                duration: 200,
+                easing: quartInOut,
+              }}
+              class="role"
+            >
+              {role}
+            </p>
+          {/if}
+        {/each}
+        <p>from Banten, Indonesia</p>
+        <hr class="separator" />
+        <p class="action">Scroll down to learn more about me!</p>
+      </div>
+    </article>
+    <footer>
+      Made with <i class="fas fa-heart" /> using
+      <img src="./assets/svelte-logo.svg" alt="Svelte" class="svelte-icon" />
+      and icons from <i class="fab fa-font-awesome" />
+    </footer>
+  </div>
+</ViewContainer>
 
 <style lang="scss">
   p {
