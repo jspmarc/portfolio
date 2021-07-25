@@ -4,7 +4,6 @@ Inspiration:
   - https://github.com/fireship-io/222-responsive-icon-nav-css
 -->
 <script lang="ts">
-  import '@fortawesome/fontawesome-free/js/all.min';
   import { link as routerLink } from 'svelte-spa-router';
   import active from 'svelte-spa-router/active';
   import NavItems from '../../data/NavItem.js';

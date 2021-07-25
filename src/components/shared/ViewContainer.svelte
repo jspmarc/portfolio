@@ -27,13 +27,15 @@
       else if (prevViewPath && e.deltaY < 0) push(prevViewPath);
     }
   };
+
+  const doNothing = () => {};
 </script>
 
 <div
   in:fly={{ duration: 300, x: -100 }}
-  on:wheel={changePage}
-  on:touchstart={changePage}
-  on:touchmove={changePage}
+  on:wheel={nextViewPath || prevViewPath ? changePage : doNothing}
+  on:touchstart={nextViewPath || prevViewPath ? changePage : doNothing}
+  on:touchmove={nextViewPath || prevViewPath ? changePage : doNothing}
 >
   <slot />
 </div>

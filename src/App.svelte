@@ -1,4 +1,5 @@
 <script lang="ts">
+  import '@fortawesome/fontawesome-free/js/all.min';
   import Router from 'svelte-spa-router';
   import Navbar from './components/shared/Navbar.svelte';
   import { About, Blog, ComingSoon, Home, Projects } from './views/index';
@@ -19,7 +20,49 @@
 </main>
 
 <style lang="scss">
+  $headers: h1, h2, h3, h4, h5, h6;
+  @each $header in $headers {
+    :global(#{$header}) {
+      font-family: 'Lora', serif;
+      font-weight: 400;
+    }
+  }
+  :global(:root) {
+    --cyan: #004852;
+    --white: #f1f1e6;
+    --blue: #9cd5e0;
+    --brown: #8a6a55;
+
+    --navbar-width: 5rem;
+    --transition-speed: 0.3s;
+
+    --photo-wh: 16vw;
+
+    /* font-size: clamp(12px, 1.2vw, 32px); */
+    font-size: 16px;
+  }
+
+  :global(a) {
+    color: var(--brown);
+  }
+
+  :global(body) {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 400;
+    color: var(--cyan);
+
+    background-color: var(--white);
+    margin: 0;
+    padding: 0;
+  }
+
+  :global(.main-content) {
+    padding: 5vh 10vw;
+  }
   main {
+    background: linear-gradient(180deg, #f1f1e6 67.12%, #9cd5e0 100%);
     margin-left: var(--navbar-width);
+    min-height: 100vh;
+    max-width: 100vw;
   }
 </style>

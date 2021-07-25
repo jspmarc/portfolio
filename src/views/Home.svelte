@@ -1,5 +1,4 @@
 <script lang="ts">
-  import '@fortawesome/fontawesome-free/js/all.min';
   import { slide } from 'svelte/transition';
   import { quartInOut } from 'svelte/easing';
   import ViewContainer from '../components/shared/ViewContainer.svelte';
@@ -22,7 +21,7 @@
 
 <ViewContainer nextViewPath="/about">
   <div class="container">
-    <article class="content">
+    <section class="content">
       <img src="./assets/profil.jpg" alt="Foto profil" class="foto-profil" />
       <div class="intro-container">
         <p>I'm Josep Marcello, a</p>
@@ -43,10 +42,14 @@
         <hr class="separator" />
         <p class="action">Scroll down to learn more about me!</p>
       </div>
-    </article>
+    </section>
     <footer>
       Made with <i class="fas fa-heart" /> using
-      <img src="./assets/svelte-logo.svg" alt="Svelte" class="svelte-icon" />
+      <img
+        src="./assets/logo/svelte-logo.svg"
+        alt="Svelte"
+        class="svelte-icon"
+      />
       and icons from <i class="fab fa-font-awesome" />
     </footer>
   </div>
@@ -74,12 +77,10 @@
       width: 90vw;
 
       .foto-profil {
-        --foto-wh: 300px;
-
         border-radius: 100%;
-        height: var(--foto-wh);
+        height: var(--photo-wh);
         object-fit: cover;
-        width: var(--foto-wh);
+        width: var(--photo-wh);
       }
 
       .intro-container {
@@ -88,7 +89,7 @@
           white-space: nowrap;
           width: 25rem;
 
-          font-family: 'Fira Mono', monospace;
+          font-family: 'Fira Code', monospace;
         }
 
         .separator {
