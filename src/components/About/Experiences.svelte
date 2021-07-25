@@ -17,8 +17,8 @@
       <i class="fas fa-chevron-right accordion-arrow" />
       <h4>Website Perayaan Wisuda Juli ITB 2021</h4>
     </button>
-    <div class="description">
-      <section class:test>asdasdasd</section>
+    <div class:test class="description">
+      <section>asdasdasd</section>
     </div>
   </div>
 </div>
@@ -37,13 +37,13 @@
 
   h4 {
     margin: 0;
-    font-weight: 700;
   }
 
   .container {
     --timeline-width: 5px;
 
     align-items: flex-start;
+    align-self: stretch;
     display: grid;
     grid-template-columns: 8rem var(--timeline-width) 4fr;
     column-gap: 1rem;
@@ -57,14 +57,21 @@
   }
 
   .description {
-    section {
-      display: none;
-    }
+    align-self: stretch;
+    background-color: var(--cyan);
+    border-radius: 0.5rem;
+    display: none;
+    justify-self: stretch;
+    margin-top: 0.5rem;
+    margin-left: 0.25rem;
+    padding: 1rem;
 
-    .test {
-      display: block;
-      margin: 0;
-    }
+    color: var(--white);
+  }
+
+  .test {
+    display: block;
+    margin: 0;
   }
 
   .title,
@@ -72,13 +79,17 @@
     align-items: center;
     display: flex;
     flex-direction: row;
-    gap: 0.5rem;
     justify-content: flex-start;
   }
 
   .title {
     align-items: center;
+    gap: 0.5rem;
     margin-top: 0.5rem;
+
+    h4 {
+      font-weight: 700;
+    }
   }
 
   .timeline {
@@ -123,8 +134,6 @@
   .year {
     align-items: center;
     margin: 0.5rem 0;
-
-    font-weight: 700;
 
     .detailed {
       word-wrap: break-word;

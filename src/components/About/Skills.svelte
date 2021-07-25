@@ -14,9 +14,9 @@
 {#each Skills as { category, contents }}
   <div class="category" class:opened={opened.has(category)}>
     <button on:click={() => open(category)}>
-      <h2 class="name">
+      <h4 class="name">
         <i class="fas fa-chevron-right accordion-arrow" />{category}
-      </h2>
+      </h4>
     </button>
     {#if contents && opened.has(category)}
       <ul transition:slide|local class="content">
@@ -41,8 +41,12 @@
 {/each}
 
 <style lang="scss">
+  h4 {
+    font-size: 1rem;
+    font-weight: 700;
+  }
   .accordion-arrow {
-    margin-right: 1rem;
+    margin-right: 0.5rem;
     transition: var(--transition-speed);
   }
 

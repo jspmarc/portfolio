@@ -48,7 +48,7 @@
 
   .content {
     display: grid;
-    grid-template-columns: 10vw 3fr;
+    grid-template-columns: 12vw 3fr;
     gap: 2rem;
   }
 
