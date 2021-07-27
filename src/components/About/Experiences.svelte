@@ -1,44 +1,57 @@
 <script lang="ts">
+  import { fade, slide } from 'svelte/transition';
   import Experiences from '../../data/Experiences';
-  let test = false;
+
+  let opened = new Set<number>();
+
+  const toggleOpen = (id: number) => {
+    if (opened.has(id)) opened.delete(id);
+    else opened.add(id);
+    opened = opened;
+  };
 </script>
 
-<div class="container" style="grid-template-rows: repeat({3}, autofill)">
-  {#each Experiences as { title, description, year }}
+{#each Experiences as { id, title, description, year }}
+  <div class="container" class:opened={opened.has(id)}>
     <div class="year">
-      {#if year.short.to}
-        <h4 style={test ? 'display: none' : ''}>
-          {year.short.from} - {year.short.to}
-        </h4>
-      {:else}
-        <h4 style={test ? 'display: none' : ''}>
-          {year.short.from}
-        </h4>
-      {/if}
-      {#if year.detailed.to}
-        <h4 class="detailed" style={!test ? 'display: none' : ''}>
+      {#if !opened.has(id)}
+        {#if year.short.to}
+          <h4>
+            {year.short.from} - {year.short.to}
+          </h4>
+        {:else}
+          <h4>
+            {year.short.from}
+          </h4>
+        {/if}
+      {:else if year.detailed.to}
+        <h4 class="detailed" transition:slide|local>
           {year.detailed.from} - {year.detailed.to}
         </h4>
       {:else}
-        <h4 class="detailed" style={!test ? 'display: none' : ''}>
+        <h4 class="detailed" transition:slide|local>
           {year.detailed.from}
         </h4>
       {/if}
     </div>
+
     <div class="timeline">
       <div class="timeline-circle" />
     </div>
+
     <div class="content">
-      <button class="title" on:click={() => (test = !test)}>
+      <button class="title" on:click={() => toggleOpen(id)}>
         <i class="fas fa-chevron-right accordion-arrow" />
         <h4>{title}</h4>
       </button>
-      <div class:test class="experience-content-description">
-        <section>{@html description}</section>
-      </div>
+      {#if opened.has(id)}
+        <div class="experience-content-description" transition:slide|local>
+          <section>{@html description}</section>
+        </div>
+      {/if}
     </div>
-  {/each}
-</div>
+  </div>
+{/each}
 
 <style lang="scss">
   button {
@@ -55,15 +68,19 @@
   h4 {
     margin: 0;
   }
+  .accordion-arrow {
+    transition: var(--transition-speed);
+  }
 
   .container {
     --timeline-width: 5px;
 
     align-items: flex-start;
     align-self: stretch;
+    column-gap: 1rem;
     display: grid;
     grid-template-columns: 8rem var(--timeline-width) 4fr;
-    column-gap: 1rem;
+    justify-content: flex-start;
   }
 
   .content {
@@ -71,13 +88,13 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    margin-bottom: 1rem;
   }
 
   .experience-content-description {
     align-self: stretch;
     background-color: var(--cyan);
     border-radius: 0.5rem;
-    display: none;
     justify-self: stretch;
     margin-top: 1rem;
     margin-left: 1rem;
@@ -96,8 +113,11 @@
     }
   }
 
-  .test {
-    display: block;
+  .opened {
+    .accordion-arrow {
+      rotate: 90deg;
+      transition: var(--transition-speed);
+    }
   }
 
   .title {
@@ -105,7 +125,6 @@
     display: flex;
     flex-direction: row;
     gap: 0.5rem;
-    margin-top: 0.5rem;
 
     h4 {
       font-weight: 700;
@@ -119,7 +138,7 @@
     border: 0;
     display: flex;
     flex-direction: column;
-    height: 100%;
+    height: inherit;
     justify-content: flex-start;
     justify-self: stretch;
     margin: 0;
@@ -140,9 +159,6 @@
   .timeline-circle {
     --circle-wh: 1.2rem;
 
-    top: 0.8vh;
-    position: relative;
-
     background-color: var(--brown);
     border-radius: 100%;
     height: var(--circle-wh);
@@ -155,7 +171,8 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    margin: 0.5rem 0;
+    margin: 0;
+    margin-bottom: 0.5rem;
 
     text-align: right;
 

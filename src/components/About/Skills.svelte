@@ -4,7 +4,7 @@
 
   let opened: Set<string> = new Set();
 
-  const open = (category: string) => {
+  const toggleOpen = (category: string) => {
     if (opened.has(category)) opened.delete(category);
     else opened.add(category);
     opened = opened;
@@ -13,7 +13,7 @@
 
 {#each Skills as { category, contents }}
   <div class="category" class:opened={opened.has(category)}>
-    <button on:click={() => open(category)}>
+    <button on:click={() => toggleOpen(category)}>
       <h4 class="name">
         <i class="fas fa-chevron-right accordion-arrow" />{category}
       </h4>
