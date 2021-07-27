@@ -41,11 +41,6 @@
     justify-content: center;
   }
 
-  .category {
-    display: block;
-    width: inherit;
-  }
-
   .content {
     display: grid;
     grid-template-columns: 12vw 3fr;

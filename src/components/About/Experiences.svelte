@@ -1,26 +1,43 @@
 <script lang="ts">
+  import Experiences from '../../data/Experiences';
   let test = false;
 </script>
 
 <div class="container" style="grid-template-rows: repeat({3}, autofill)">
-  <div class="year">
-    <h4 style={test ? 'display: none' : ''}>2020 - 2021</h4>
-    <h4 class="detailed" style={!test ? 'display: none' : ''}>
-      Januari 2020 - September 2021
-    </h4>
-  </div>
-  <div class="timeline">
-    <div class="timeline-circle" />
-  </div>
-  <div class="content">
-    <button class="title" on:click={() => (test = !test)}>
-      <i class="fas fa-chevron-right accordion-arrow" />
-      <h4>Website Perayaan Wisuda Juli ITB 2021</h4>
-    </button>
-    <div class:test class="description">
-      <section>asdasdasd</section>
+  {#each Experiences as { title, description, year }}
+    <div class="year">
+      {#if year.short.to}
+        <h4 style={test ? 'display: none' : ''}>
+          {year.short.from} - {year.short.to}
+        </h4>
+      {:else}
+        <h4 style={test ? 'display: none' : ''}>
+          {year.short.from}
+        </h4>
+      {/if}
+      {#if year.detailed.to}
+        <h4 class="detailed" style={!test ? 'display: none' : ''}>
+          {year.detailed.from} - {year.detailed.to}
+        </h4>
+      {:else}
+        <h4 class="detailed" style={!test ? 'display: none' : ''}>
+          {year.detailed.from}
+        </h4>
+      {/if}
     </div>
-  </div>
+    <div class="timeline">
+      <div class="timeline-circle" />
+    </div>
+    <div class="content">
+      <button class="title" on:click={() => (test = !test)}>
+        <i class="fas fa-chevron-right accordion-arrow" />
+        <h4>{title}</h4>
+      </button>
+      <div class:test class="experience-content-description">
+        <section>{@html description}</section>
+      </div>
+    </div>
+  {/each}
 </div>
 
 <style lang="scss">
@@ -56,34 +73,37 @@
     justify-content: flex-start;
   }
 
-  .description {
+  .experience-content-description {
     align-self: stretch;
     background-color: var(--cyan);
     border-radius: 0.5rem;
     display: none;
     justify-self: stretch;
-    margin-top: 0.5rem;
-    margin-left: 0.25rem;
+    margin-top: 1rem;
+    margin-left: 1rem;
     padding: 1rem;
 
     color: var(--white);
+
+    :global(& p) {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+    }
+
+    :global(& ul) {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+    }
   }
 
   .test {
     display: block;
-    margin: 0;
-  }
-
-  .title,
-  .year {
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
   }
 
   .title {
     align-items: center;
+    display: flex;
+    flex-direction: row;
     gap: 0.5rem;
     margin-top: 0.5rem;
 
@@ -132,8 +152,12 @@
   }
 
   .year {
-    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
     margin: 0.5rem 0;
+
+    text-align: right;
 
     .detailed {
       word-wrap: break-word;
