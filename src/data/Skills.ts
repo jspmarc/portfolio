@@ -100,6 +100,13 @@ const Skills: Skiils[] = [
           imgName: 'css3.svg',
         },
       },
+      {
+        name: 'SCSS',
+        icon: {
+          src: 'img',
+          imgName: 'sass.svg',
+        },
+      },
     ],
   },
   {

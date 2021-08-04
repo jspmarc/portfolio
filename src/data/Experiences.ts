@@ -14,7 +14,7 @@ type Experience = {
 
 const Experiences: Experience[] = [
   {
-    title: 'Project Manager of Perayaan Wisuda Juli ITB 2021 Website',
+    title: 'Head of Perayaan Wisuda Juli ITB 2021 Website Development',
     description: `
   <p><em>Perayaan Wisuda Juli</em> (July Graduation Celebration) is one of many prestigious events in my university. On 2021, I was given the honor to work as the project manager for the event's website.</p>
   <p>On this project, I was also responsible as a fullstack developer and a dev-ops engineer. Although I had many roles, my work mostly consists of:</p>
