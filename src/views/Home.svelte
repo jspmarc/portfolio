@@ -43,15 +43,6 @@
         <p class="action">Scroll down to learn more about me!</p>
       </div>
     </section>
-    <footer>
-      Made with <i class="fas fa-heart" /> using
-      <img
-        src="./assets/logo/svelte-logo.svg"
-        alt="Svelte"
-        class="svelte-icon"
-      />
-      and icons from <i class="fab fa-font-awesome" />
-    </footer>
   </div>
 </ViewContainer>
 
@@ -61,10 +52,12 @@
   }
 
   .container {
-    background: linear-gradient(180deg, var(--cyan) 50%, #17cccc 100%);
+    --photo-wh: 16vw;
+
+    background: linear-gradient(180deg, var(--cyan) 50%, var(--teal) 100%);
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: var(--min-content-height);
 
     color: var(--white);
 
@@ -103,16 +96,6 @@
           text-align: center;
           font-size: 1.2rem;
         }
-      }
-    }
-
-    footer {
-      color: var(--cyan);
-
-      text-align: center;
-
-      .svelte-icon {
-        width: 1rem;
       }
     }
   }

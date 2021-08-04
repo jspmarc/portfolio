@@ -9,7 +9,7 @@
     align-items: center;
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: var(--min-content-height);
     justify-content: center;
   }
 

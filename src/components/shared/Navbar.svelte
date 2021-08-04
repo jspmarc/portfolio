@@ -10,35 +10,37 @@ Inspiration:
   import SocialMedias from '../../data/SocialMedia';
 </script>
 
-<nav>
-  <ul class="container">
-    {#each NavItems as { text, link, icon }}
-      <li class="item nav-item">
-        <a href={link} use:routerLink use:active>
-          <i class="fas fa-{icon} fa-2x icon" />
-          <span class="text">
-            {text}
-          </span>
-        </a>
-      </li>
-    {/each}
+<header>
+  <nav>
+    <ul class="container">
+      {#each NavItems as { text, link, icon }}
+        <li class="item nav-item">
+          <a href={link} use:routerLink use:active>
+            <i class="fas fa-{icon} fa-2x icon" />
+            <span class="text">
+              {text}
+            </span>
+          </a>
+        </li>
+      {/each}
 
-    <li class="nav-item">
-      <ul class="social-medias">
-        {#each SocialMedias as { text, link, icon, isBrand }}
-          <li class="social-item">
-            <a href={link} target="_blank">
-              <i class="{isBrand ? 'fab' : 'fas'} fa-{icon} fa-2x icon" />
-              <span class="text">
-                {text}
-              </span>
-            </a>
-          </li>
-        {/each}
-      </ul>
-    </li>
-  </ul>
-</nav>
+      <li class="nav-item">
+        <ul class="social-medias">
+          {#each SocialMedias as { text, link, icon, isBrand }}
+            <li class="social-item">
+              <a href={link} target="_blank">
+                <i class="{isBrand ? 'fab' : 'fas'} fa-{icon} fa-2x icon" />
+                <span class="text">
+                  {text}
+                </span>
+              </a>
+            </li>
+          {/each}
+        </ul>
+      </li>
+    </ul>
+  </nav>
+</header>
 
 <style lang="scss">
   nav {

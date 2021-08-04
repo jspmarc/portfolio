@@ -1,6 +1,7 @@
 <script lang="ts">
   import '@fortawesome/fontawesome-free/js/all.min';
   import Router from 'svelte-spa-router';
+  import Footer from './components/shared/Footer.svelte';
   import Navbar from './components/shared/Navbar.svelte';
   import { About, Blog, ComingSoon, Home, Projects } from './views/index';
 
@@ -15,9 +16,12 @@
 
 <!--Alerady wrapped in <nav> tag-->
 <Navbar />
-<main>
-  <Router {routes} restoreScrollState={true} />
-</main>
+<div class="gradient-bg">
+  <main>
+    <Router {routes} restoreScrollState={true} />
+  </main>
+  <Footer />
+</div>
 
 <style lang="scss">
   $headers: h1, h2, h3, h4, h5, h6;
@@ -32,11 +36,12 @@
     --white: #f1f1e6;
     --blue: #9cd5e0;
     --brown: #8a6a55;
+    --teal: #17cccc;
 
+    --footer-height: 1.25rem;
+    --min-content-height: calc(100vh - var(--footer-height));
     --navbar-width: 5rem;
     --transition-speed: 0.3s;
-
-    --photo-wh: 16vw;
 
     font-size: clamp(12px, 2.05vmin, 20px);
   }
@@ -63,10 +68,10 @@
   :global(.main-content) {
     padding: 5vh 10vw;
   }
-  main {
-    background: linear-gradient(180deg, #f1f1e6 67.12%, #9cd5e0 100%);
+
+  .gradient-bg {
+    background: linear-gradient(180deg, var(--white) 67.12%, var(--blue) 100%);
     margin-left: var(--navbar-width);
-    min-height: 100vh;
     max-width: 100vw;
   }
 </style>

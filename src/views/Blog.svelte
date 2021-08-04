@@ -1,17 +1,8 @@
 <script lang="ts">
-  import { fly } from 'svelte/transition';
-  import { push } from 'svelte-spa-router';
   import ComingSoon from './ComingSoon.svelte';
-
-  const changePageWheel = (
-    e: WheelEvent & {
-      currentTarget: EventTarget & HTMLDivElement;
-    }
-  ) => {
-    if (e.deltaY < 0) push('/projects');
-  };
+  import ViewContainer from '../components/shared/ViewContainer.svelte';
 </script>
 
-<div on:wheel={changePageWheel} in:fly={{ duration: 300, x: -100 }}>
+<ViewContainer>
   <ComingSoon />
-</div>
+</ViewContainer>
