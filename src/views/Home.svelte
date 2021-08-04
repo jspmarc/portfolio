@@ -16,7 +16,7 @@
   setInterval(() => {
     i = (i + 1) % roles.length;
     activeIndex = i;
-  }, 1500);
+  }, 1000);
 </script>
 
 <ViewContainer nextViewPath="/about">

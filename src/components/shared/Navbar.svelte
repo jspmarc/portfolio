@@ -42,7 +42,8 @@ Inspiration:
 
 <style lang="scss">
   nav {
-    --navbar-open-width: 12rem;
+    --navbar-open-width: 12rem; // FIXME: Kecilin dan mungkin jgn pake rem?
+    --navbar-item-icon-size: calc(0.3 * var(--navbar-width));
 
     position: fixed;
 
@@ -76,7 +77,7 @@ Inspiration:
       display: flex;
       justify-content: flex-start;
       height: var(--navbar-width);
-      outline: none; // TODO: cursed...
+      outline: none; // FIXME?: cursed...
       width: var(--navbar-width);
 
       color: var(--white);
@@ -91,7 +92,7 @@ Inspiration:
 
     .icon {
       margin: 0 1.5rem;
-      width: 2rem;
+      width: var(--navbar-item-icon-size);
     }
 
     .social-medias {

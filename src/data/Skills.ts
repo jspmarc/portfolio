@@ -1,4 +1,15 @@
-const Skills = [
+type Skiils = {
+  category: string;
+  contents: {
+    name: string;
+    icon?: {
+      src: string;
+      imgName: string;
+    };
+  }[];
+};
+
+const Skills: Skiils[] = [
   {
     category: 'Programming Languages',
     contents: [
@@ -74,6 +85,7 @@ const Skills = [
       },
     ],
   },
+  // TODO: Finish this
   {
     category: 'Framework and Libraries',
     contents: [

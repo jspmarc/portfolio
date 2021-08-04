@@ -1,36 +1,26 @@
 <script lang="ts">
-  import { fade, slide } from 'svelte/transition';
+  import { slide } from 'svelte/transition';
   import Experiences from '../../data/Experiences';
 
   let opened = new Set<number>();
 
-  const toggleOpen = (id: number) => {
-    if (opened.has(id)) opened.delete(id);
-    else opened.add(id);
+  const toggleOpen = (n: number) => {
+    if (opened.has(n)) opened.delete(n);
+    else opened.add(n);
     opened = opened;
   };
 </script>
 
-{#each Experiences as { id, title, description, year }}
-  <div class="container" class:opened={opened.has(id)}>
+{#each Experiences as { title, description, year, links }, idx}
+  <div class="container" class:opened={opened.has(idx)}>
     <div class="year">
-      {#if !opened.has(id)}
-        {#if year.short.to}
-          <h4>
-            {year.short.from} - {year.short.to}
-          </h4>
-        {:else}
-          <h4>
-            {year.short.from}
-          </h4>
-        {/if}
-      {:else if year.detailed.to}
-        <h4 class="detailed" transition:slide|local>
-          {year.detailed.from} - {year.detailed.to}
+      {#if year.to && opened.has(idx)}
+        <h4>
+          {year.from} - {year.to}
         </h4>
       {:else}
-        <h4 class="detailed" transition:slide|local>
-          {year.detailed.from}
+        <h4>
+          {year.from}
         </h4>
       {/if}
     </div>
@@ -40,13 +30,45 @@
     </div>
 
     <div class="content">
-      <button class="title" on:click={() => toggleOpen(id)}>
+      <button class="title" on:click={() => toggleOpen(idx)}>
         <i class="fas fa-chevron-right accordion-arrow" />
         <h4>{title}</h4>
       </button>
-      {#if opened.has(id)}
+      {#if opened.has(idx)}
         <div class="experience-content-description" transition:slide|local>
-          <section>{@html description}</section>
+          <section>
+            {@html description}
+
+            {#if links}
+              <div class="links">
+                {#if links.gitRepo}
+                  <a href={links.gitRepo} target="_blank">
+                    <button class="links-button git-repo">
+                      <!-- TODO: Change this to the project's page when the Project view/page is done -->
+                      <i class="fab fa-git-alt" />
+                      Visit the Git repository
+                    </button>
+                  </a>
+                {/if}
+                {#if links.website}
+                  <a href={links.website} target="_blank">
+                    <button class="links-button git-repo">
+                      <i class="fas fa-external-link-alt" />
+                      Visit the website
+                    </button>
+                  </a>
+                {/if}
+                {#if links.certificate}
+                  <a href={links.certificate} target="_blank">
+                    <button class="links-button git-repo">
+                      <i class="fas fa-certificate" />
+                      View my certificate
+                    </button>
+                  </a>
+                {/if}
+              </div>
+            {/if}
+          </section>
         </div>
       {/if}
     </div>
@@ -113,6 +135,33 @@
     }
   }
 
+  .links {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+    &-button {
+      background-color: var(--blue);
+      border-radius: 0.75rem;
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+
+      color: var(--cyan);
+
+      transition: var(--transition-speed);
+
+      &:hover {
+        background-color: var(--brown);
+        transform: scale(1.1);
+
+        color: var(--white);
+
+        transition: var(--transition-speed);
+      }
+    }
+  }
+
   .opened {
     .accordion-arrow {
       rotate: 90deg;
@@ -157,7 +206,7 @@
   }
 
   .timeline-circle {
-    --circle-wh: 1.2rem;
+    --circle-wh: 1rem;
 
     background-color: var(--brown);
     border-radius: 100%;
@@ -173,11 +222,8 @@
     justify-content: flex-end;
     margin: 0;
     margin-bottom: 0.5rem;
+    word-wrap: break-word;
 
     text-align: right;
-
-    .detailed {
-      word-wrap: break-word;
-    }
   }
 </style>

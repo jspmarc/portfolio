@@ -38,12 +38,16 @@
 
     --photo-wh: 16vw;
 
-    /* font-size: clamp(12px, 1.2vw, 32px); */
-    font-size: 16px;
+    font-size: clamp(12px, 2.05vmin, 20px);
   }
 
   :global(a) {
     color: var(--brown);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   :global(body) {

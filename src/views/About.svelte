@@ -1,7 +1,9 @@
 <script lang="ts">
   import Description from '../components/About/Description.svelte';
   import Experiences from '../components/About/Experiences.svelte';
+  import Interests from '../components/About/Interests.svelte';
   import Skills from '../components/About/Skills.svelte';
+  import Trivia from '../components/About/Trivia.svelte';
   import ViewContainer from '../components/shared/ViewContainer.svelte';
 </script>
 
@@ -11,13 +13,25 @@
     <section class="description">
       <Description />
     </section>
+
     <h1>Skills</h1>
     <section class="skills-content">
       <Skills />
     </section>
-    <h1>Experiences</h1>
+
+    <h1>Notable Experiences</h1>
     <section>
       <Experiences />
+    </section>
+
+    <h1>Interests</h1>
+    <section>
+      <Interests />
+    </section>
+
+    <h1>Trivia</h1>
+    <section>
+      <Trivia />
     </section>
   </div>
 </ViewContainer>
@@ -38,7 +52,7 @@
     align-items: flex-start;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
   }
 
   .content {

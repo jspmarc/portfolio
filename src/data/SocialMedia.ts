@@ -1,6 +1,12 @@
-import type ISocialMedia from '../interfaces/ISocialMedia';
+type SocialMedia = {
+  name: string;
+  text: string;
+  link: string;
+  icon: string;
+  isBrand: boolean;
+};
 
-const NavItem: ISocialMedia[] = [
+const SocialMedia: SocialMedia[] = [
   {
     name: 'github',
     text: 'jspmarc',
@@ -31,4 +37,4 @@ const NavItem: ISocialMedia[] = [
   },
 ];
 
-export default NavItem;
+export default SocialMedia;
