@@ -40,7 +40,7 @@
         {/each}
         <p>from Banten, Indonesia</p>
         <hr class="separator" />
-        <p class="action">Scroll down to learn more about me!</p>
+        <p class="action">Scroll down to learn more about me</p>
       </div>
     </section>
   </div>
