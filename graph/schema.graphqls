@@ -1,0 +1,45 @@
+# GraphQL schema example
+#
+# https://gqlgen.com/getting-started/
+
+scalar Date
+
+type Query {
+  posts: [Post!]!
+  experiences: [Experience!]!
+}
+
+type Mutation {
+  createPost(input: NewPost!): Post!
+}
+
+type Post {
+  title: String!
+  content: String!
+  date: Date!
+  tags: [String!]!
+}
+
+input NewPost {
+  title: String!
+  content: String!
+  tags: [String!]
+}
+
+type Experience {
+  title: String!
+  description: String!
+  year: ExperienceYear!
+  links: ExperienceLinks
+}
+
+type ExperienceYear {
+  from: String!
+  to: String!
+}
+
+type ExperienceLinks {
+  certificate: String,
+  git_repo: String,
+  deployment: String,
+}

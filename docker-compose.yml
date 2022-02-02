@@ -3,7 +3,8 @@ version: '3.9'
 services:
   app:
     build: .
-    container_name: personal
+    depends_on:
+      - db
 
   nginx:
     image: nginx:1.21.3-alpine
@@ -22,3 +23,17 @@ services:
       - ./certbot/conf:/etc/letsencrypt
       - ./certbot/www:/var/www/certbot
     entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+
+  db:
+    image: mongo:focal
+    restart: always
+    env_file: .env
+    ports:
+      - "27017:27017"
+
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - "8081:8081"
+    env_file: .env
