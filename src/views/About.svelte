@@ -5,6 +5,56 @@
   import Skills from '../components/About/Skills.svelte';
   import Trivia from '../components/About/Trivia.svelte';
   import ViewContainer from '../components/shared/ViewContainer.svelte';
+  import { onMount } from 'svelte';
+
+  let experiences = [];
+  let skills = [];
+
+  onMount(async () => {
+    const res = await fetch('/api/query', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        query: `
+query {
+  experiences {
+    title
+    description
+    time {
+      from
+      to
+    }
+    links {
+      certificate
+      git_repo
+      deployment
+    }
+  }
+
+  skills {
+    category
+    contents {
+      name
+      icon {
+        src
+        img_name
+      }
+    }
+  }
+}
+`,
+        variables: {},
+        operationName: '',
+      }),
+    });
+
+    const jsonRes = await res.json();
+    experiences = jsonRes.data.experiences;
+    skills = jsonRes.data.skills;
+  });
+
 </script>
 
 <ViewContainer>
@@ -16,12 +66,12 @@
 
     <h1>Skills</h1>
     <section class="skills-content">
-      <Skills />
+      <Skills data={skills} />
     </section>
 
     <h1>Notable Experiences</h1>
     <section>
-      <Experiences />
+      <Experiences data={experiences} />
     </section>
 
     <h1>Interests</h1>

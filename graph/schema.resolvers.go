@@ -71,6 +71,23 @@ func (r *queryResolver) Experiences(ctx context.Context) ([]*model.Experience, e
 	return r.experiences, nil
 }
 
+func (r *queryResolver) Skills(ctx context.Context) ([]*model.Skill, error) {
+	// initialize r.Experiences()
+	// TODO: Watch for changes
+	if len(r.skills) == 0 {
+		experiencesRes, err := r.DbConn.Collection("skills").Find(ctx, bson.D{})
+		if err != nil {
+			panic(err)
+		}
+
+		err = experiencesRes.All(ctx, &r.skills)
+		if err != nil {
+			panic(err)
+		}
+	}
+	return r.skills, nil
+}
+
 // Mutation returns generated.MutationResolver implementation.
 func (r *Resolver) Mutation() generated.MutationResolver { return &mutationResolver{r} }
 

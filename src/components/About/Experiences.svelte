@@ -1,8 +1,8 @@
 <script lang="ts">
   import { slide } from 'svelte/transition';
-  import { onMount } from 'svelte';
+  /* import { onMount } from 'svelte'; */
 
-  let Experiences: {
+  export let data: {
     title: string;
     description: string;
     links?: {
@@ -16,39 +16,6 @@
     };
   }[] = [];
 
-  onMount(async () => {
-    const res = await fetch('/api/query', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        query: `
-query {
-  experiences {
-    title
-    description
-    time {
-      from
-      to
-    }
-    links {
-      certificate
-      git_repo
-      deployment
-    }
-  }
-}
-`,
-        variables: {},
-        operationName: '',
-      }),
-    });
-
-    const jsonRes = await res.json();
-    Experiences = jsonRes.data.experiences;
-  });
-
   let opened = new Set<number>();
 
   const toggleOpen = (n: number) => {
@@ -58,7 +25,7 @@ query {
   };
 </script>
 
-{#each Experiences as { title, description, time, links }, idx}
+{#each data as { title, description, time, links }, idx}
   <div class="container" class:opened={opened.has(idx)}>
     <div class="year">
       {#if time.to && opened.has(idx)}

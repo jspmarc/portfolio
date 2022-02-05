@@ -15,4 +15,5 @@ type Resolver struct {
 	DbConn      *mongo.Database
 	posts       []*model.Post
 	experiences []*model.Experience
+	skills      []*model.Skill
 }

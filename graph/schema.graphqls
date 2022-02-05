@@ -7,6 +7,7 @@ scalar Date
 type Query {
   posts: [Post!]!
   experiences: [Experience!]!
+  skills: [Skill!]!
 }
 
 type Mutation {
@@ -42,4 +43,26 @@ type ExperienceLinks {
   certificate: String,
   git_repo: String,
   deployment: String,
+}
+
+type Skill {
+  category: String!
+  contents: [SkillContent!]!
+}
+
+type SkillContent {
+  name: String!
+  icon: SkillContentIcon
+}
+
+type SkillContentIcon {
+  src: SkillContentIconSrc!
+  img_name: String!
+}
+
+enum SkillContentIconSrc {
+  img
+  fab
+  fas
+  far
 }

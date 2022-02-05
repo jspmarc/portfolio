@@ -76,6 +76,22 @@ type ComplexityRoot struct {
 	Query struct {
 		Experiences func(childComplexity int) int
 		Posts       func(childComplexity int) int
+		Skills      func(childComplexity int) int
+	}
+
+	Skill struct {
+		Category func(childComplexity int) int
+		Contents func(childComplexity int) int
+	}
+
+	SkillContent struct {
+		Icon func(childComplexity int) int
+		Name func(childComplexity int) int
+	}
+
+	SkillContentIcon struct {
+		ImgName func(childComplexity int) int
+		Src     func(childComplexity int) int
 	}
 }
 
@@ -88,6 +104,7 @@ type PostResolver interface {
 type QueryResolver interface {
 	Posts(ctx context.Context) ([]*model.Post, error)
 	Experiences(ctx context.Context) ([]*model.Experience, error)
+	Skills(ctx context.Context) ([]*model.Skill, error)
 }
 
 type executableSchema struct {
@@ -222,6 +239,55 @@ func (e *executableSchema) Complexity(typeName, field string, childComplexity in
 
 		return e.complexity.Query.Posts(childComplexity), true
 
+	case "Query.skills":
+		if e.complexity.Query.Skills == nil {
+			break
+		}
+
+		return e.complexity.Query.Skills(childComplexity), true
+
+	case "Skill.category":
+		if e.complexity.Skill.Category == nil {
+			break
+		}
+
+		return e.complexity.Skill.Category(childComplexity), true
+
+	case "Skill.contents":
+		if e.complexity.Skill.Contents == nil {
+			break
+		}
+
+		return e.complexity.Skill.Contents(childComplexity), true
+
+	case "SkillContent.icon":
+		if e.complexity.SkillContent.Icon == nil {
+			break
+		}
+
+		return e.complexity.SkillContent.Icon(childComplexity), true
+
+	case "SkillContent.name":
+		if e.complexity.SkillContent.Name == nil {
+			break
+		}
+
+		return e.complexity.SkillContent.Name(childComplexity), true
+
+	case "SkillContentIcon.img_name":
+		if e.complexity.SkillContentIcon.ImgName == nil {
+			break
+		}
+
+		return e.complexity.SkillContentIcon.ImgName(childComplexity), true
+
+	case "SkillContentIcon.src":
+		if e.complexity.SkillContentIcon.Src == nil {
+			break
+		}
+
+		return e.complexity.SkillContentIcon.Src(childComplexity), true
+
 	}
 	return 0, false
 }
@@ -295,6 +361,7 @@ scalar Date
 type Query {
   posts: [Post!]!
   experiences: [Experience!]!
+  skills: [Skill!]!
 }
 
 type Mutation {
@@ -330,6 +397,28 @@ type ExperienceLinks {
   certificate: String,
   git_repo: String,
   deployment: String,
+}
+
+type Skill {
+  category: String!
+  contents: [SkillContent!]!
+}
+
+type SkillContent {
+  name: String!
+  icon: SkillContentIcon
+}
+
+type SkillContentIcon {
+  src: SkillContentIconSrc!
+  img_name: String!
+}
+
+enum SkillContentIconSrc {
+  img
+  fab
+  fas
+  far
 }
 `, BuiltIn: false},
 }
@@ -962,6 +1051,41 @@ func (ec *executionContext) _Query_experiences(ctx context.Context, field graphq
 	return ec.marshalNExperience2ᚕᚖgithubᚗcomᚋjspmarcᚋportfolioᚋgraphᚋmodelᚐExperienceᚄ(ctx, field.Selections, res)
 }
 
+func (ec *executionContext) _Query_skills(ctx context.Context, field graphql.CollectedField) (ret graphql.Marshaler) {
+	defer func() {
+		if r := recover(); r != nil {
+			ec.Error(ctx, ec.Recover(ctx, r))
+			ret = graphql.Null
+		}
+	}()
+	fc := &graphql.FieldContext{
+		Object:     "Query",
+		Field:      field,
+		Args:       nil,
+		IsMethod:   true,
+		IsResolver: true,
+	}
+
+	ctx = graphql.WithFieldContext(ctx, fc)
+	resTmp, err := ec.ResolverMiddleware(ctx, func(rctx context.Context) (interface{}, error) {
+		ctx = rctx // use context from middleware stack in children
+		return ec.resolvers.Query().Skills(rctx)
+	})
+	if err != nil {
+		ec.Error(ctx, err)
+		return graphql.Null
+	}
+	if resTmp == nil {
+		if !graphql.HasFieldError(ctx, fc) {
+			ec.Errorf(ctx, "must not be null")
+		}
+		return graphql.Null
+	}
+	res := resTmp.([]*model.Skill)
+	fc.Result = res
+	return ec.marshalNSkill2ᚕᚖgithubᚗcomᚋjspmarcᚋportfolioᚋgraphᚋmodelᚐSkillᚄ(ctx, field.Selections, res)
+}
+
 func (ec *executionContext) _Query___type(ctx context.Context, field graphql.CollectedField) (ret graphql.Marshaler) {
 	defer func() {
 		if r := recover(); r != nil {
@@ -1031,6 +1155,213 @@ func (ec *executionContext) _Query___schema(ctx context.Context, field graphql.C
 	res := resTmp.(*introspection.Schema)
 	fc.Result = res
 	return ec.marshalO__Schema2ᚖgithubᚗcomᚋ99designsᚋgqlgenᚋgraphqlᚋintrospectionᚐSchema(ctx, field.Selections, res)
+}
+
+func (ec *executionContext) _Skill_category(ctx context.Context, field graphql.CollectedField, obj *model.Skill) (ret graphql.Marshaler) {
+	defer func() {
+		if r := recover(); r != nil {
+			ec.Error(ctx, ec.Recover(ctx, r))
+			ret = graphql.Null
+		}
+	}()
+	fc := &graphql.FieldContext{
+		Object:     "Skill",
+		Field:      field,
+		Args:       nil,
+		IsMethod:   false,
+		IsResolver: false,
+	}
+
+	ctx = graphql.WithFieldContext(ctx, fc)
+	resTmp, err := ec.ResolverMiddleware(ctx, func(rctx context.Context) (interface{}, error) {
+		ctx = rctx // use context from middleware stack in children
+		return obj.Category, nil
+	})
+	if err != nil {
+		ec.Error(ctx, err)
+		return graphql.Null
+	}
+	if resTmp == nil {
+		if !graphql.HasFieldError(ctx, fc) {
+			ec.Errorf(ctx, "must not be null")
+		}
+		return graphql.Null
+	}
+	res := resTmp.(string)
+	fc.Result = res
+	return ec.marshalNString2string(ctx, field.Selections, res)
+}
+
+func (ec *executionContext) _Skill_contents(ctx context.Context, field graphql.CollectedField, obj *model.Skill) (ret graphql.Marshaler) {
+	defer func() {
+		if r := recover(); r != nil {
+			ec.Error(ctx, ec.Recover(ctx, r))
+			ret = graphql.Null
+		}
+	}()
+	fc := &graphql.FieldContext{
+		Object:     "Skill",
+		Field:      field,
+		Args:       nil,
+		IsMethod:   false,
+		IsResolver: false,
+	}
+
+	ctx = graphql.WithFieldContext(ctx, fc)
+	resTmp, err := ec.ResolverMiddleware(ctx, func(rctx context.Context) (interface{}, error) {
+		ctx = rctx // use context from middleware stack in children
+		return obj.Contents, nil
+	})
+	if err != nil {
+		ec.Error(ctx, err)
+		return graphql.Null
+	}
+	if resTmp == nil {
+		if !graphql.HasFieldError(ctx, fc) {
+			ec.Errorf(ctx, "must not be null")
+		}
+		return graphql.Null
+	}
+	res := resTmp.([]*model.SkillContent)
+	fc.Result = res
+	return ec.marshalNSkillContent2ᚕᚖgithubᚗcomᚋjspmarcᚋportfolioᚋgraphᚋmodelᚐSkillContentᚄ(ctx, field.Selections, res)
+}
+
+func (ec *executionContext) _SkillContent_name(ctx context.Context, field graphql.CollectedField, obj *model.SkillContent) (ret graphql.Marshaler) {
+	defer func() {
+		if r := recover(); r != nil {
+			ec.Error(ctx, ec.Recover(ctx, r))
+			ret = graphql.Null
+		}
+	}()
+	fc := &graphql.FieldContext{
+		Object:     "SkillContent",
+		Field:      field,
+		Args:       nil,
+		IsMethod:   false,
+		IsResolver: false,
+	}
+
+	ctx = graphql.WithFieldContext(ctx, fc)
+	resTmp, err := ec.ResolverMiddleware(ctx, func(rctx context.Context) (interface{}, error) {
+		ctx = rctx // use context from middleware stack in children
+		return obj.Name, nil
+	})
+	if err != nil {
+		ec.Error(ctx, err)
+		return graphql.Null
+	}
+	if resTmp == nil {
+		if !graphql.HasFieldError(ctx, fc) {
+			ec.Errorf(ctx, "must not be null")
+		}
+		return graphql.Null
+	}
+	res := resTmp.(string)
+	fc.Result = res
+	return ec.marshalNString2string(ctx, field.Selections, res)
+}
+
+func (ec *executionContext) _SkillContent_icon(ctx context.Context, field graphql.CollectedField, obj *model.SkillContent) (ret graphql.Marshaler) {
+	defer func() {
+		if r := recover(); r != nil {
+			ec.Error(ctx, ec.Recover(ctx, r))
+			ret = graphql.Null
+		}
+	}()
+	fc := &graphql.FieldContext{
+		Object:     "SkillContent",
+		Field:      field,
+		Args:       nil,
+		IsMethod:   false,
+		IsResolver: false,
+	}
+
+	ctx = graphql.WithFieldContext(ctx, fc)
+	resTmp, err := ec.ResolverMiddleware(ctx, func(rctx context.Context) (interface{}, error) {
+		ctx = rctx // use context from middleware stack in children
+		return obj.Icon, nil
+	})
+	if err != nil {
+		ec.Error(ctx, err)
+		return graphql.Null
+	}
+	if resTmp == nil {
+		return graphql.Null
+	}
+	res := resTmp.(*model.SkillContentIcon)
+	fc.Result = res
+	return ec.marshalOSkillContentIcon2ᚖgithubᚗcomᚋjspmarcᚋportfolioᚋgraphᚋmodelᚐSkillContentIcon(ctx, field.Selections, res)
+}
+
+func (ec *executionContext) _SkillContentIcon_src(ctx context.Context, field graphql.CollectedField, obj *model.SkillContentIcon) (ret graphql.Marshaler) {
+	defer func() {
+		if r := recover(); r != nil {
+			ec.Error(ctx, ec.Recover(ctx, r))
+			ret = graphql.Null
+		}
+	}()
+	fc := &graphql.FieldContext{
+		Object:     "SkillContentIcon",
+		Field:      field,
+		Args:       nil,
+		IsMethod:   false,
+		IsResolver: false,
+	}
+
+	ctx = graphql.WithFieldContext(ctx, fc)
+	resTmp, err := ec.ResolverMiddleware(ctx, func(rctx context.Context) (interface{}, error) {
+		ctx = rctx // use context from middleware stack in children
+		return obj.Src, nil
+	})
+	if err != nil {
+		ec.Error(ctx, err)
+		return graphql.Null
+	}
+	if resTmp == nil {
+		if !graphql.HasFieldError(ctx, fc) {
+			ec.Errorf(ctx, "must not be null")
+		}
+		return graphql.Null
+	}
+	res := resTmp.(model.SkillContentIconSrc)
+	fc.Result = res
+	return ec.marshalNSkillContentIconSrc2githubᚗcomᚋjspmarcᚋportfolioᚋgraphᚋmodelᚐSkillContentIconSrc(ctx, field.Selections, res)
+}
+
+func (ec *executionContext) _SkillContentIcon_img_name(ctx context.Context, field graphql.CollectedField, obj *model.SkillContentIcon) (ret graphql.Marshaler) {
+	defer func() {
+		if r := recover(); r != nil {
+			ec.Error(ctx, ec.Recover(ctx, r))
+			ret = graphql.Null
+		}
+	}()
+	fc := &graphql.FieldContext{
+		Object:     "SkillContentIcon",
+		Field:      field,
+		Args:       nil,
+		IsMethod:   false,
+		IsResolver: false,
+	}
+
+	ctx = graphql.WithFieldContext(ctx, fc)
+	resTmp, err := ec.ResolverMiddleware(ctx, func(rctx context.Context) (interface{}, error) {
+		ctx = rctx // use context from middleware stack in children
+		return obj.ImgName, nil
+	})
+	if err != nil {
+		ec.Error(ctx, err)
+		return graphql.Null
+	}
+	if resTmp == nil {
+		if !graphql.HasFieldError(ctx, fc) {
+			ec.Errorf(ctx, "must not be null")
+		}
+		return graphql.Null
+	}
+	res := resTmp.(string)
+	fc.Result = res
+	return ec.marshalNString2string(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) ___Directive_name(ctx context.Context, field graphql.CollectedField, obj *introspection.Directive) (ret graphql.Marshaler) {
@@ -2519,6 +2850,29 @@ func (ec *executionContext) _Query(ctx context.Context, sel ast.SelectionSet) gr
 			out.Concurrently(i, func() graphql.Marshaler {
 				return rrm(innerCtx)
 			})
+		case "skills":
+			field := field
+
+			innerFunc := func(ctx context.Context) (res graphql.Marshaler) {
+				defer func() {
+					if r := recover(); r != nil {
+						ec.Error(ctx, ec.Recover(ctx, r))
+					}
+				}()
+				res = ec._Query_skills(ctx, field)
+				if res == graphql.Null {
+					atomic.AddUint32(&invalids, 1)
+				}
+				return res
+			}
+
+			rrm := func(ctx context.Context) graphql.Marshaler {
+				return ec.OperationContext.RootResolverMiddleware(ctx, innerFunc)
+			}
+
+			out.Concurrently(i, func() graphql.Marshaler {
+				return rrm(innerCtx)
+			})
 		case "__type":
 			innerFunc := func(ctx context.Context) (res graphql.Marshaler) {
 				return ec._Query___type(ctx, field)
@@ -2533,6 +2887,126 @@ func (ec *executionContext) _Query(ctx context.Context, sel ast.SelectionSet) gr
 
 			out.Values[i] = ec.OperationContext.RootResolverMiddleware(innerCtx, innerFunc)
 
+		default:
+			panic("unknown field " + strconv.Quote(field.Name))
+		}
+	}
+	out.Dispatch()
+	if invalids > 0 {
+		return graphql.Null
+	}
+	return out
+}
+
+var skillImplementors = []string{"Skill"}
+
+func (ec *executionContext) _Skill(ctx context.Context, sel ast.SelectionSet, obj *model.Skill) graphql.Marshaler {
+	fields := graphql.CollectFields(ec.OperationContext, sel, skillImplementors)
+	out := graphql.NewFieldSet(fields)
+	var invalids uint32
+	for i, field := range fields {
+		switch field.Name {
+		case "__typename":
+			out.Values[i] = graphql.MarshalString("Skill")
+		case "category":
+			innerFunc := func(ctx context.Context) (res graphql.Marshaler) {
+				return ec._Skill_category(ctx, field, obj)
+			}
+
+			out.Values[i] = innerFunc(ctx)
+
+			if out.Values[i] == graphql.Null {
+				invalids++
+			}
+		case "contents":
+			innerFunc := func(ctx context.Context) (res graphql.Marshaler) {
+				return ec._Skill_contents(ctx, field, obj)
+			}
+
+			out.Values[i] = innerFunc(ctx)
+
+			if out.Values[i] == graphql.Null {
+				invalids++
+			}
+		default:
+			panic("unknown field " + strconv.Quote(field.Name))
+		}
+	}
+	out.Dispatch()
+	if invalids > 0 {
+		return graphql.Null
+	}
+	return out
+}
+
+var skillContentImplementors = []string{"SkillContent"}
+
+func (ec *executionContext) _SkillContent(ctx context.Context, sel ast.SelectionSet, obj *model.SkillContent) graphql.Marshaler {
+	fields := graphql.CollectFields(ec.OperationContext, sel, skillContentImplementors)
+	out := graphql.NewFieldSet(fields)
+	var invalids uint32
+	for i, field := range fields {
+		switch field.Name {
+		case "__typename":
+			out.Values[i] = graphql.MarshalString("SkillContent")
+		case "name":
+			innerFunc := func(ctx context.Context) (res graphql.Marshaler) {
+				return ec._SkillContent_name(ctx, field, obj)
+			}
+
+			out.Values[i] = innerFunc(ctx)
+
+			if out.Values[i] == graphql.Null {
+				invalids++
+			}
+		case "icon":
+			innerFunc := func(ctx context.Context) (res graphql.Marshaler) {
+				return ec._SkillContent_icon(ctx, field, obj)
+			}
+
+			out.Values[i] = innerFunc(ctx)
+
+		default:
+			panic("unknown field " + strconv.Quote(field.Name))
+		}
+	}
+	out.Dispatch()
+	if invalids > 0 {
+		return graphql.Null
+	}
+	return out
+}
+
+var skillContentIconImplementors = []string{"SkillContentIcon"}
+
+func (ec *executionContext) _SkillContentIcon(ctx context.Context, sel ast.SelectionSet, obj *model.SkillContentIcon) graphql.Marshaler {
+	fields := graphql.CollectFields(ec.OperationContext, sel, skillContentIconImplementors)
+	out := graphql.NewFieldSet(fields)
+	var invalids uint32
+	for i, field := range fields {
+		switch field.Name {
+		case "__typename":
+			out.Values[i] = graphql.MarshalString("SkillContentIcon")
+		case "src":
+			innerFunc := func(ctx context.Context) (res graphql.Marshaler) {
+				return ec._SkillContentIcon_src(ctx, field, obj)
+			}
+
+			out.Values[i] = innerFunc(ctx)
+
+			if out.Values[i] == graphql.Null {
+				invalids++
+			}
+		case "img_name":
+			innerFunc := func(ctx context.Context) (res graphql.Marshaler) {
+				return ec._SkillContentIcon_img_name(ctx, field, obj)
+			}
+
+			out.Values[i] = innerFunc(ctx)
+
+			if out.Values[i] == graphql.Null {
+				invalids++
+			}
 		default:
 			panic("unknown field " + strconv.Quote(field.Name))
 		}
@@ -3110,6 +3584,124 @@ func (ec *executionContext) marshalNPost2ᚖgithubᚗcomᚋjspmarcᚋportfolio�
 	return ec._Post(ctx, sel, v)
 }
 
+func (ec *executionContext) marshalNSkill2ᚕᚖgithubᚗcomᚋjspmarcᚋportfolioᚋgraphᚋmodelᚐSkillᚄ(ctx context.Context, sel ast.SelectionSet, v []*model.Skill) graphql.Marshaler {
+	ret := make(graphql.Array, len(v))
+	var wg sync.WaitGroup
+	isLen1 := len(v) == 1
+	if !isLen1 {
+		wg.Add(len(v))
+	}
+	for i := range v {
+		i := i
+		fc := &graphql.FieldContext{
+			Index:  &i,
+			Result: &v[i],
+		}
+		ctx := graphql.WithFieldContext(ctx, fc)
+		f := func(i int) {
+			defer func() {
+				if r := recover(); r != nil {
+					ec.Error(ctx, ec.Recover(ctx, r))
+					ret = nil
+				}
+			}()
+			if !isLen1 {
+				defer wg.Done()
+			}
+			ret[i] = ec.marshalNSkill2ᚖgithubᚗcomᚋjspmarcᚋportfolioᚋgraphᚋmodelᚐSkill(ctx, sel, v[i])
+		}
+		if isLen1 {
+			f(i)
+		} else {
+			go f(i)
+		}
+
+	}
+	wg.Wait()
+
+	for _, e := range ret {
+		if e == graphql.Null {
+			return graphql.Null
+		}
+	}
+
+	return ret
+}
+
+func (ec *executionContext) marshalNSkill2ᚖgithubᚗcomᚋjspmarcᚋportfolioᚋgraphᚋmodelᚐSkill(ctx context.Context, sel ast.SelectionSet, v *model.Skill) graphql.Marshaler {
+	if v == nil {
+		if !graphql.HasFieldError(ctx, graphql.GetFieldContext(ctx)) {
+			ec.Errorf(ctx, "must not be null")
+		}
+		return graphql.Null
+	}
+	return ec._Skill(ctx, sel, v)
+}
+
+func (ec *executionContext) marshalNSkillContent2ᚕᚖgithubᚗcomᚋjspmarcᚋportfolioᚋgraphᚋmodelᚐSkillContentᚄ(ctx context.Context, sel ast.SelectionSet, v []*model.SkillContent) graphql.Marshaler {
+	ret := make(graphql.Array, len(v))
+	var wg sync.WaitGroup
+	isLen1 := len(v) == 1
+	if !isLen1 {
+		wg.Add(len(v))
+	}
+	for i := range v {
+		i := i
+		fc := &graphql.FieldContext{
+			Index:  &i,
+			Result: &v[i],
+		}
+		ctx := graphql.WithFieldContext(ctx, fc)
+		f := func(i int) {
+			defer func() {
+				if r := recover(); r != nil {
+					ec.Error(ctx, ec.Recover(ctx, r))
+					ret = nil
+				}
+			}()
+			if !isLen1 {
+				defer wg.Done()
+			}
+			ret[i] = ec.marshalNSkillContent2ᚖgithubᚗcomᚋjspmarcᚋportfolioᚋgraphᚋmodelᚐSkillContent(ctx, sel, v[i])
+		}
+		if isLen1 {
+			f(i)
+		} else {
+			go f(i)
+		}
+
+	}
+	wg.Wait()
+
+	for _, e := range ret {
+		if e == graphql.Null {
+			return graphql.Null
+		}
+	}
+
+	return ret
+}
+
+func (ec *executionContext) marshalNSkillContent2ᚖgithubᚗcomᚋjspmarcᚋportfolioᚋgraphᚋmodelᚐSkillContent(ctx context.Context, sel ast.SelectionSet, v *model.SkillContent) graphql.Marshaler {
+	if v == nil {
+		if !graphql.HasFieldError(ctx, graphql.GetFieldContext(ctx)) {
+			ec.Errorf(ctx, "must not be null")
+		}
+		return graphql.Null
+	}
+	return ec._SkillContent(ctx, sel, v)
+}
+
+func (ec *executionContext) unmarshalNSkillContentIconSrc2githubᚗcomᚋjspmarcᚋportfolioᚋgraphᚋmodelᚐSkillContentIconSrc(ctx context.Context, v interface{}) (model.SkillContentIconSrc, error) {
+	var res model.SkillContentIconSrc
+	err := res.UnmarshalGQL(v)
+	return res, graphql.ErrorOnPath(ctx, err)
+}
+
+func (ec *executionContext) marshalNSkillContentIconSrc2githubᚗcomᚋjspmarcᚋportfolioᚋgraphᚋmodelᚐSkillContentIconSrc(ctx context.Context, sel ast.SelectionSet, v model.SkillContentIconSrc) graphql.Marshaler {
+	return v
+}
+
 func (ec *executionContext) unmarshalNString2string(ctx context.Context, v interface{}) (string, error) {
 	res, err := graphql.UnmarshalString(v)
 	return res, graphql.ErrorOnPath(ctx, err)
@@ -3441,6 +4033,13 @@ func (ec *executionContext) marshalOExperienceLinks2ᚖgithubᚗcomᚋjspmarcᚋ
 		return graphql.Null
 	}
 	return ec._ExperienceLinks(ctx, sel, v)
+}
+
+func (ec *executionContext) marshalOSkillContentIcon2ᚖgithubᚗcomᚋjspmarcᚋportfolioᚋgraphᚋmodelᚐSkillContentIcon(ctx context.Context, sel ast.SelectionSet, v *model.SkillContentIcon) graphql.Marshaler {
+	if v == nil {
+		return graphql.Null
+	}
+	return ec._SkillContentIcon(ctx, sel, v)
 }
 
 func (ec *executionContext) unmarshalOString2string(ctx context.Context, v interface{}) (string, error) {
