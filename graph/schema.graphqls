@@ -29,11 +29,11 @@ input NewPost {
 type Experience {
   title: String!
   description: String!
-  year: ExperienceYear!
+  time: ExperienceTime!
   links: ExperienceLinks
 }
 
-type ExperienceYear {
+type ExperienceTime {
   from: String!
   to: String!
 }

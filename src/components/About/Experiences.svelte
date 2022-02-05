@@ -1,6 +1,53 @@
 <script lang="ts">
   import { slide } from 'svelte/transition';
-  import Experiences from '../../data/Experiences';
+  import { onMount } from 'svelte';
+
+  let Experiences: {
+    title: string;
+    description: string;
+    links?: {
+      certificate?: string;
+      git_repo?: string;
+      deployment?: string;
+    };
+    time: {
+      to: string;
+      from: string;
+    };
+  }[] = [];
+
+  onMount(async () => {
+    const res = await fetch('/api/query', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        query: `
+query {
+  experiences {
+    title
+    description
+    time {
+      from
+      to
+    }
+    links {
+      certificate
+      git_repo
+      deployment
+    }
+  }
+}
+`,
+        variables: {},
+        operationName: '',
+      }),
+    });
+
+    const jsonRes = await res.json();
+    Experiences = jsonRes.data.experiences;
+  });
 
   let opened = new Set<number>();
 
@@ -11,16 +58,16 @@
   };
 </script>
 
-{#each Experiences as { title, description, year, links }, idx}
+{#each Experiences as { title, description, time, links }, idx}
   <div class="container" class:opened={opened.has(idx)}>
     <div class="year">
-      {#if year.to && opened.has(idx)}
+      {#if time.to && opened.has(idx)}
         <h4>
-          {year.from} - {year.to}
+          {time.from} - {time.to}
         </h4>
       {:else}
         <h4>
-          {year.from}
+          {time.from}
         </h4>
       {/if}
     </div>
@@ -41,8 +88,8 @@
 
             {#if links}
               <div class="links">
-                {#if links.gitRepo}
-                  <a href={links.gitRepo} target="_blank">
+                {#if links.git_repo}
+                  <a href={links.git_repo} target="_blank">
                     <button class="links-button git-repo">
                       <!-- TODO: Change this to the project's page when the Project view/page is done -->
                       <i class="fab fa-git-alt" />
@@ -50,8 +97,8 @@
                     </button>
                   </a>
                 {/if}
-                {#if links.website}
-                  <a href={links.website} target="_blank">
+                {#if links.deployment}
+                  <a href={links.deployment} target="_blank">
                     <button class="links-button git-repo">
                       <i class="fas fa-external-link-alt" />
                       Visit the website
@@ -73,6 +120,8 @@
       {/if}
     </div>
   </div>
+{:else}
+  <span>Loading...</span>
 {/each}
 
 <style lang="scss">
@@ -227,3 +276,4 @@
     text-align: right;
   }
 </style>
+

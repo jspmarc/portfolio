@@ -47,8 +47,8 @@ type ComplexityRoot struct {
 	Experience struct {
 		Description func(childComplexity int) int
 		Links       func(childComplexity int) int
+		Time        func(childComplexity int) int
 		Title       func(childComplexity int) int
-		Year        func(childComplexity int) int
 	}
 
 	ExperienceLinks struct {
@@ -57,7 +57,7 @@ type ComplexityRoot struct {
 		GitRepo     func(childComplexity int) int
 	}
 
-	ExperienceYear struct {
+	ExperienceTime struct {
 		From func(childComplexity int) int
 		To   func(childComplexity int) int
 	}
@@ -119,19 +119,19 @@ func (e *executableSchema) Complexity(typeName, field string, childComplexity in
 
 		return e.complexity.Experience.Links(childComplexity), true
 
+	case "Experience.time":
+		if e.complexity.Experience.Time == nil {
+			break
+		}
+
+		return e.complexity.Experience.Time(childComplexity), true
+
 	case "Experience.title":
 		if e.complexity.Experience.Title == nil {
 			break
 		}
 
 		return e.complexity.Experience.Title(childComplexity), true
-
-	case "Experience.year":
-		if e.complexity.Experience.Year == nil {
-			break
-		}
-
-		return e.complexity.Experience.Year(childComplexity), true
 
 	case "ExperienceLinks.certificate":
 		if e.complexity.ExperienceLinks.Certificate == nil {
@@ -154,19 +154,19 @@ func (e *executableSchema) Complexity(typeName, field string, childComplexity in
 
 		return e.complexity.ExperienceLinks.GitRepo(childComplexity), true
 
-	case "ExperienceYear.from":
-		if e.complexity.ExperienceYear.From == nil {
+	case "ExperienceTime.from":
+		if e.complexity.ExperienceTime.From == nil {
 			break
 		}
 
-		return e.complexity.ExperienceYear.From(childComplexity), true
+		return e.complexity.ExperienceTime.From(childComplexity), true
 
-	case "ExperienceYear.to":
-		if e.complexity.ExperienceYear.To == nil {
+	case "ExperienceTime.to":
+		if e.complexity.ExperienceTime.To == nil {
 			break
 		}
 
-		return e.complexity.ExperienceYear.To(childComplexity), true
+		return e.complexity.ExperienceTime.To(childComplexity), true
 
 	case "Mutation.createPost":
 		if e.complexity.Mutation.CreatePost == nil {
@@ -317,11 +317,11 @@ input NewPost {
 type Experience {
   title: String!
   description: String!
-  year: ExperienceYear!
+  time: ExperienceTime!
   links: ExperienceLinks
 }
 
-type ExperienceYear {
+type ExperienceTime {
   from: String!
   to: String!
 }
@@ -477,7 +477,7 @@ func (ec *executionContext) _Experience_description(ctx context.Context, field g
 	return ec.marshalNString2string(ctx, field.Selections, res)
 }
 
-func (ec *executionContext) _Experience_year(ctx context.Context, field graphql.CollectedField, obj *model.Experience) (ret graphql.Marshaler) {
+func (ec *executionContext) _Experience_time(ctx context.Context, field graphql.CollectedField, obj *model.Experience) (ret graphql.Marshaler) {
 	defer func() {
 		if r := recover(); r != nil {
 			ec.Error(ctx, ec.Recover(ctx, r))
@@ -495,7 +495,7 @@ func (ec *executionContext) _Experience_year(ctx context.Context, field graphql.
 	ctx = graphql.WithFieldContext(ctx, fc)
 	resTmp, err := ec.ResolverMiddleware(ctx, func(rctx context.Context) (interface{}, error) {
 		ctx = rctx // use context from middleware stack in children
-		return obj.Year, nil
+		return obj.Time, nil
 	})
 	if err != nil {
 		ec.Error(ctx, err)
@@ -507,9 +507,9 @@ func (ec *executionContext) _Experience_year(ctx context.Context, field graphql.
 		}
 		return graphql.Null
 	}
-	res := resTmp.(*model.ExperienceYear)
+	res := resTmp.(*model.ExperienceTime)
 	fc.Result = res
-	return ec.marshalNExperienceYear2ᚖgithubᚗcomᚋjspmarcᚋportfolioᚋgraphᚋmodelᚐExperienceYear(ctx, field.Selections, res)
+	return ec.marshalNExperienceTime2ᚖgithubᚗcomᚋjspmarcᚋportfolioᚋgraphᚋmodelᚐExperienceTime(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) _Experience_links(ctx context.Context, field graphql.CollectedField, obj *model.Experience) (ret graphql.Marshaler) {
@@ -640,7 +640,7 @@ func (ec *executionContext) _ExperienceLinks_deployment(ctx context.Context, fie
 	return ec.marshalOString2ᚖstring(ctx, field.Selections, res)
 }
 
-func (ec *executionContext) _ExperienceYear_from(ctx context.Context, field graphql.CollectedField, obj *model.ExperienceYear) (ret graphql.Marshaler) {
+func (ec *executionContext) _ExperienceTime_from(ctx context.Context, field graphql.CollectedField, obj *model.ExperienceTime) (ret graphql.Marshaler) {
 	defer func() {
 		if r := recover(); r != nil {
 			ec.Error(ctx, ec.Recover(ctx, r))
@@ -648,7 +648,7 @@ func (ec *executionContext) _ExperienceYear_from(ctx context.Context, field grap
 		}
 	}()
 	fc := &graphql.FieldContext{
-		Object:     "ExperienceYear",
+		Object:     "ExperienceTime",
 		Field:      field,
 		Args:       nil,
 		IsMethod:   false,
@@ -675,7 +675,7 @@ func (ec *executionContext) _ExperienceYear_from(ctx context.Context, field grap
 	return ec.marshalNString2string(ctx, field.Selections, res)
 }
 
-func (ec *executionContext) _ExperienceYear_to(ctx context.Context, field graphql.CollectedField, obj *model.ExperienceYear) (ret graphql.Marshaler) {
+func (ec *executionContext) _ExperienceTime_to(ctx context.Context, field graphql.CollectedField, obj *model.ExperienceTime) (ret graphql.Marshaler) {
 	defer func() {
 		if r := recover(); r != nil {
 			ec.Error(ctx, ec.Recover(ctx, r))
@@ -683,7 +683,7 @@ func (ec *executionContext) _ExperienceYear_to(ctx context.Context, field graphq
 		}
 	}()
 	fc := &graphql.FieldContext{
-		Object:     "ExperienceYear",
+		Object:     "ExperienceTime",
 		Field:      field,
 		Args:       nil,
 		IsMethod:   false,
@@ -2232,9 +2232,9 @@ func (ec *executionContext) _Experience(ctx context.Context, sel ast.SelectionSe
 			if out.Values[i] == graphql.Null {
 				invalids++
 			}
-		case "year":
+		case "time":
 			innerFunc := func(ctx context.Context) (res graphql.Marshaler) {
-				return ec._Experience_year(ctx, field, obj)
+				return ec._Experience_time(ctx, field, obj)
 			}
 
 			out.Values[i] = innerFunc(ctx)
@@ -2302,19 +2302,19 @@ func (ec *executionContext) _ExperienceLinks(ctx context.Context, sel ast.Select
 	return out
 }
 
-var experienceYearImplementors = []string{"ExperienceYear"}
+var experienceTimeImplementors = []string{"ExperienceTime"}
 
-func (ec *executionContext) _ExperienceYear(ctx context.Context, sel ast.SelectionSet, obj *model.ExperienceYear) graphql.Marshaler {
-	fields := graphql.CollectFields(ec.OperationContext, sel, experienceYearImplementors)
+func (ec *executionContext) _ExperienceTime(ctx context.Context, sel ast.SelectionSet, obj *model.ExperienceTime) graphql.Marshaler {
+	fields := graphql.CollectFields(ec.OperationContext, sel, experienceTimeImplementors)
 	out := graphql.NewFieldSet(fields)
 	var invalids uint32
 	for i, field := range fields {
 		switch field.Name {
 		case "__typename":
-			out.Values[i] = graphql.MarshalString("ExperienceYear")
+			out.Values[i] = graphql.MarshalString("ExperienceTime")
 		case "from":
 			innerFunc := func(ctx context.Context) (res graphql.Marshaler) {
-				return ec._ExperienceYear_from(ctx, field, obj)
+				return ec._ExperienceTime_from(ctx, field, obj)
 			}
 
 			out.Values[i] = innerFunc(ctx)
@@ -2324,7 +2324,7 @@ func (ec *executionContext) _ExperienceYear(ctx context.Context, sel ast.Selecti
 			}
 		case "to":
 			innerFunc := func(ctx context.Context) (res graphql.Marshaler) {
-				return ec._ExperienceYear_to(ctx, field, obj)
+				return ec._ExperienceTime_to(ctx, field, obj)
 			}
 
 			out.Values[i] = innerFunc(ctx)
@@ -3037,14 +3037,14 @@ func (ec *executionContext) marshalNExperience2ᚖgithubᚗcomᚋjspmarcᚋportf
 	return ec._Experience(ctx, sel, v)
 }
 
-func (ec *executionContext) marshalNExperienceYear2ᚖgithubᚗcomᚋjspmarcᚋportfolioᚋgraphᚋmodelᚐExperienceYear(ctx context.Context, sel ast.SelectionSet, v *model.ExperienceYear) graphql.Marshaler {
+func (ec *executionContext) marshalNExperienceTime2ᚖgithubᚗcomᚋjspmarcᚋportfolioᚋgraphᚋmodelᚐExperienceTime(ctx context.Context, sel ast.SelectionSet, v *model.ExperienceTime) graphql.Marshaler {
 	if v == nil {
 		if !graphql.HasFieldError(ctx, graphql.GetFieldContext(ctx)) {
 			ec.Errorf(ctx, "must not be null")
 		}
 		return graphql.Null
 	}
-	return ec._ExperienceYear(ctx, sel, v)
+	return ec._ExperienceTime(ctx, sel, v)
 }
 
 func (ec *executionContext) unmarshalNNewPost2githubᚗcomᚋjspmarcᚋportfolioᚋgraphᚋmodelᚐNewPost(ctx context.Context, v interface{}) (model.NewPost, error) {

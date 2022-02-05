@@ -5,11 +5,11 @@ package model
 type Experience struct {
 	Title       string           `json:"title"`
 	Description string           `json:"description"`
-	Year        *ExperienceYear  `json:"year"`
+	Time        *ExperienceTime  `json:"time"`
 	Links       *ExperienceLinks `json:"links"`
 }
 
-type ExperienceYear struct {
+type ExperienceTime struct {
 	From string `json:"from"`
 	To   string `json:"to"`
 }

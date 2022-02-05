@@ -1,4 +1,4 @@
-type Skiils = {
+type Skills = {
   category: string;
   contents: {
     name: string;
@@ -9,7 +9,7 @@ type Skiils = {
   }[];
 };
 
-const Skills: Skiils[] = [
+const Skills: Skills[] = [
   {
     category: 'Programming Languages',
     contents: [
