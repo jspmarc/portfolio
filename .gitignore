@@ -1,6 +1,10 @@
-/node_modules/
-/public/build/
-/public/global.css
+.DS_Store
+node_modules
+/build
+/.svelte-kit
+/package
 .env
-
-/yarn-error.log
+.env.*
+!.env.example
+.vercel
+.output

@@ -1,0 +1,71 @@
+<script lang="ts">
+	import Description from '$lib/about/Description.svelte';
+	import Experiences from '$lib/about/Experiences.svelte';
+	import Interests from '$lib/about/Interests.svelte';
+	import Skills from '$lib/about/Skills.svelte';
+	import Trivia from '$lib/about/Trivia.svelte';
+	import ViewContainer from '$lib/shared/ViewContainer.svelte';
+</script>
+
+<svelte:head>
+	<title>About | Josep Marcello</title>
+</svelte:head>
+
+<ViewContainer>
+	<div class="main-content content">
+		<h1>Who Am I?</h1>
+		<section class="description">
+			<Description />
+		</section>
+
+		<h1>Skills</h1>
+		<section class="skills-content">
+			<Skills />
+		</section>
+
+		<h1>Notable Experiences</h1>
+		<section>
+			<Experiences />
+		</section>
+
+		<h1>Interests</h1>
+		<section>
+			<Interests />
+		</section>
+
+		<h1>Trivia</h1>
+		<section>
+			<Trivia />
+		</section>
+	</div>
+</ViewContainer>
+
+<style lang="scss">
+	h1 {
+		align-items: flex-end;
+		display: flex;
+		flex-direction: column;
+		flex-wrap: wrap;
+		justify-content: flex-start;
+		margin: 0;
+
+		text-align: right;
+	}
+
+	section {
+		align-items: flex-start;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+	}
+
+	.content {
+		display: grid;
+		grid-template-columns: 12vw 3fr;
+		gap: 2rem;
+	}
+
+	.skills-content {
+		flex-grow: 1;
+	}
+</style>
