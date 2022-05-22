@@ -1,4 +1,4 @@
-type Experience = {experie
+type Experience = {
   title: string;
   description: string;
   year: {
