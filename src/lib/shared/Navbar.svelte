@@ -9,37 +9,35 @@ Inspiration:
 	import { page } from '$app/stores';
 </script>
 
-<header>
-	<nav>
-		<ul class="container">
-			{#each NavItems as { text, link, icon }}
-				<li class="nav-item">
-					<a href={link} class={$page.url.pathname === link ? 'active' : ''}>
-						<i class="fas fa-{icon} fa-2x icon" />
-						<span class="text">
-							{text}
-						</span>
-					</a>
-				</li>
-			{/each}
-
+<nav>
+	<ul class="container">
+		{#each NavItems as { text, link, icon }}
 			<li class="nav-item">
-				<ul class="social-medias">
-					{#each SocialMedias as { text, link, icon, isBrand }}
-						<li class="social-item">
-							<a href={link} target="_blank">
-								<i class="{isBrand ? 'fab' : 'fas'} fa-{icon} fa-2x icon" />
-								<span class="text">
-									{text}
-								</span>
-							</a>
-						</li>
-					{/each}
-				</ul>
+				<a href={link} class={$page.url.pathname === link ? 'active' : ''}>
+					<i class="fas fa-{icon} fa-2x icon" />
+					<span class="text">
+						{text}
+					</span>
+				</a>
 			</li>
-		</ul>
-	</nav>
-</header>
+		{/each}
+
+		<li class="nav-item">
+			<ul class="social-medias">
+				{#each SocialMedias as { text, link, icon, isBrand }}
+					<li class="social-item">
+						<a href={link} target="_blank">
+							<i class="{isBrand ? 'fab' : 'fas'} fa-{icon} fa-2x icon" />
+							<span class="text">
+								{text}
+							</span>
+						</a>
+					</li>
+				{/each}
+			</ul>
+		</li>
+	</ul>
+</nav>
 
 <style lang="scss">
 	@import '../../styles/mixin.scss';

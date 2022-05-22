@@ -4,8 +4,10 @@
 	import Navbar from '$lib/shared/Navbar.svelte';
 </script>
 
-<!--Alerady wrapped in <nav> tag-->
-<Navbar />
+<header>
+	<!--Already wrapped in <nav> tag-->
+	<Navbar />
+</header>
 <div class="gradient-bg">
 	<main>
 		<slot />
