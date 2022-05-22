@@ -4,9 +4,7 @@
   import ViewContainer from '../components/shared/ViewContainer.svelte';
 
   const roles = [
-    'full-stack developer',
-    'devops engineer',
-    'software developer',
+    'software engineer',
     'student',
     'tech-enthusiast',
   ];
@@ -16,7 +14,7 @@
   setInterval(() => {
     i = (i + 1) % roles.length;
     activeIndex = i;
-  }, 1000);
+  }, 1500);
 </script>
 
 <ViewContainer nextViewPath="/about">
