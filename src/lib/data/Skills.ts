@@ -59,7 +59,7 @@ const Skills: Skills[] = [
 				name: 'C++',
 				icon: {
 					src: 'img',
-					imgName: 'C++.svg',
+					imgName: 'Cpp.svg',
 				},
 			},
 			{
