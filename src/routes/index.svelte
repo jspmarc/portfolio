@@ -10,7 +10,7 @@
 	setInterval(() => {
 		i = (i + 1) % roles.length;
 		activeIndex = i;
-	}, 1000);
+	}, 1500);
 </script>
 
 <svelte:head>
@@ -36,7 +36,7 @@
 						</p>
 					{/if}
 				{/each}
-				<p>from Banten, Indonesia</p>
+				<p>from Indonesia</p>
 				<hr class="separator" />
 				<p class="action">Scroll down to learn more about me</p>
 			</div>
@@ -45,12 +45,14 @@
 </ViewContainer>
 
 <style lang="scss">
+	@import '../styles/mixin.scss';
+
 	p {
 		margin: 0;
 	}
 
 	.container {
-		--photo-wh: 16vw;
+		--photo-wh: 48vw;
 
 		background: linear-gradient(180deg, var(--cyan) 50%, var(--teal) 100%);
 		color: var(--white);
@@ -61,6 +63,7 @@
 		.content {
 			align-items: center;
 			display: flex;
+			flex-direction: column;
 			gap: 2rem;
 			justify-content: center;
 			margin: auto;
@@ -93,6 +96,12 @@
 					text-align: center;
 					font-size: 1.2rem;
 				}
+			} // end into-container
+
+			@include respond-to('xl') {
+				--photo-wh: 16vw;
+
+				flex-direction: row;
 			}
 		}
 	}
