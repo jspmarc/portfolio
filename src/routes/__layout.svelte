@@ -32,7 +32,11 @@
 		--teal: #17cccc;
 
 		--footer-height: 1.25rem;
-		--min-content-height: calc(100vh - var(--footer-height));
+		--min-content-height: calc(100vh - var(--footer-height) - var(--navbar-width));
+		@include respond-to('xl') {
+			--min-content-height: calc(100vh - var(--footer-height));
+		}
+		// navbar width is height while on tablet or smaller size
 		--navbar-width: 5rem;
 		--transition-speed: 0.3s;
 
@@ -59,7 +63,11 @@
 	}
 
 	:global(.main-content) {
-		padding: 5vh 10vw;
+		padding: 2rem;
+
+		@include respond-to('xl') {
+			padding: 5vh 10vw;
+		}
 	}
 
 	.gradient-bg {

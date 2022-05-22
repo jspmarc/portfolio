@@ -45,9 +45,11 @@
 
 	h1 {
 		margin: 0;
+		margin-bottom: 0.25rem;
 		text-align: left;
 
 		@include respond-to('xl') {
+			margin-bottom: 0;
 			text-align: right;
 		}
 	}
