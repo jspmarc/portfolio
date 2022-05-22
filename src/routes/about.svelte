@@ -1,3 +1,26 @@
+<script lang="ts" context="module">
+	import type { Load } from './__types/about';
+	import type Experience from '$lib/types/Experience';
+	import type Skill from '$lib/types/Skill';
+
+	export const load: Load = async ({ fetch }) => {
+		const [experienceResult, skillResult] = await Promise.all([
+			fetch('/api/experiences'),
+			fetch('/api/skills'),
+		]);
+		const [experiences, skills]: [Experience[], Skill[]] = await Promise.all([
+			experienceResult.json(),
+			skillResult.json(),
+		]);
+		return {
+			props: {
+				experiences,
+				skills,
+			},
+		};
+	};
+</script>
+
 <script lang="ts">
 	import Description from '$lib/about/Description.svelte';
 	import Experiences from '$lib/about/Experiences.svelte';
@@ -5,6 +28,9 @@
 	import Skills from '$lib/about/Skills.svelte';
 	import Trivia from '$lib/about/Trivia.svelte';
 	import ViewContainer from '$lib/shared/ViewContainer.svelte';
+
+	export let experiences: Experience[];
+	export let skills: Skill[];
 </script>
 
 <svelte:head>
@@ -20,12 +46,12 @@
 
 		<h1>Skills</h1>
 		<section class="skills-content">
-			<Skills />
+			<Skills {skills} />
 		</section>
 
 		<h1>Notable Experiences</h1>
 		<section>
-			<Experiences />
+			<Experiences {experiences} />
 		</section>
 
 		<h1>Interests</h1>

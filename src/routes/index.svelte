@@ -14,7 +14,7 @@
 </script>
 
 <svelte:head>
-	<title>Home | Josep Marcello</title>
+	<title>Josep Marcello's Personal Website</title>
 </svelte:head>
 
 <ViewContainer nextViewPath="/about">

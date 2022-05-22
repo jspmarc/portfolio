@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { slide } from 'svelte/transition';
-	import Experiences from '../data/Experiences';
+	import type Experience from '$lib/types/Experience';
+
+	export let experiences: Experience[];
 
 	let opened = new Set<number>();
 
@@ -11,7 +13,7 @@
 	};
 </script>
 
-{#each Experiences as { title, description, year, links }, idx}
+{#each experiences as { title, description, year, links }, idx}
 	<div class="container" class:opened={opened.has(idx)}>
 		<div class="year">
 			{#if year.to && opened.has(idx)}
@@ -41,8 +43,8 @@
 
 						{#if links}
 							<div class="links">
-								{#if links.gitRepo}
-									<a href={links.gitRepo} target="_blank">
+								{#if links.git_repo}
+									<a href={links.git_repo} target="_blank">
 										<button class="links-button git-repo">
 											<!-- TODO: Change this to the project's page when the Project view/page is done -->
 											<i class="fab fa-git-alt" />

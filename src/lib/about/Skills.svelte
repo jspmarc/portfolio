@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { slide } from 'svelte/transition';
-	import Skills from '../data/Skills';
+	import type Skill from '$lib/types/Skill';
+
+	export let skills: Skill[];
 
 	let opened: Set<string> = new Set();
 
@@ -11,7 +13,7 @@
 	};
 </script>
 
-{#each Skills as { category, contents }}
+{#each skills as { category, contents }}
 	<div class="category" class:opened={opened.has(category)}>
 		<button on:click={() => toggleOpen(category)}>
 			<h4 class="name">
@@ -24,9 +26,9 @@
 					<li>
 						{#if icon}
 							{#if icon.src.toLowerCase().indexOf('fa') != -1}
-								<i class="{icon.src} {icon.imgName} fa-lg icon" />
+								<i class="{icon.src} {icon.img_name} fa-lg icon" />
 							{:else if icon.src == 'img'}
-								<img src="/logo/{icon.imgName}" alt="" class="icon" />
+								<img src="/logo/{icon.img_name}" alt="" class="icon" />
 							{/if}
 						{:else}
 							<!-- no icon -->
