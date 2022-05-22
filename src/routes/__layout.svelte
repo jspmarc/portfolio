@@ -14,6 +14,8 @@
 </div>
 
 <style lang="scss">
+	@import '../styles/mixin.scss';
+
 	$headers: h1, h2, h3, h4, h5, h6;
 	@each $header in $headers {
 		:global(#{$header}) {
@@ -21,6 +23,7 @@
 			font-weight: 400;
 		}
 	}
+
 	:global(:root) {
 		--cyan: #004852;
 		--white: #f1f1e6;
@@ -33,7 +36,7 @@
 		--navbar-width: 5rem;
 		--transition-speed: 0.3s;
 
-		font-size: clamp(12px, 2.05vmin, 20px);
+		font-size: clamp(14px, 2.05vmin, 20px);
 	}
 
 	:global(a) {
@@ -61,7 +64,9 @@
 
 	.gradient-bg {
 		background: linear-gradient(180deg, var(--white) 67.12%, var(--blue) 100%);
-		margin-left: var(--navbar-width);
 		max-width: 100vw;
+		@include respond-to('xl') {
+			margin-left: var(--navbar-width);
+		}
 	}
 </style>

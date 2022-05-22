@@ -3,11 +3,7 @@
 	import { quartInOut } from 'svelte/easing';
 	import ViewContainer from '$lib/shared/ViewContainer.svelte';
 
-	const roles = [
-		'software engineer',
-		'student',
-		'tech-enthusiast',
-	];
+	const roles = ['software engineer', 'student', 'tech-enthusiast'];
 	let i = 0;
 	let activeIndex = Math.floor(Math.random() * roles.length);
 
@@ -21,7 +17,7 @@
 	<title>Home | Josep Marcello</title>
 </svelte:head>
 
-<ViewContainer nextViewPath='/about'>
+<ViewContainer nextViewPath="/about">
 	<div class="container">
 		<section class="content">
 			<img src="/profil.jpg" alt="Foto profil" class="foto-profil" />
@@ -57,11 +53,10 @@
 		--photo-wh: 16vw;
 
 		background: linear-gradient(180deg, var(--cyan) 50%, var(--teal) 100%);
+		color: var(--white);
 		display: flex;
 		flex-direction: column;
 		height: var(--min-content-height);
-
-		color: var(--white);
 
 		.content {
 			align-items: center;

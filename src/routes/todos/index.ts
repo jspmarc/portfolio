@@ -10,21 +10,21 @@ export const get: RequestHandler = async ({ locals }) => {
 		// start with an empty array
 		return {
 			body: {
-				todos: []
-			}
+				todos: [],
+			},
 		};
 	}
 
 	if (response.status === 200) {
 		return {
 			body: {
-				todos: await response.json()
-			}
+				todos: await response.json(),
+			},
 		};
 	}
 
 	return {
-		status: response.status
+		status: response.status,
 	};
 };
 
@@ -32,7 +32,7 @@ export const post: RequestHandler = async ({ request, locals }) => {
 	const form = await request.formData();
 
 	await api('post', `todos/${locals.userid}`, {
-		text: form.get('text')
+		text: form.get('text'),
 	});
 
 	return {};
@@ -43,8 +43,8 @@ export const post: RequestHandler = async ({ request, locals }) => {
 const redirect = {
 	status: 303,
 	headers: {
-		location: '/todos'
-	}
+		location: '/todos',
+	},
 };
 
 export const patch: RequestHandler = async ({ request, locals }) => {
@@ -52,7 +52,7 @@ export const patch: RequestHandler = async ({ request, locals }) => {
 
 	await api('patch', `todos/${locals.userid}/${form.get('uid')}`, {
 		text: form.has('text') ? form.get('text') : undefined,
-		done: form.has('done') ? !!form.get('done') : undefined
+		done: form.has('done') ? !!form.get('done') : undefined,
 	});
 
 	return redirect;

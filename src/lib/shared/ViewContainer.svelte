@@ -1,16 +1,16 @@
 <script lang="ts">
 	import { fly } from 'svelte/transition';
 	import { goto, prefetchRoutes } from '$app/navigation';
-  import { onMount } from 'svelte';
+	import { onMount } from 'svelte';
 
 	export let nextViewPath: string | undefined = undefined;
 	export let prevViewPath: string | undefined = undefined;
 
 	let touchStartY: number, touchEndY: number;
 	const push = goto;
-  onMount(() => {
-    prefetchRoutes([nextViewPath ? nextViewPath : '/', prevViewPath ? prevViewPath : '/']);
-  });
+	onMount(() => {
+		prefetchRoutes([nextViewPath ? nextViewPath : '/', prevViewPath ? prevViewPath : '/']);
+	});
 
 	const changePage = (e: WheelEvent | TouchEvent) => {
 		if (window.TouchEvent && e instanceof TouchEvent) {

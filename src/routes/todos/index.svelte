@@ -36,7 +36,12 @@
 	</form>
 
 	{#each todos as todo (todo.uid)}
-		<div class="todo" class:done={todo.done} transition:scale|local={{ start: 0.7 }} animate:flip={{ duration: 200 }}>
+		<div
+			class="todo"
+			class:done={todo.done}
+			transition:scale|local={{ start: 0.7 }}
+			animate:flip={{ duration: 200 }}
+		>
 			<form
 				action="/todos?_method=PATCH"
 				method="post"
