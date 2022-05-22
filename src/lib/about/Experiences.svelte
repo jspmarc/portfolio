@@ -185,6 +185,7 @@
 		align-self: stretch;
 		background-color: var(--cyan);
 		border: 0;
+		border-radius: 1rem;
 		display: flex;
 		flex-direction: column;
 		height: inherit;
