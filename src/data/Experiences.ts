@@ -1,4 +1,4 @@
-type Experience = {
+type Experience = {experie
   title: string;
   description: string;
   year: {
@@ -23,7 +23,7 @@ const Experiences: Experience[] = [
     <li>Work with another engineer to create a CI/CD pipeline</li>
     <li>Work with another engineer to create the database and back end system</li>
     <li>Work with other engineers to make new features for the website and fix bugs</li>
-    <li>Deploying the website and the back end server to a <a href="https://digitalocean.com" target="_blank">DigitalOcean</a> droplet</li>
+    <li>Deploying the website and the back end server to a DigitalOcean droplet</li>
     <li>Work with my vice-project-manager to review pull (merge) requests on the project</li>
   </ul>
 `,

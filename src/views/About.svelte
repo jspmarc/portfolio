@@ -37,15 +37,17 @@
 </ViewContainer>
 
 <style lang="scss">
-  h1 {
-    align-items: flex-end;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    margin: 0;
+  @import '../styles/mixin.scss';
 
-    text-align: right;
+  h1 {
+    margin: 0;
+    margin-bottom: 0.25rem;
+    text-align: left;
+
+    @include respond-to('xl') {
+      margin-bottom: 0;
+      text-align: right;
+    }
   }
 
   section {
@@ -53,12 +55,20 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    margin-bottom: 2rem;
+
+    @include respond-to('xl') {
+      margin-bottom: 0;
+    }
   }
 
   .content {
-    display: grid;
-    grid-template-columns: 12vw 3fr;
     gap: 2rem;
+
+    @include respond-to('xl') {
+      display: grid;
+      grid-template-columns: 12vw 3fr;
+    }
   }
 
   .skills-content {

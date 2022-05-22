@@ -10,90 +10,87 @@ Inspiration:
   import SocialMedias from '../../data/SocialMedia';
 </script>
 
-<header>
-  <nav>
-    <ul class="container">
-      {#each NavItems as { text, link, icon }}
-        <li class="item nav-item">
-          <a href={link} use:routerLink use:active>
-            <i class="fas fa-{icon} fa-2x icon" />
-            <span class="text">
-              {text}
-            </span>
-          </a>
-        </li>
-      {/each}
-
-      <li class="nav-item">
-        <ul class="social-medias">
-          {#each SocialMedias as { text, link, icon, isBrand }}
-            <li class="social-item">
-              <a href={link} target="_blank">
-                <i class="{isBrand ? 'fab' : 'fas'} fa-{icon} fa-2x icon" />
-                <span class="text">
-                  {text}
-                </span>
-              </a>
-            </li>
-          {/each}
-        </ul>
+<nav>
+  <ul class="container">
+    {#each NavItems as { text, link, icon }}
+      <li class="item nav-item">
+        <a href={link} use:routerLink use:active>
+          <i class="fas fa-{icon} fa-2x icon" />
+          <span class="text">
+            {text}
+          </span>
+        </a>
       </li>
-    </ul>
-  </nav>
-</header>
+    {/each}
+
+    <li class="nav-item">
+      <ul class="social-medias">
+        {#each SocialMedias as { text, link, icon, isBrand }}
+          <li class="social-item">
+            <a href={link} target="_blank">
+              <i class="{isBrand ? 'fab' : 'fas'} fa-{icon} fa-2x icon" />
+              <span class="text">
+                {text}
+              </span>
+            </a>
+          </li>
+        {/each}
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 <style lang="scss">
+  @import '../../styles/mixin.scss';
+
   nav {
     --navbar-open-width: 12rem; // FIXME: Kecilin dan mungkin jgn pake rem?
     --navbar-item-icon-size: calc(0.3 * var(--navbar-width));
 
-    position: fixed;
-
     background-color: var(--cyan);
-    height: 100vh;
     margin: 0;
-    width: var(--navbar-width);
-
+    height: var(--navbar-width);
+    position: fixed;
     transition: 0.3s;
+    transform: translateY(calc(100vh - var(--navbar-width)));
+    width: 100vw;
 
     .container {
       align-items: flex-start;
       display: flex;
-      flex-direction: column;
-      height: 100%;
+      flex-direction: row;
       list-style: none;
+      justify-content: space-around;
       margin: 0;
       padding: 0;
     }
 
-    .item {
+    .nav-item {
       width: 100%;
-    }
 
-    .nav-item:last-child {
-      margin-top: auto;
+      &:last-child {
+        display: none;
+      }
     }
 
     a {
       align-items: center;
+      color: var(--white);
       display: flex;
       justify-content: flex-start;
       height: var(--navbar-width);
-      outline: none; // FIXME?: cursed...
-      width: var(--navbar-width);
-
-      color: var(--white);
+      outline: none; // FIXME: cursed...
       text-decoration: none;
+      width: 100%;
 
       &:hover {
         color: var(--blue);
-
         transition: var(--transition-speed);
       }
     }
 
     .icon {
-      margin: 0 1.5rem;
+      margin: auto;
       width: var(--navbar-item-icon-size);
     }
 
@@ -113,26 +110,47 @@ Inspiration:
       color: var(--cyan) !important;
     }
 
-    /* Handle hover */
+    @include respond-to('xl') {
+      height: 100vh;
+      transform: translateY(0);
+      width: var(--navbar-width);
 
-    &:hover {
-      width: var(--navbar-open-width);
+      .container {
+        flex-direction: column;
+        height: 100%;
+      }
 
-      color: var(--cyan);
-
-      transition: var(--transition-speed);
+      .nav-item:last-child {
+        display: block;
+        margin-top: auto;
+      }
 
       a {
+        width: var(--navbar-width);
+      }
+
+      .icon {
+        margin: 0 1.5rem;
+      }
+
+      /* Handle hover */
+      &:hover {
+        color: var(--cyan);
         width: var(--navbar-open-width);
-
         transition: var(--transition-speed);
-      }
 
-      .text {
-        display: block;
-        flex-grow: 1;
-        margin-left: 1rem;
-      }
+        a {
+          width: var(--navbar-open-width);
+
+          transition: var(--transition-speed);
+        }
+
+        .text {
+          display: block;
+          flex-grow: 1;
+          margin-left: 1rem;
+        }
+      } /* end &:hover */
     }
   }
 </style>
