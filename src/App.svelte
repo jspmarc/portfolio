@@ -76,6 +76,13 @@
     padding: 0;
   }
 
+  :global(button) {
+    background: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+  }
+
   :global(.main-content) {
     padding: 2rem;
 
