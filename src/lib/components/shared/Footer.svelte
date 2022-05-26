@@ -5,7 +5,7 @@
 </footer>
 
 <style lang="scss">
-	@import '../../styles/mixin.scss';
+	@import '../../../styles/mixin.scss';
 
 	footer {
 		$teal: #17cccc;

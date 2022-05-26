@@ -1,6 +1,6 @@
 <script lang="ts">
-	import ComingSoon from '$lib/ComingSoon.svelte';
-	import ViewContainer from '$lib/shared/ViewContainer.svelte';
+	import ComingSoon from '$lib/components/ComingSoon.svelte';
+	import ViewContainer from '$lib/components/shared/ViewContainer.svelte';
 </script>
 
 <svelte:head>

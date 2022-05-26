@@ -4,8 +4,8 @@ Inspiration:
   - https://github.com/fireship-io/222-responsive-icon-nav-css
 -->
 <script lang="ts">
-	import NavItems from '../data/NavItem.js';
-	import SocialMedias from '../data/SocialMedia';
+	import NavItems from '../../data/NavItem.js';
+	import SocialMedias from '../../data/SocialMedia';
 	import { page } from '$app/stores';
 
 	let navbarExpanded = false;
@@ -72,7 +72,7 @@ Inspiration:
 </nav>
 
 <style lang="scss">
-	@import '../../styles/mixin.scss';
+	@import '../../../styles/mixin.scss';
 
 	nav {
 		--navbar-open-width: 12rem; // FIXME: Kecilin dan mungkin jgn pake rem?
@@ -193,9 +193,9 @@ Inspiration:
 				padding: 0;
 			}
 
-      .socials-button {
-        display: none;
-      }
+			.socials-button {
+				display: none;
+			}
 
 			/* Handle hover */
 			&:hover {

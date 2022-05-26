@@ -7,7 +7,7 @@
 </div>
 
 <style lang="scss">
-	@import '../styles/mixin.scss';
+	@import '../../styles/mixin.scss';
 
 	div {
 		align-items: center;

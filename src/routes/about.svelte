@@ -22,12 +22,12 @@
 </script>
 
 <script lang="ts">
-	import Description from '$lib/about/Description.svelte';
-	import Experiences from '$lib/about/Experiences.svelte';
-	import Interests from '$lib/about/Interests.svelte';
-	import Skills from '$lib/about/Skills.svelte';
-	import Trivia from '$lib/about/Trivia.svelte';
-	import ViewContainer from '$lib/shared/ViewContainer.svelte';
+	import Description from '$lib/components/about/Description.svelte';
+	import Experiences from '$lib/components/about/Experiences.svelte';
+	import Interests from '$lib/components/about/Interests.svelte';
+	import Skills from '$lib/components/about/Skills.svelte';
+	import Trivia from '$lib/components/about/Trivia.svelte';
+	import ViewContainer from '$lib/components/shared/ViewContainer.svelte';
 
 	export let experiences: Experience[];
 	export let skills: Skill[];

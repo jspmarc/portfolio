@@ -1,7 +1,7 @@
 <script lang="ts">
 	import '@fortawesome/fontawesome-free/js/all.min';
-	import Footer from '$lib/shared/Footer.svelte';
-	import Navbar from '$lib/shared/Navbar.svelte';
+	import Footer from '$lib/components/shared/Footer.svelte';
+	import Navbar from '$lib/components/shared/Navbar.svelte';
 </script>
 
 <header>

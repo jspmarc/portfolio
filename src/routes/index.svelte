@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { slide } from 'svelte/transition';
 	import { quartInOut } from 'svelte/easing';
-	import ViewContainer from '$lib/shared/ViewContainer.svelte';
+	import ViewContainer from '$lib/components/shared/ViewContainer.svelte';
 
 	const roles = ['software engineer', 'student', 'tech-enthusiast'];
 	let i = 0;
