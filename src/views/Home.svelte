@@ -98,10 +98,14 @@
         }
       } // end into-container
 
-      @include respond-to('xl') {
-        --photo-wh: 16vw;
+      @include respond-to('md') {
+        --photo-wh: 24vw;
 
         flex-direction: row;
+      }
+
+      @include respond-to('xl') {
+        --photo-wh: 16vw;
       }
     }
   }
