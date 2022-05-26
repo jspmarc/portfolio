@@ -1,7 +1,7 @@
 <div>
 	<h1>Welcome!</h1>
 	<h2>
-		Unfortunately, this page is still in the making.<br />Please come back soon!
+		Unfortunately, this page is still in progress.<br />Please come back soon!
 		<span>( *^-^)ρ(*╯^╰)</span>
 	</h2>
 </div>
