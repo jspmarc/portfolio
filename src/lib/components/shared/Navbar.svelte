@@ -85,6 +85,7 @@ Inspiration:
 		position: fixed;
 		transition: 0.3s;
 		width: 100vw;
+		z-index: 100;
 
 		.container {
 			align-items: flex-start;
