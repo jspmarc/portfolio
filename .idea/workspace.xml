@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2ae1956c-872f-41be-8248-c6423a14d0b7" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.eslintignore" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.eslintrc.cjs" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.cjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.npmrc" beforeDir="false" afterPath="$PROJECT_DIR$/.npmrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.prettierignore" beforeDir="false" afterPath="$PROJECT_DIR$/.prettierignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.prettierrc" beforeDir="false" afterPath="$PROJECT_DIR$/.prettierrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/Counter.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/Counter.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/ComingSoon.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/ComingSoon.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/about/Description.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/about/Description.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/about/Experiences.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/about/Experiences.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/about/Interests.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/about/Interests.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/about/Skills.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/about/Skills.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/about/Trivia.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/about/Trivia.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/shared/Footer.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/shared/Footer.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/shared/Navbar.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/shared/Navbar.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/shared/ViewContainer.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/shared/ViewContainer.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/data/NavItem.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/data/NavItem.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/data/SocialMedia.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/data/SocialMedia.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/form.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/form.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/types/Experience.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/types/Experience.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/types/Skill.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/types/Skill.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/+layout.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/+layout.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/+page.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/+page.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/about/+page.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/about/+page.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/about/+page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/about/+page.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/api/experiences/+server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/api/experiences/+server.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/api/skills/+server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/api/skills/+server.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/blog/+page.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/blog/+page.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/projects/+page.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/projects/+page.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/mixin.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/mixin.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/favicon.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/favicon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/logo/Cpp.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static/logo/Cpp.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/logo/Csharp.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static/logo/Csharp.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/logo/bash.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static/logo/bash.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/logo/c.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static/logo/c.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/logo/css3.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static/logo/css3.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/logo/git.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static/logo/git.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/logo/go.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static/logo/go.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/logo/html5.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static/logo/html5.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/logo/java.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static/logo/java.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/logo/js.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static/logo/js.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/logo/linux.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static/logo/linux.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/logo/python.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static/logo/python.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/logo/react.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static/logo/react.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/logo/rust.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static/logo/rust.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/logo/sass.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static/logo/sass.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/logo/svelte-logo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static/logo/svelte-logo.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/logo/tailwind.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static/logo/tailwind.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/logo/tex.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static/logo/tex.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/logo/ts-logo-512.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static/logo/ts-logo-512.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/logo/vue.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static/logo/vue.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/profil.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/static/profil.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/robots.txt" beforeDir="false" afterPath="$PROJECT_DIR$/static/robots.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/svelte-welcome.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/svelte-welcome.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/svelte-welcome.webp" beforeDir="false" afterPath="$PROJECT_DIR$/static/svelte-welcome.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/svelte.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/svelte.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2qrqcbqE6G8mS2QZ2pK2pEuevrF" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+    <option name="showVisibilityIcons" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/josep/projects/portfolio&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;pnpm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.github.copilot.settings.ApplicationConfigurable&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/home/josep/.local/share/JetBrains/Toolbox/apps/webstorm/plugins/javascript-plugin/jsLanguageServicesImpl/external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-WS-243.22562.222" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2ae1956c-872f-41be-8248-c6423a14d0b7" name="Changes" comment="" />
+      <created>1735431122053</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1735431122053</updated>
+      <workItem from="1735431123251" duration="61000" />
+      <workItem from="1735432020249" duration="318000" />
+      <workItem from="1735455330080" duration="4000" />
+      <workItem from="1735455844258" duration="42000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
