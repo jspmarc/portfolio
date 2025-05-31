@@ -64,6 +64,7 @@
 
   .content {
     gap: 2rem;
+    min-height: var(--min-content-height);
 
     @include respond-to('xl') {
       display: grid;
