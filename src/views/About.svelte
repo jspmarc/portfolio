@@ -37,14 +37,14 @@
 </ViewContainer>
 
 <style lang="scss">
-  @import '../styles/mixin.scss';
+  @use '../styles/mixin';
 
   h1 {
     margin: 0;
     margin-bottom: 0.25rem;
     text-align: left;
 
-    @include respond-to('xl') {
+    @include mixin.respond-to('xl') {
       margin-bottom: 0;
       text-align: right;
     }
@@ -57,7 +57,7 @@
     justify-content: flex-start;
     margin-bottom: 2rem;
 
-    @include respond-to('xl') {
+    @include mixin.respond-to('xl') {
       margin-bottom: 0;
     }
   }
@@ -66,7 +66,7 @@
     gap: 2rem;
     min-height: var(--min-content-height);
 
-    @include respond-to('xl') {
+    @include mixin.respond-to('xl') {
       display: grid;
       grid-template-columns: 12vw 3fr;
     }

@@ -45,7 +45,7 @@
 </ViewContainer>
 
 <style lang="scss">
-  @import '../styles/mixin.scss';
+  @use '../styles/mixin';
 
   p {
     margin: 0;
@@ -98,13 +98,13 @@
         }
       } // end into-container
 
-      @include respond-to('md') {
+      @include mixin.respond-to('md') {
         --photo-wh: 24vw;
 
         flex-direction: row;
       }
 
-      @include respond-to('xl') {
+      @include mixin.respond-to('xl') {
         --photo-wh: 16vw;
       }
     }

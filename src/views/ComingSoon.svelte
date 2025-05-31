@@ -5,7 +5,7 @@
 </div>
 
 <style lang="scss">
-  @import '../styles/mixin.scss';
+  @use '../styles/mixin';
 
   div {
     align-items: center;
@@ -16,7 +16,7 @@
     padding: 0 2rem;
     text-align: center;
 
-    @include respond-to('xl') {
+    @include mixin.respond-to('xl') {
       padding: 0;
       text-align: left;
     }

@@ -76,7 +76,7 @@ Inspiration:
 </nav>
 
 <style lang="scss">
-  @import '../../styles/mixin.scss';
+  @use '../../styles/mixin';
 
   nav {
     --navbar-open-width: 12rem; // FIXME: Kecilin dan mungkin jgn pake rem?
@@ -160,7 +160,7 @@ Inspiration:
       color: var(--cyan) !important;
     }
 
-    @include respond-to('xl') {
+    @include mixin.respond-to('xl') {
       height: 100vh;
       width: var(--navbar-width);
 

@@ -1,5 +1,7 @@
+@use "sass:map";
+
 // https://css-tricks.com/snippets/sass/mixin-manage-breakpoints/
-// Dengan perubahan secukupnya
+// With necessary changes
 
 $breakpoints: (
 	'sm': 0px,
@@ -15,14 +17,14 @@ $breakpoints: (
 /// @require $breakpoints
 @mixin respond-to($breakpoint) {
 	// If the key exists in the map
-	@if map-has-key($breakpoints, $breakpoint) {
+	@if map.has-key($breakpoints, $breakpoint) {
 		// Prints a media query based on the value
-		@media (min-width: map-get($breakpoints, $breakpoint)) {
+		@media (min-width: map.get($breakpoints, $breakpoint)) {
 			@content;
 		}
 	} @else {
 		// If the key doesn't exist in the map
 		@warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
-			+ "Available breakpoints are: #{map-keys($breakpoints)}.";
+			+ "Available breakpoints are: #{map.keys($breakpoints)}.";
 	}
 }

@@ -26,7 +26,7 @@
 </div>
 
 <style lang="scss">
-  @import './styles/mixin.scss';
+  @use './styles/mixin';
 
   $headers: h1, h2, h3, h4, h5, h6;
   @each $header in $headers {
@@ -53,7 +53,7 @@
 
     font-size: clamp(14px, 2.05vmin, 20px);
 
-    @include respond-to('xl') {
+    @include mixin.respond-to('xl') {
       --min-content-height: calc(100vh - var(--footer-height));
     }
   }
@@ -87,7 +87,7 @@
   :global(.main-content) {
     padding: 2rem;
 
-    @include respond-to('xl') {
+    @include mixin.respond-to('xl') {
       padding: 5vh 10vw;
     }
   }
@@ -95,7 +95,7 @@
   .gradient-bg {
     background: linear-gradient(180deg, var(--white) 67.12%, var(--blue) 100%);
     max-width: 100vw;
-    @include respond-to('xl') {
+    @include mixin.respond-to('xl') {
       margin-left: var(--navbar-width);
     }
   }
