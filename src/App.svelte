@@ -47,14 +47,15 @@
     --min-content-height: calc(
       100vh - var(--footer-height) - var(--navbar-width)
     );
-    @include respond-to('xl') {
-      --min-content-height: calc(100vh - var(--footer-height));
-    }
     // navbar width is height while on tablet or smaller size
     --navbar-width: 5rem;
     --transition-speed: 0.3s;
 
     font-size: clamp(14px, 2.05vmin, 20px);
+
+    @include respond-to('xl') {
+      --min-content-height: calc(100vh - var(--footer-height));
+    }
   }
 
   :global(a) {

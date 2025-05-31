@@ -124,12 +124,12 @@
 
     color: var(--white);
 
-    :global(& p) {
+    :global(p) {
       margin-top: 0;
       margin-bottom: 0.5rem;
     }
 
-    :global(& ul) {
+    :global(ul) {
       margin-top: 0;
       margin-bottom: 0.5rem;
     }
