@@ -2,7 +2,7 @@ import js from '@eslint/js';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
 import svelte from 'eslint-plugin-svelte';
-import { defineConfig } from 'eslint/config';
+import { defineConfig, globalIgnores } from 'eslint/config';
 import prettier from 'eslint-plugin-prettier/recommended';
 
 export default defineConfig([
@@ -10,10 +10,6 @@ export default defineConfig([
 		files: ['**/*.{js,mjs,cjs,ts,mts,cts}'],
 		plugins: { js },
 		extends: ['js/recommended'],
-	},
-	{
-		files: ['**/*.{js,mjs,cjs,ts,mts,cts}'],
-		languageOptions: { globals: globals.browser },
 	},
 	tseslint.configs.recommended,
 	svelte.configs.recommended,
@@ -53,5 +49,6 @@ export default defineConfig([
 			// additional rules
 		},
 	},
+	globalIgnores(['public/', 'pnpm-lock.yaml']),
 	prettier,
 ]);
