@@ -1,2 +1,4 @@
 public/
 pnpm-lock.yaml
+docker-compose.yml
+rollup.config.js
