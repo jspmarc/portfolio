@@ -1,23 +1,32 @@
 <ul>
 	<li>
-		<span class="title">Text editor</span>: Visual Studio Code, (Neo)vim
+		<h4 class="title">Text editor/IDE</h4>
+		JetBrain IDEs (though I use Intellij IDEA when I can), Neovim. Sometimes I dabble around and
+		test other editors. However, none have sticked like JB IDEs nor Neovim.
 	</li>
 	<li>
-		<span class="title">Song</span>: Babymetal, Milet, Yoasobi, LiSa, Bring
-		me the Horizon, Panic! At the Disco, Hivi
+		<h4 class="title">Song</h4>
+		<span>
+			I mainly listen to J-Pop, Indonesian pop, city pop, rock, and metal. Some artists/bands
+			I really like are Bring me the Horizon, Ado, YOASOBI, Chrisye.
+		</span>
 	</li>
 	<li>
-		<span class="title">Hobbies</span>: Video games, table tennis,
-		badminton, programming
+		<h4 class="title">Hobbies</h4>
+		Video games, programming, ramen hunting, walks.
 	</li>
 	<li>
-		<span class="title">Colors</span>: red, orange, black, skyblue, teal,
-		cyan
+		<h4 class="title">Favorite Games</h4>
+		Counter-Strike 2, Valorant, Hollow Knight, The Witcher 3, Cyberpunk 2077
 	</li>
 	<li>
-		<span class="title">View</span>:
-		<a href="https://www.youtube.com/watch?v=MBRqu0YOH14" target="_blank"
-			>optimistic nihilism</a
+		<h4 class="title">Favorite ramen shop</h4>
+		<a href="https://tabelog.com/tokyo/A1305/A130501/13003927/" target="_blank"
+			><ruby
+				>無<rp>(</rp><rt>む</rt><rp>)</rp>敵<rp>(</rp><rt>てき</rt><rp>)</rp>家<rp>(</rp><rt
+					>や</rt
+				><rp>)</rp></ruby
+			></a
 		>
 	</li>
 </ul>
@@ -34,6 +43,9 @@
 	}
 
 	.title {
+		font-family: 'Nunito', sans-serif;
 		font-weight: 700;
+		margin: 0;
+		font-size: inherit;
 	}
 </style>
