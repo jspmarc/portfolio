@@ -44,9 +44,7 @@
 		--teal: #17cccc;
 
 		--footer-height: 1.25rem;
-		--min-content-height: calc(
-			100vh - var(--footer-height) - var(--navbar-width)
-		);
+		--min-content-height: calc(100vh - var(--footer-height) - var(--navbar-width));
 		// navbar width is height while on tablet or smaller size
 		--navbar-width: 5rem;
 		--transition-speed: 0.3s;
@@ -93,11 +91,7 @@
 	}
 
 	.gradient-bg {
-		background: linear-gradient(
-			180deg,
-			var(--white) 67.12%,
-			var(--blue) 100%
-		);
+		background: linear-gradient(180deg, var(--white) 67.12%, var(--blue) 100%);
 		max-width: 100vw;
 		@include mixin.respond-to('xl') {
 			margin-left: var(--navbar-width);

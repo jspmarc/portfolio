@@ -24,15 +24,9 @@
 					<li>
 						{#if icon}
 							{#if icon.src.toLowerCase().indexOf('fa') != -1}
-								<i
-									class="{icon.src} {icon.imgName} fa-lg icon"
-								/>
+								<i class="{icon.src} {icon.imgName} fa-lg icon" />
 							{:else if icon.src == 'img'}
-								<img
-									src="assets/logo/{icon.imgName}"
-									alt=""
-									class="icon"
-								/>
+								<img src="assets/logo/{icon.imgName}" alt="" class="icon" />
 							{/if}
 						{:else}
 							<!-- no icon -->

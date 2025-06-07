@@ -35,10 +35,7 @@
 				<h4>{title}</h4>
 			</button>
 			{#if opened.has(idx)}
-				<div
-					class="experience-content-description"
-					transition:slide|local
-				>
+				<div class="experience-content-description" transition:slide|local>
 					<section>
 						<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 						{@html description}
@@ -57,9 +54,7 @@
 								{#if links.website}
 									<a href={links.website} target="_blank">
 										<button class="links-button git-repo">
-											<i
-												class="fas fa-external-link-alt"
-											/>
+											<i class="fas fa-external-link-alt" />
 											Visit the website
 										</button>
 									</a>

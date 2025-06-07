@@ -49,6 +49,6 @@ export default defineConfig([
 			// additional rules
 		},
 	},
-	globalIgnores(['public/', 'pnpm-lock.yaml']),
+	globalIgnores(['public/', 'pnpm-lock.yaml', 'dist/']),
 	prettier,
 ]);

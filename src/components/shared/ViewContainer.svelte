@@ -9,18 +9,15 @@
 
 	const changePage = (e: WheelEvent | TouchEvent) => {
 		if (window.TouchEvent && e instanceof TouchEvent) {
-			const touch =
-				e.touches[0] || e.changedTouches[0] || e.targetTouches[0];
+			const touch = e.touches[0] || e.changedTouches[0] || e.targetTouches[0];
 			switch (e.type) {
 				case 'touchstart':
 					touchStartY = touch.pageY;
 					break;
 				case 'touchmove':
 					touchEndY = touch.pageY;
-					if (nextViewPath && touchEndY < touchStartY)
-						push(nextViewPath);
-					else if (prevViewPath && touchEndY > touchStartY)
-						push(prevViewPath);
+					if (nextViewPath && touchEndY < touchStartY) push(nextViewPath);
+					else if (prevViewPath && touchEndY > touchStartY) push(prevViewPath);
 					break;
 				default:
 					break;

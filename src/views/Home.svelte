@@ -3,12 +3,7 @@
 	import { quartInOut } from 'svelte/easing';
 	import ViewContainer from '../components/shared/ViewContainer.svelte';
 
-	const roles = [
-		'software engineer',
-		'tech-enthusiast',
-		'gamer',
-		'ramen lover',
-	];
+	const roles = ['software engineer', 'tech-enthusiast', 'gamer', 'ramen lover'];
 	let i = 0;
 	let activeIndex = 0;
 
@@ -21,11 +16,7 @@
 <ViewContainer nextViewPath="/about">
 	<div class="container">
 		<section class="content">
-			<img
-				src="./assets/profil.jpg"
-				alt="Foto profil"
-				class="foto-profil"
-			/>
+			<img src="./assets/profil.jpg" alt="Foto profil" class="foto-profil" />
 			<div class="intro-container">
 				<p>I'm Josep Marcello, a</p>
 				{#each roles as role, idx (idx)}

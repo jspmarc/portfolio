@@ -16,12 +16,7 @@ Inspiration:
 	<ul class="container">
 		{#each NavItems as { text, link, icon }, idx (idx)}
 			<li class="nav-item">
-				<a
-					href={link}
-					class="nav-item-inner-container"
-					use:routerLink
-					use:active
-				>
+				<a href={link} class="nav-item-inner-container" use:routerLink use:active>
 					<i class="fas fa-{icon} fa-2x icon" />
 					<span class="text">
 						{text}
@@ -34,16 +29,8 @@ Inspiration:
 			<ul class="social-medias">
 				{#each SocialMedias as { text, link, icon, isBrand }, idx (idx)}
 					<li class="social-item">
-						<a
-							href={link}
-							target="_blank"
-							class="nav-item-inner-container"
-						>
-							<i
-								class="{isBrand
-									? 'fab'
-									: 'fas'} fa-{icon} fa-2x icon"
-							/>
+						<a href={link} target="_blank" class="nav-item-inner-container">
+							<i class="{isBrand ? 'fab' : 'fas'} fa-{icon} fa-2x icon" />
 							<span class="text">
 								{text}
 							</span>
@@ -52,8 +39,7 @@ Inspiration:
 				{/each}
 			</ul>
 			<button
-				class="nav-item-inner-container socials-button {navbarExpanded &&
-					'active'}"
+				class="nav-item-inner-container socials-button {navbarExpanded && 'active'}"
 				on:click={() => (navbarExpanded = !navbarExpanded)}
 			>
 				<i class="fa-solid fa-circle-user fa-2x icon" />
@@ -75,11 +61,7 @@ Inspiration:
 						<span class="text">
 							{text}
 						</span>
-						<i
-							class="{isBrand
-								? 'fab'
-								: 'fas'} fa-{icon} fa-2x icon"
-						/>
+						<i class="{isBrand ? 'fab' : 'fas'} fa-{icon} fa-2x icon" />
 					</a>
 				</li>
 			{/each}
