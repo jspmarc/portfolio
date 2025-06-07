@@ -1,10 +1,10 @@
-FROM node:16.5.0-buster-slim
+FROM node:22.16-alpine3.22
 COPY . /personal
 WORKDIR /personal
 
-RUN yarn install
-RUN yarn build
+RUN pnpm install
+RUN pnpm build
 
 EXPOSE 5000
 
-CMD [ "yarn", "start", "--host" ]
+CMD [ "pnpm", "start", "--host" ]
