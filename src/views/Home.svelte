@@ -3,7 +3,12 @@
 	import { quartInOut } from 'svelte/easing';
 	import ViewContainer from '../components/shared/ViewContainer.svelte';
 
-	const roles = ['software engineer', 'student', 'tech-enthusiast'];
+	const roles = [
+		'software engineer',
+		'tech-enthusiast',
+		'gamer',
+		'ramen lover',
+	];
 	let i = 0;
 	let activeIndex = 0;
 
@@ -36,7 +41,7 @@
 						</p>
 					{/if}
 				{/each}
-				<p>from Banten, Indonesia</p>
+				<p>living in Tokyo, Japan 🇯🇵</p>
 				<hr class="separator" />
 				<p class="action">Scroll down to learn more about me</p>
 			</div>
