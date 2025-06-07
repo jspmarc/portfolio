@@ -1,2 +1,3 @@
 onlyBuiltDependencies:
-    - svelte-preprocess
+  - esbuild
+  - svelte-preprocess

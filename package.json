@@ -3,9 +3,9 @@
 	"version": "1.0.0",
 	"private": true,
 	"scripts": {
-		"build": "rollup -c",
-		"dev": "rollup -c -w",
-		"start": "sirv public --no-clear",
+		"build": "vite build",
+		"dev": "vite",
+		"start": "vite preview",
 		"check": "svelte-check --tsconfig ./tsconfig.json",
 		"lint": "eslint .",
 		"lint:fix": "eslint --fix .",
@@ -16,10 +16,7 @@
 		"@eslint/eslintrc": "^3.3.1",
 		"@eslint/js": "^9.28.0",
 		"@fortawesome/fontawesome-free": "^6.1.1",
-		"@rollup/plugin-commonjs": "^28.0.3",
-		"@rollup/plugin-node-resolve": "^16.0.1",
-		"@rollup/plugin-terser": "^0.4.4",
-		"@rollup/plugin-typescript": "^12.1.2",
+		"@sveltejs/vite-plugin-svelte": "^2.5.3",
 		"@tsconfig/svelte": "^5.0.4",
 		"@typescript-eslint/eslint-plugin": "^8.33.1",
 		"@typescript-eslint/parser": "^8.33.1",
@@ -32,12 +29,8 @@
 		"postcss-load-config": "^6.0.1",
 		"prettier": "^3.5.3",
 		"prettier-plugin-svelte": "^3.4.0",
-		"rollup": "^4.42.0",
-		"rollup-plugin-css-only": "^4.5.2",
-		"rollup-plugin-livereload": "^2.0.5",
-		"rollup-plugin-scss": "^4.0.1",
-		"rollup-plugin-svelte": "^7.2.2",
 		"sass": "^1.89.1",
+		"sass-embedded": "^1.89.1",
 		"sirv-cli": "^1.0.0",
 		"svelte": "^4.2.19",
 		"svelte-check": "^4.2.1",
@@ -45,6 +38,7 @@
 		"svelte-spa-router": "^4.0.1",
 		"tslib": "^2.0.0",
 		"typescript": "^5.8.3",
-		"typescript-eslint": "^8.33.1"
+		"typescript-eslint": "^8.33.1",
+		"vite": "^4.5.14"
 	}
 }
