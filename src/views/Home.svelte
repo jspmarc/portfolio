@@ -23,8 +23,8 @@
 			/>
 			<div class="intro-container">
 				<p>I'm Josep Marcello, a</p>
-				{#each roles as role, idx}
-					{#if activeIndex == idx}
+				{#each roles as role, idx (idx)}
+					{#if activeIndex === idx}
 						<p
 							transition:slide|local={{
 								duration: 200,

@@ -11,7 +11,7 @@
 	};
 </script>
 
-{#each Skills as { category, contents }}
+{#each Skills as { category, contents }, idx (idx)}
 	<div class="category" class:opened={opened.has(category)}>
 		<button on:click={() => toggleOpen(category)}>
 			<h4 class="name">
@@ -20,7 +20,7 @@
 		</button>
 		{#if contents && opened.has(category)}
 			<ul transition:slide|local class="content">
-				{#each contents as { name, icon }}
+				{#each contents as { name, icon }, idx (idx)}
 					<li>
 						{#if icon}
 							{#if icon.src.toLowerCase().indexOf('fa') != -1}

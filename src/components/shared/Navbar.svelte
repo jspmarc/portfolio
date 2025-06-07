@@ -14,7 +14,7 @@ Inspiration:
 
 <nav>
 	<ul class="container">
-		{#each NavItems as { text, link, icon }}
+		{#each NavItems as { text, link, icon }, idx (idx)}
 			<li class="nav-item">
 				<a
 					href={link}
@@ -32,7 +32,7 @@ Inspiration:
 
 		<li class="nav-item">
 			<ul class="social-medias">
-				{#each SocialMedias as { text, link, icon, isBrand }}
+				{#each SocialMedias as { text, link, icon, isBrand }, idx (idx)}
 					<li class="social-item">
 						<a
 							href={link}
@@ -64,7 +64,7 @@ Inspiration:
 
 	{#if navbarExpanded}
 		<ul class="mobile-social-medias">
-			{#each SocialMedias as { text, link, icon, isBrand }}
+			{#each SocialMedias as { text, link, icon, isBrand }, idx (idx)}
 				<li class="social-item">
 					<a
 						href={link}

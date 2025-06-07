@@ -11,7 +11,7 @@
 	};
 </script>
 
-{#each Experiences as { title, description, year, links }, idx}
+{#each Experiences as { title, description, year, links }, idx (idx)}
 	<div class="container" class:opened={opened.has(idx)}>
 		<div class="year">
 			{#if year.to && opened.has(idx)}
@@ -40,6 +40,7 @@
 					transition:slide|local
 				>
 					<section>
+						<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 						{@html description}
 
 						{#if links}
