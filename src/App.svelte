@@ -14,7 +14,7 @@
 	};
 </script>
 
-<!--Alerady wrapped in <nav> tag-->
+<!--Already wrapped in <nav> tag-->
 <header>
 	<Navbar />
 </header>
