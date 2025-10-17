@@ -21,13 +21,9 @@
 	</li>
 	<li>
 		<h4 class="title">Favorite ramen shop</h4>
-		<a href="https://tabelog.com/tokyo/A1305/A130501/13003927/" target="_blank"
-			><ruby
-				>無<rp>(</rp><rt>む</rt><rp>)</rp>敵<rp>(</rp><rt>てき</rt><rp>)</rp>家<rp>(</rp><rt
-					>や</rt
-				><rp>)</rp></ruby
-			></a
-		>
+		<a href="https://tabelog.com/tokyo/A1321/A132102/13154616/" target="_blank">
+			<ruby>麺<rp>(</rp><rt>めん</rt><rp>)</rp>酒<rp>(</rp><rt>しゅ</rt><rp>)</rp>やまの</ruby>
+		</a>
 	</li>
 </ul>
 

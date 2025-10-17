@@ -9,7 +9,7 @@ Inspiration:
 	import NavItems from '../../data/NavItem.js';
 	import SocialMedias from '../../data/SocialMedia';
 
-	let navbarExpanded = false;
+	let navbarExpanded = $state(false);
 </script>
 
 <nav>
@@ -17,7 +17,7 @@ Inspiration:
 		{#each NavItems as { text, link, icon }, idx (idx)}
 			<li class="nav-item">
 				<a href={link} class="nav-item-inner-container" use:routerLink use:active>
-					<i class="fas fa-{icon} fa-2x icon" />
+					<i class="fas fa-{icon} fa-2x icon"></i>
 					<span class="text">
 						{text}
 					</span>
@@ -30,7 +30,7 @@ Inspiration:
 				{#each SocialMedias as { text, link, icon, isBrand }, idx (idx)}
 					<li class="social-item">
 						<a href={link} target="_blank" class="nav-item-inner-container">
-							<i class="{isBrand ? 'fab' : 'fas'} fa-{icon} fa-2x icon" />
+							<i class="{isBrand ? 'fab' : 'fas'} fa-{icon} fa-2x icon"></i>
 							<span class="text">
 								{text}
 							</span>
@@ -40,9 +40,9 @@ Inspiration:
 			</ul>
 			<button
 				class="nav-item-inner-container socials-button {navbarExpanded && 'active'}"
-				on:click={() => (navbarExpanded = !navbarExpanded)}
+				onclick={() => (navbarExpanded = !navbarExpanded)}
 			>
-				<i class="fa-solid fa-circle-user fa-2x icon" />
+				<i class="fa-solid fa-circle-user fa-2x icon"></i>
 				<span class="text">Socials</span>
 			</button>
 		</li>
@@ -56,12 +56,12 @@ Inspiration:
 						href={link}
 						target="_blank"
 						class="nav-item-inner-container"
-						on:click={() => (navbarExpanded = false)}
+						onclick={() => (navbarExpanded = false)}
 					>
 						<span class="text">
 							{text}
 						</span>
-						<i class="{isBrand ? 'fab' : 'fas'} fa-{icon} fa-2x icon" />
+						<i class="{isBrand ? 'fab' : 'fas'} fa-{icon} fa-2x icon"></i>
 					</a>
 				</li>
 			{/each}

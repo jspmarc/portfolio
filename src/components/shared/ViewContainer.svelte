@@ -2,8 +2,13 @@
 	import { fly } from 'svelte/transition';
 	import { push } from 'svelte-spa-router';
 
-	export let nextViewPath: string | undefined = undefined;
-	export let prevViewPath: string | undefined = undefined;
+	interface Props {
+		nextViewPath?: string | undefined;
+		prevViewPath?: string | undefined;
+		children?: import('svelte').Snippet;
+	}
+
+	let { nextViewPath = undefined, prevViewPath = undefined, children }: Props = $props();
 
 	let touchStartY: number, touchEndY: number;
 
@@ -33,9 +38,9 @@
 
 <div
 	in:fly={{ duration: 300, x: -100 }}
-	on:wheel={nextViewPath || prevViewPath ? changePage : doNothing}
-	on:touchstart={nextViewPath || prevViewPath ? changePage : doNothing}
-	on:touchmove={nextViewPath || prevViewPath ? changePage : doNothing}
+	onwheel={nextViewPath || prevViewPath ? changePage : doNothing}
+	ontouchstart={nextViewPath || prevViewPath ? changePage : doNothing}
+	ontouchmove={nextViewPath || prevViewPath ? changePage : doNothing}
 >
-	<slot />
+	{@render children?.()}
 </div>

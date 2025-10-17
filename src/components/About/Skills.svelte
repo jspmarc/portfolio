@@ -2,20 +2,24 @@
 	import { slide } from 'svelte/transition';
 	import Skills from '../../data/Skills';
 
-	let opened: Set<string> = new Set();
+	let opened: Set<string> = $state(new Set());
 
 	const toggleOpen = (category: string) => {
-		if (opened.has(category)) opened.delete(category);
-		else opened.add(category);
-		opened = opened;
+		if (opened.has(category)) {
+			opened.delete(category);
+			opened = new Set(opened);
+		} else {
+			opened.add(category);
+			opened = new Set(opened);
+		}
 	};
 </script>
 
 {#each Skills as { category, contents }, idx (idx)}
 	<div class="category" class:opened={opened.has(category)}>
-		<button on:click={() => toggleOpen(category)}>
+		<button onclick={() => toggleOpen(category)}>
 			<h4 class="name">
-				<i class="fas fa-chevron-right accordion-arrow" />{category}
+				<i class="fas fa-chevron-right accordion-arrow"></i>{category}
 			</h4>
 		</button>
 		{#if contents && opened.has(category)}
@@ -24,13 +28,13 @@
 					<li>
 						{#if icon}
 							{#if icon.src.toLowerCase().indexOf('fa') != -1}
-								<i class="{icon.src} {icon.imgName} fa-lg icon" />
+								<i class="{icon.src} {icon.imgName} fa-lg icon"></i>
 							{:else if icon.src == 'img'}
 								<img src="assets/logo/{icon.imgName}" alt="" class="icon" />
 							{/if}
 						{:else}
 							<!-- no icon -->
-							<i class="fas fa-code fa-lg icon" />
+							<i class="fas fa-code fa-lg icon"></i>
 						{/if}
 						<span>{name}</span>
 					</li>

@@ -5,9 +5,13 @@
 	let opened = new Set<number>();
 
 	const toggleOpen = (n: number) => {
-		if (opened.has(n)) opened.delete(n);
-		else opened.add(n);
-		opened = opened;
+		if (opened.has(n)) {
+			opened.delete(n);
+			opened = new Set(opened);
+		} else {
+			opened.add(n);
+			opened = new Set(opened);
+		}
 	};
 </script>
 
@@ -26,12 +30,12 @@
 		</div>
 
 		<div class="timeline">
-			<div class="timeline-circle" />
+			<div class="timeline-circle"></div>
 		</div>
 
 		<div class="content">
-			<button class="title" on:click={() => toggleOpen(idx)}>
-				<i class="fas fa-chevron-right accordion-arrow" />
+			<button class="title" onclick={() => toggleOpen(idx)}>
+				<i class="fas fa-chevron-right accordion-arrow"></i>
 				<h4>{title}</h4>
 			</button>
 			{#if opened.has(idx)}
@@ -46,7 +50,7 @@
 									<a href={links.gitRepo} target="_blank">
 										<button class="links-button git-repo">
 											<!-- TODO: Change this to the project's page when the Project view/page is done -->
-											<i class="fab fa-git-alt" />
+											<i class="fab fa-git-alt"></i>
 											Visit the Git repository
 										</button>
 									</a>
@@ -54,7 +58,7 @@
 								{#if links.website}
 									<a href={links.website} target="_blank">
 										<button class="links-button git-repo">
-											<i class="fas fa-external-link-alt" />
+											<i class="fas fa-external-link-alt"></i>
 											Visit the website
 										</button>
 									</a>
@@ -62,7 +66,7 @@
 								{#if links.certificate}
 									<a href={links.certificate} target="_blank">
 										<button class="links-button git-repo">
-											<i class="fas fa-certificate" />
+											<i class="fas fa-certificate"></i>
 											View my certificate
 										</button>
 									</a>

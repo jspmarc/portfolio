@@ -5,7 +5,7 @@
 
 	const roles = ['software engineer', 'tech-enthusiast', 'gamer', 'ramen lover'];
 	let i = 0;
-	let activeIndex = 0;
+	let activeIndex = $state(0);
 
 	setInterval(() => {
 		i = (i + 1) % roles.length;
