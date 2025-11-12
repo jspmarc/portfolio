@@ -1,11 +1,11 @@
 # My Portfolio/Personal Website
 
 Josep Marcello's portfolio website.
-[https://jspmarc.my.id](https://jspmarc.my.id)
+[https://josepmarcello.com](https://josepmarcello.com)
 
 # Tech stack
 
-- Svelte 3
+- Svelte 5
 - TypeScript
 
 # Deploying Tutorial
