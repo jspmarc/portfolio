@@ -17,7 +17,7 @@ const SocialMedia: SocialMedia[] = [
 	{
 		name: 'email',
 		text: 'Email',
-		link: 'mailto:josepmarrrcy2403@gmail.com',
+		link: 'mailto:josep@josepmarcello.com',
 		icon: 'envelope-square',
 		isBrand: false,
 	},
