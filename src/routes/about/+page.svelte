@@ -56,7 +56,7 @@
 
 	section {
 		align-items: flex-start;
-		max-width: 80ch;
+		max-width: 100ch;
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-start;
@@ -74,8 +74,9 @@
 		@include mixin.respond-to('xl') {
 			align-content: start;
 			display: grid;
-			grid-template-columns: 12vw 3fr;
+			grid-template-columns: 12vw auto;
 			grid-auto-rows: max-content;
+			justify-content: center;
 		}
 	}
 
