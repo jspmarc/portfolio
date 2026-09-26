@@ -1,47 +1,32 @@
 <script lang="ts">
-	import { slide } from 'svelte/transition';
-	import Skills from '../../data/Skills';
-
-	let opened: Set<string> = $state(new Set());
-
-	const toggleOpen = (category: string) => {
-		if (opened.has(category)) {
-			opened.delete(category);
-			opened = new Set(opened);
-		} else {
-			opened.add(category);
-			opened = new Set(opened);
-		}
-	};
+	import Skills from '$lib/data/Skills';
 </script>
 
 {#each Skills as { category, contents }, idx (idx)}
-	<div class="category" class:opened={opened.has(category)}>
-		<button onclick={() => toggleOpen(category)}>
+	<details class="category">
+		<summary>
 			<h4 class="name">
 				<i class="fas fa-chevron-right accordion-arrow"></i>{category}
 			</h4>
-		</button>
-		{#if contents && opened.has(category)}
-			<ul transition:slide|local class="content">
-				{#each contents as { name, icon }, idx (idx)}
-					<li>
-						{#if icon}
-							{#if icon.src.toLowerCase().indexOf('fa') != -1}
-								<i class="{icon.src} {icon.imgName} fa-lg icon"></i>
-							{:else if icon.src == 'img'}
-								<img src="assets/logo/{icon.imgName}" alt="" class="icon" />
-							{/if}
-						{:else}
-							<!-- no icon -->
-							<i class="fas fa-code fa-lg icon"></i>
+		</summary>
+		<ul class="content">
+			{#each contents as { name, icon }, idx (idx)}
+				<li>
+					{#if icon}
+						{#if icon.src.toLowerCase().indexOf('fa') != -1}
+							<i class="{icon.src} {icon.imgName} fa-lg icon"></i>
+						{:else if icon.src == 'img'}
+							<img src="/assets/logo/{icon.imgName}" alt="" class="icon" />
 						{/if}
-						<span>{name}</span>
-					</li>
-				{/each}
-			</ul>
-		{/if}
-	</div>
+					{:else}
+						<!-- no icon -->
+						<i class="fas fa-code fa-lg icon"></i>
+					{/if}
+					<span>{name}</span>
+				</li>
+			{/each}
+		</ul>
+	</details>
 {/each}
 
 <style lang="scss">
@@ -60,13 +45,19 @@
 		margin-bottom: 1rem;
 		padding: 0;
 
-		button {
+		summary {
 			background: none;
 			border: none;
 			cursor: pointer;
 			outline: none;
+			// the custom chevron replaces the native disclosure triangle
+			list-style: none;
 
 			color: inherit;
+
+			&::-webkit-details-marker {
+				display: none;
+			}
 		}
 	}
 
@@ -117,10 +108,9 @@
 		margin: 0;
 	}
 
-	.opened {
-		.accordion-arrow {
-			rotate: 90deg;
-			transition: var(--transition-speed);
-		}
+	// .opened used to be toggled from component state; <details> exposes it natively
+	[open] .accordion-arrow {
+		rotate: 90deg;
+		transition: var(--transition-speed);
 	}
 </style>

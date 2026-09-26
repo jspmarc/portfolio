@@ -49,6 +49,6 @@ export default defineConfig([
 			// additional rules
 		},
 	},
-	globalIgnores(['public/', 'pnpm-lock.yaml', 'dist/']),
+	globalIgnores(['static/', 'pnpm-lock.yaml', 'dist/', 'build/', '.svelte-kit/']),
 	prettier,
 ]);

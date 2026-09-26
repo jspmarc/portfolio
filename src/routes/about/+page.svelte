@@ -1,11 +1,15 @@
 <script lang="ts">
-	import Description from '../components/About/Description.svelte';
-	import Experiences from '../components/About/Experiences.svelte';
-	import Interests from '../components/About/Interests.svelte';
-	import Skills from '../components/About/Skills.svelte';
-	import Trivia from '../components/About/Trivia.svelte';
-	import ViewContainer from '../components/shared/ViewContainer.svelte';
+	import Description from '$lib/components/About/Description.svelte';
+	import Experiences from '$lib/components/About/Experiences.svelte';
+	import Interests from '$lib/components/About/Interests.svelte';
+	import Skills from '$lib/components/About/Skills.svelte';
+	import Trivia from '$lib/components/About/Trivia.svelte';
+	import ViewContainer from '$lib/components/shared/ViewContainer.svelte';
 </script>
+
+<svelte:head>
+	<title>About | Josep Marcello</title>
+</svelte:head>
 
 <ViewContainer>
 	<div class="main-content content">
@@ -37,7 +41,7 @@
 </ViewContainer>
 
 <style lang="scss">
-	@use '../styles/mixin';
+	@use '$lib/styles/mixin';
 
 	h1 {
 		margin: 0;
@@ -52,6 +56,7 @@
 
 	section {
 		align-items: flex-start;
+		max-width: 100ch;
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-start;
@@ -67,8 +72,11 @@
 		min-height: var(--min-content-height);
 
 		@include mixin.respond-to('xl') {
+			align-content: start;
 			display: grid;
-			grid-template-columns: 12vw 3fr;
+			grid-template-columns: 12vw auto;
+			grid-auto-rows: max-content;
+			justify-content: center;
 		}
 	}
 

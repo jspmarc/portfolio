@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { fly } from 'svelte/transition';
-	import { push } from 'svelte-spa-router';
+	import { goto } from '$app/navigation';
 
 	interface Props {
 		nextViewPath?: string | undefined;
@@ -21,15 +21,15 @@
 					break;
 				case 'touchmove':
 					touchEndY = touch.pageY;
-					if (nextViewPath && touchEndY < touchStartY) push(nextViewPath);
-					else if (prevViewPath && touchEndY > touchStartY) push(prevViewPath);
+					if (nextViewPath && touchEndY < touchStartY) goto(nextViewPath);
+					else if (prevViewPath && touchEndY > touchStartY) goto(prevViewPath);
 					break;
 				default:
 					break;
 			}
 		} else if (window.WheelEvent && e instanceof WheelEvent) {
-			if (nextViewPath && e.deltaY > 0) push(nextViewPath);
-			else if (prevViewPath && e.deltaY < 0) push(prevViewPath);
+			if (nextViewPath && e.deltaY > 0) goto(nextViewPath);
+			else if (prevViewPath && e.deltaY < 0) goto(prevViewPath);
 		}
 	};
 

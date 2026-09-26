@@ -1,23 +1,35 @@
 <!--
-Inspiration:
+  Inspiration:
   - https://www.youtube.com/watch?v=biOMz4puGt8,
   - https://github.com/fireship-io/222-responsive-icon-nav-css
 -->
 <script lang="ts">
-	import { link as routerLink } from 'svelte-spa-router';
-	import active from 'svelte-spa-router/active';
-	import NavItems from '../../data/NavItem.js';
-	import SocialMedias from '../../data/SocialMedia';
+	import { page } from '$app/state';
+	import NavItems from '$lib/data/NavItem';
+	import SocialMedias from '$lib/data/SocialMedia';
 
 	let navbarExpanded = $state(false);
+
+	// Mirrors the exact-match semantics the old `use:active` action had
+	// (`/` -> /^\/?$/, `/about` -> /^\/about\/?$/), while also treating
+	// `/about/anything` as part of the `/about` section.
+	const pathname = $derived(page.url.pathname.replace(/\/+$/, '') || '/');
+
+	const isActive = (link: string) =>
+		link === '/' ? pathname === '/' : pathname === link || pathname.startsWith(`${link}/`);
 </script>
 
 <nav>
 	<ul class="container">
 		{#each NavItems as { text, link, icon }, idx (idx)}
 			<li class="nav-item">
-				<a href={link} class="nav-item-inner-container" use:routerLink use:active>
-					<i class="fas fa-{icon} fa-2x icon"></i>
+				<a
+					href={link}
+					class="nav-item-inner-container"
+					class:active={isActive(link)}
+					aria-current={isActive(link) ? 'page' : undefined}
+				>
+					<i class="fas fa-{icon} fa-lg icon"></i>
 					<span class="text">
 						{text}
 					</span>
@@ -70,7 +82,7 @@ Inspiration:
 </nav>
 
 <style lang="scss">
-	@use '../../styles/mixin';
+	@use '$lib/styles/mixin';
 
 	nav {
 		--navbar-open-width: 12rem; // FIXME: Kecilin dan mungkin jgn pake rem?

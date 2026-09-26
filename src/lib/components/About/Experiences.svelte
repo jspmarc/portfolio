@@ -1,45 +1,56 @@
 <script lang="ts">
-	import { slide } from 'svelte/transition';
-	import Experiences from '../../data/Experiences';
+	import Experiences from '$lib/data/Experiences';
 
-	let opened = new Set<number>();
-
-	const toggleOpen = (n: number) => {
-		if (opened.has(n)) {
-			opened.delete(n);
-			opened = new Set(opened);
-		} else {
-			opened.add(n);
-			opened = new Set(opened);
-		}
-	};
+	const slugifyTitle = (text: string) =>
+		text
+			.toLowerCase()
+			.replace(/[^a-z0-9]+/g, '-')
+			.replace(/(^-|-$)/g, '')
+			.slice(0, 10);
 </script>
 
 {#each Experiences as { title, description, year, links }, idx (idx)}
-	<div class="container" class:opened={opened.has(idx)}>
+	{@const detailsId = slugifyTitle(title) + idx}
+
+	<div class="container">
 		<div class="year">
-			{#if year.to && opened.has(idx)}
-				<h4>
-					{year.from} - {year.to}
-				</h4>
+			{#if year.to}
+				<h4>{year.from.year}</h4>
+				<h4 class="em-dash">&mdash;</h4>
+				<h4>{year.to.year}</h4>
+				<h4>{year.from.month}</h4>
+				<h4>{year.to.month}</h4>
 			{:else}
 				<h4>
-					{year.from}
+					{year.from.month}
+					{year.from.year}
 				</h4>
 			{/if}
 		</div>
 
-		<div class="timeline">
-			<div class="timeline-circle"></div>
+		<div title="open summary" class="timeline">
+			<button
+				title="open details"
+				class="timeline-circle"
+				on:click={() => {
+					const details: HTMLDetailsElement | null = document.querySelector(
+						'#' + detailsId
+					);
+					if (details === null) {
+						return;
+					}
+					details.toggleAttribute('open');
+				}}
+			></button>
 		</div>
 
 		<div class="content">
-			<button class="title" onclick={() => toggleOpen(idx)}>
-				<i class="fas fa-chevron-right accordion-arrow"></i>
-				<h4>{title}</h4>
-			</button>
-			{#if opened.has(idx)}
-				<div class="experience-content-description" transition:slide|local>
+			<details id={detailsId}>
+				<summary class="title">
+					<i class="fas fa-chevron-right accordion-arrow"></i>
+					<h4>{title}</h4>
+				</summary>
+				<div class="experience-content-description">
 					<section>
 						<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 						{@html description}
@@ -75,21 +86,27 @@
 						{/if}
 					</section>
 				</div>
-			{/if}
+			</details>
 		</div>
 	</div>
 {/each}
 
 <style lang="scss">
-	button {
+	summary {
 		background: none;
 		border: none;
 		cursor: pointer;
 		outline: none;
 		padding: 0;
+		// the custom chevron replaces the native disclosure triangle
+		list-style: none;
 
 		color: inherit;
 		font-size: inherit;
+
+		&::-webkit-details-marker {
+			display: none;
+		}
 	}
 
 	h4 {
@@ -108,6 +125,10 @@
 		display: grid;
 		grid-template-columns: 8rem var(--timeline-width) 4fr;
 		justify-content: flex-start;
+
+		&:not(:last-child) {
+			border-bottom: 1px solid rgba(0, 72, 82, 0.25); // var(--cyan) at 25%
+		}
 	}
 
 	.content {
@@ -116,6 +137,10 @@
 		flex-direction: column;
 		justify-content: flex-start;
 		margin-bottom: 1rem;
+
+		details {
+			align-self: stretch;
+		}
 	}
 
 	.experience-content-description {
@@ -167,11 +192,9 @@
 		}
 	}
 
-	.opened {
-		.accordion-arrow {
-			rotate: 90deg;
-			transition: var(--transition-speed);
-		}
+	[open] .accordion-arrow {
+		rotate: 90deg;
+		transition: var(--transition-speed);
 	}
 
 	.title {
@@ -216,6 +239,7 @@
 
 		background-color: var(--brown);
 		border-radius: 100%;
+		cursor: pointer;
 		height: var(--circle-wh);
 		margin: 0;
 		padding: 0;
@@ -223,13 +247,15 @@
 	}
 
 	.year {
-		display: flex;
-		flex-direction: row;
-		justify-content: flex-end;
-		margin: 0;
-		margin-bottom: 0.5rem;
-		word-wrap: break-word;
+		display: grid;
+		grid-template-rows: 1fr 1fr;
+		grid-template-columns: 45% 10% 45%;
 
-		text-align: right;
+		text-align: center;
+
+		.em-dash {
+			grid-row-start: span 2;
+			align-self: center;
+		}
 	}
 </style>

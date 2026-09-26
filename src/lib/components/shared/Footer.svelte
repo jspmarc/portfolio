@@ -1,6 +1,6 @@
 <footer>
 	Made with <i class="fas fa-heart"></i> using
-	<img src="./assets/logo/svelte-logo.svg" alt="Svelte" class="svelte-icon" />
+	<img src="/assets/logo/svelte-logo.svg" alt="Svelte" class="svelte-icon" />
 	Svelte and icons from <i class="fab fa-font-awesome"></i> Font Awesome
 </footer>
 
