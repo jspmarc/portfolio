@@ -8,7 +8,7 @@
 </script>
 
 <svelte:head>
-	<meta name="description" content="Josep Marcello's portfolio website" />
+	<meta name="description" content="Josep Marcello's personal website" />
 	<meta name="keywords" content="Portfolio" />
 	<meta name="author" content="Josep Marcello" />
 	<title>Josep Marcello</title>

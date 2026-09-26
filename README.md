@@ -1,6 +1,6 @@
-# My Portfolio/Personal Website
+# My Personal Website
 
-Josep Marcello's portfolio website.
+Josep Marcello's personal website.
 [https://josepmarcello.com](https://josepmarcello.com)
 
 # Tech stack
