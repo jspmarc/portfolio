@@ -37,6 +37,7 @@
 </script>
 
 <div
+	role="group"
 	in:fly={{ duration: 300, x: -100 }}
 	onwheel={nextViewPath || prevViewPath ? changePage : doNothing}
 	ontouchstart={nextViewPath || prevViewPath ? changePage : doNothing}

@@ -13,9 +13,6 @@ export default defineConfig(({ mode }) => {
 					// enable run-time checks when not in production
 					dev: !production,
 				},
-				hot: {
-					preserveLocalState: true,
-				},
 			}),
 		],
 	};
