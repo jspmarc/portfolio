@@ -1,18 +1,18 @@
 <script lang="ts">
-	import '@fortawesome/fontawesome-free/js/all.min';
-	import Router from 'svelte-spa-router';
-	import Footer from './components/shared/Footer.svelte';
-	import Navbar from './components/shared/Navbar.svelte';
-	import { About, Blog, ComingSoon, Home, Projects } from './views/index';
+	import '@fortawesome/fontawesome-free/css/all.min.css';
+	import type { Snippet } from 'svelte';
+	import Footer from '$lib/components/shared/Footer.svelte';
+	import Navbar from '$lib/components/shared/Navbar.svelte';
 
-	const routes = {
-		'/': Home,
-		'/about': About,
-		'/projects': Projects,
-		'/blog': Blog,
-		'*': ComingSoon,
-	};
+	let { children }: { children?: Snippet } = $props();
 </script>
+
+<svelte:head>
+	<meta name="description" content="Josep Marcello's portfolio website" />
+	<meta name="keywords" content="Portfolio" />
+	<meta name="author" content="Josep Marcello" />
+	<title>Josep Marcello</title>
+</svelte:head>
 
 <!--Already wrapped in <nav> tag-->
 <header>
@@ -20,13 +20,13 @@
 </header>
 <div class="gradient-bg">
 	<main>
-		<Router {routes} restoreScrollState={true} />
+		{@render children?.()}
 	</main>
 	<Footer />
 </div>
 
 <style lang="scss">
-	@use './styles/mixin';
+	@use '$lib/styles/mixin';
 
 	$headers: h1, h2, h3, h4, h5, h6;
 	@each $header in $headers {

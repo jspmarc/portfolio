@@ -1,22 +1,27 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import { slide } from 'svelte/transition';
 	import { quartInOut } from 'svelte/easing';
-	import ViewContainer from '../components/shared/ViewContainer.svelte';
+	import ViewContainer from '$lib/components/shared/ViewContainer.svelte';
 
 	const roles = ['software engineer', 'tech-enthusiast', 'gamer', 'ramen lover'];
-	let i = 0;
 	let activeIndex = $state(0);
 
-	setInterval(() => {
-		i = (i + 1) % roles.length;
-		activeIndex = i;
-	}, 1500);
+	// Runs in the browser only; a bare setInterval here would also fire during
+	// pre-rendering and leak a timer per page.
+	onMount(() => {
+		const timer = setInterval(() => {
+			activeIndex = (activeIndex + 1) % roles.length;
+		}, 1500);
+
+		return () => clearInterval(timer);
+	});
 </script>
 
 <ViewContainer nextViewPath="/about">
 	<div class="container">
 		<section class="content">
-			<img src="./assets/profil.jpg" alt="Foto profil" class="foto-profil" />
+			<img src="/assets/profil.jpg" alt="Foto profil" class="foto-profil" />
 			<div class="intro-container">
 				<p>I'm Josep Marcello, a</p>
 				{#each roles as role, idx (idx)}
@@ -41,7 +46,7 @@
 </ViewContainer>
 
 <style lang="scss">
-	@use '../styles/mixin';
+	@use '$lib/styles/mixin';
 
 	p {
 		margin: 0;

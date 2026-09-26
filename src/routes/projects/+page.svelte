@@ -1,7 +1,11 @@
 <script lang="ts">
-	import ComingSoon from './ComingSoon.svelte';
-	import ViewContainer from '../components/shared/ViewContainer.svelte';
+	import ComingSoon from '$lib/components/shared/ComingSoon.svelte';
+	import ViewContainer from '$lib/components/shared/ViewContainer.svelte';
 </script>
+
+<svelte:head>
+	<title>Projects | Josep Marcello</title>
+</svelte:head>
 
 <ViewContainer>
 	<ComingSoon />

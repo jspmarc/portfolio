@@ -1,24 +1,11 @@
 <script lang="ts">
-	import { slide } from 'svelte/transition';
-	import Experiences from '../../data/Experiences';
-
-	let opened = new Set<number>();
-
-	const toggleOpen = (n: number) => {
-		if (opened.has(n)) {
-			opened.delete(n);
-			opened = new Set(opened);
-		} else {
-			opened.add(n);
-			opened = new Set(opened);
-		}
-	};
+	import Experiences from '$lib/data/Experiences';
 </script>
 
 {#each Experiences as { title, description, year, links }, idx (idx)}
-	<div class="container" class:opened={opened.has(idx)}>
+	<div class="container">
 		<div class="year">
-			{#if year.to && opened.has(idx)}
+			{#if year.to}
 				<h4>
 					{year.from} - {year.to}
 				</h4>
@@ -34,12 +21,12 @@
 		</div>
 
 		<div class="content">
-			<button class="title" onclick={() => toggleOpen(idx)}>
-				<i class="fas fa-chevron-right accordion-arrow"></i>
-				<h4>{title}</h4>
-			</button>
-			{#if opened.has(idx)}
-				<div class="experience-content-description" transition:slide|local>
+			<details>
+				<summary class="title">
+					<i class="fas fa-chevron-right accordion-arrow"></i>
+					<h4>{title}</h4>
+				</summary>
+				<div class="experience-content-description">
 					<section>
 						<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 						{@html description}
@@ -75,21 +62,27 @@
 						{/if}
 					</section>
 				</div>
-			{/if}
+			</details>
 		</div>
 	</div>
 {/each}
 
 <style lang="scss">
-	button {
+	summary {
 		background: none;
 		border: none;
 		cursor: pointer;
 		outline: none;
 		padding: 0;
+		// the custom chevron replaces the native disclosure triangle
+		list-style: none;
 
 		color: inherit;
 		font-size: inherit;
+
+		&::-webkit-details-marker {
+			display: none;
+		}
 	}
 
 	h4 {
@@ -116,6 +109,12 @@
 		flex-direction: column;
 		justify-content: flex-start;
 		margin-bottom: 1rem;
+
+		// .content is a column flexbox with align-items: flex-start, so the
+		// <details> has to opt back into full width
+		details {
+			align-self: stretch;
+		}
 	}
 
 	.experience-content-description {
@@ -167,11 +166,10 @@
 		}
 	}
 
-	.opened {
-		.accordion-arrow {
-			rotate: 90deg;
-			transition: var(--transition-speed);
-		}
+	// .opened used to be toggled from component state; <details> exposes it natively
+	[open] .accordion-arrow {
+		rotate: 90deg;
+		transition: var(--transition-speed);
 	}
 
 	.title {

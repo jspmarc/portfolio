@@ -5,7 +5,7 @@
 </div>
 
 <style lang="scss">
-	@use '../styles/mixin';
+	@use '$lib/styles/mixin';
 
 	div {
 		align-items: center;
