@@ -71,8 +71,10 @@
 		min-height: var(--min-content-height);
 
 		@include mixin.respond-to('xl') {
+			align-content: start;
 			display: grid;
 			grid-template-columns: 12vw 3fr;
+			grid-auto-rows: max-content;
 		}
 	}
 

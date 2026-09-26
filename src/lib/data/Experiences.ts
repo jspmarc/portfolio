@@ -2,8 +2,14 @@ type Experience = {
 	title: string;
 	description: string;
 	year: {
-		from: string;
-		to: string;
+		from: {
+			month: string;
+			year: string;
+		};
+		to: {
+			month: string;
+			year: string;
+		};
 	};
 	links?: {
 		certificate?: string;
@@ -28,8 +34,14 @@ const Experiences: Experience[] = [
   </ul>
 `,
 		year: {
-			from: 'May 2021',
-			to: 'July 2021',
+			from: {
+				month: 'May',
+				year: '2021',
+			},
+			to: {
+				month: 'Jul',
+				year: '2021',
+			},
 		},
 		links: {
 			gitRepo: 'https://github.com/paradewisudaitb/Frontend-Wisjul21',
@@ -43,8 +55,14 @@ const Experiences: Experience[] = [
   <p>On this event, as part of the comittee, I was responsible for creating creative CTF problems for the competitor.</p>
 `,
 		year: {
-			from: 'September 2020',
-			to: 'March 2021',
+			from: {
+				month: 'Sep',
+				year: '2020',
+			},
+			to: {
+				month: 'Mar',
+				year: '2021',
+			},
 		},
 	},
 	{
@@ -54,8 +72,14 @@ const Experiences: Experience[] = [
   <p>I also optimized my team's workflow by creating a Python script to automatically download JSON data from an API and then automatically parsing it into a CSV file.</p>
 `,
 		year: {
-			from: 'September 2020',
-			to: 'February 2021',
+			from: {
+				month: 'Sep',
+				year: '2020',
+			},
+			to: {
+				month: 'Feb',
+				year: '2021',
+			},
 		},
 	},
 	{
@@ -65,8 +89,14 @@ const Experiences: Experience[] = [
   <p>I was also responsible on administrating a Moodle-based e-learning website with 3 other software engineers.</p>
 `,
 		year: {
-			from: 'March 2020',
-			to: 'August 2020',
+			from: {
+				month: 'Mar',
+				year: '2020',
+			},
+			to: {
+				month: 'Aug',
+				year: '2020',
+			},
 		},
 	},
 ];

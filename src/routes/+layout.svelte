@@ -28,6 +28,12 @@
 <style lang="scss">
 	@use '$lib/styles/mixin';
 
+	:global(*),
+	:global(*::before),
+	:global(*::after) {
+		box-sizing: border-box;
+	}
+
 	$headers: h1, h2, h3, h4, h5, h6;
 	@each $header in $headers {
 		:global(#{$header}) {

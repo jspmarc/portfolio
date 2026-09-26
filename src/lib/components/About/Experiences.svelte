@@ -1,27 +1,51 @@
 <script lang="ts">
 	import Experiences from '$lib/data/Experiences';
+
+	const slugifyTitle = (text: string) =>
+		text
+			.toLowerCase()
+			.replace(/[^a-z0-9]+/g, '-')
+			.replace(/(^-|-$)/g, '')
+			.slice(0, 10);
 </script>
 
 {#each Experiences as { title, description, year, links }, idx (idx)}
+	{@const detailsId = slugifyTitle(title) + idx}
+
 	<div class="container">
 		<div class="year">
 			{#if year.to}
-				<h4>
-					{year.from} - {year.to}
-				</h4>
+				<h4>{year.from.month}</h4>
+				<h4 class="em-dash">&mdash;</h4>
+				<h4>{year.to.month}</h4>
+				<h4>{year.from.year}</h4>
+				<h4>{year.to.year}</h4>
 			{:else}
 				<h4>
-					{year.from}
+					{year.from.month}
+					{year.from.year}
 				</h4>
 			{/if}
 		</div>
 
-		<div class="timeline">
-			<div class="timeline-circle"></div>
+		<div title="open summary" class="timeline">
+			<button
+				title="open details"
+				class="timeline-circle"
+				on:click={() => {
+					const details: HTMLDetailsElement | null = document.querySelector(
+						'#' + detailsId
+					);
+					if (details === null) {
+						return;
+					}
+					details.toggleAttribute('open');
+				}}
+			></button>
 		</div>
 
 		<div class="content">
-			<details>
+			<details id={detailsId}>
 				<summary class="title">
 					<i class="fas fa-chevron-right accordion-arrow"></i>
 					<h4>{title}</h4>
@@ -214,6 +238,7 @@
 
 		background-color: var(--brown);
 		border-radius: 100%;
+		cursor: pointer;
 		height: var(--circle-wh);
 		margin: 0;
 		padding: 0;
@@ -221,13 +246,15 @@
 	}
 
 	.year {
-		display: flex;
-		flex-direction: row;
-		justify-content: flex-end;
-		margin: 0;
-		margin-bottom: 0.5rem;
-		word-wrap: break-word;
+		display: grid;
+		grid-template-rows: 1fr 1fr;
+		grid-template-columns: 45% 10% 45%;
 
-		text-align: right;
+		text-align: center;
+
+		.em-dash {
+			grid-row-start: span 2;
+			align-self: center;
+		}
 	}
 </style>
