@@ -15,11 +15,11 @@
 	<div class="container">
 		<div class="year">
 			{#if year.to}
-				<h4>{year.from.month}</h4>
-				<h4 class="em-dash">&mdash;</h4>
-				<h4>{year.to.month}</h4>
 				<h4>{year.from.year}</h4>
+				<h4 class="em-dash">&mdash;</h4>
 				<h4>{year.to.year}</h4>
+				<h4>{year.from.month}</h4>
+				<h4>{year.to.month}</h4>
 			{:else}
 				<h4>
 					{year.from.month}
@@ -125,6 +125,10 @@
 		display: grid;
 		grid-template-columns: 8rem var(--timeline-width) 4fr;
 		justify-content: flex-start;
+
+		&:not(:last-child) {
+			border-bottom: 1px solid rgba(0, 72, 82, 0.25); // var(--cyan) at 25%
+		}
 	}
 
 	.content {
@@ -134,8 +138,6 @@
 		justify-content: flex-start;
 		margin-bottom: 1rem;
 
-		// .content is a column flexbox with align-items: flex-start, so the
-		// <details> has to opt back into full width
 		details {
 			align-self: stretch;
 		}
@@ -190,7 +192,6 @@
 		}
 	}
 
-	// .opened used to be toggled from component state; <details> exposes it natively
 	[open] .accordion-arrow {
 		rotate: 90deg;
 		transition: var(--transition-speed);
