@@ -1,23 +1,29 @@
 <ul>
 	<li>
 		<h4 class="title">Text editor/IDE</h4>
-		JetBrain IDEs (though I use Intellij IDEA when I can), Neovim. Sometimes I dabble around and
-		test other editors. However, none have sticked like JB IDEs nor Neovim.
+		Neovim and JetBrain IDEs. Sometimes I test other editors. However, none have sticked like JB
+		IDEs nor Neovim.
 	</li>
 	<li>
 		<h4 class="title">Song</h4>
-		<span>
-			I mainly listen to J-Pop, Indonesian pop, city pop, rock, and metal. Some artists/bands
-			I really like are Bring me the Horizon, Ado, YOASOBI, Chrisye.
-		</span>
+		I mainly listen to J-Pop, Indonesian pop, city pop, video game soundtrack, rock, and metal. Some
+		artists/bands I really like are Bring me the Horizon, Christopher Larkin, Ado, Tuki., Bad Omens,
+		Chrisye, Glenn Fredly.
 	</li>
 	<li>
 		<h4 class="title">Hobbies</h4>
-		Video games, programming, ramen hunting, walks.
+		Video games, programming, homelabbing, walks, reading, airsoftgun, ramen hunting.
 	</li>
 	<li>
 		<h4 class="title">Favorite Games</h4>
-		Counter-Strike 2, Valorant, Hollow Knight, The Witcher 3, Cyberpunk 2077
+		Counter-Strike 2, Hollow Knight, The Witcher 3, Cyberpunk 2077, Ready or Not.
+		<br />
+		<a
+			target="_blank"
+			href="https://my9games.net/en/share/2d06a7e0-e2e8-4c50-886d-8640c5adddc0"
+		>
+			These are "My 9 Games."
+		</a>
 	</li>
 	<li>
 		<h4 class="title">Favorite ramen shop</h4>

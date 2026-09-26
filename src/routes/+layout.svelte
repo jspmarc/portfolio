@@ -97,7 +97,7 @@
 	}
 
 	.gradient-bg {
-		background: linear-gradient(180deg, var(--white) 67.12%, var(--blue) 100%);
+		background: linear-gradient(180deg, var(--white) 90%, var(--blue) 100%);
 		max-width: 100vw;
 		@include mixin.respond-to('xl') {
 			margin-left: var(--navbar-width);

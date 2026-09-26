@@ -56,6 +56,7 @@
 
 	section {
 		align-items: flex-start;
+		max-width: 80ch;
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-start;
