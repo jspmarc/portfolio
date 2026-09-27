@@ -23,7 +23,10 @@
 		<!-- 	<Skills /> -->
 		<!-- </section> -->
 
-		<h1>Notable Experiences</h1>
+		<div>
+			<h1>Notable</h1>
+			<h1>Experiences</h1>
+		</div>
 		<section>
 			<Experiences />
 		</section>
@@ -44,11 +47,13 @@
 	@use '$lib/styles/mixin';
 
 	h1 {
+		display: inline-block;
 		margin: 0;
 		margin-bottom: 0.25rem;
 		text-align: left;
 
 		@include mixin.respond-to('xl') {
+			display: block;
 			margin-bottom: 0;
 			text-align: right;
 		}
@@ -74,7 +79,7 @@
 		@include mixin.respond-to('xl') {
 			align-content: start;
 			display: grid;
-			grid-template-columns: 12vw auto;
+			grid-template-columns: minmax(12vw, max-content) auto;
 			grid-auto-rows: max-content;
 			justify-content: center;
 		}
