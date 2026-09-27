@@ -15,3 +15,11 @@ declare module '*.svelte' {
 	const component: Component<any, any, any>;
 	export default component;
 }
+
+declare module '*.md' {
+	import type { SvelteComponent } from 'svelte';
+
+	export default class Comp extends SvelteComponent { }
+
+	export const metadata: Record<string, unknown>;
+}
