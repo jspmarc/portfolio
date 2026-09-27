@@ -1,9 +1,8 @@
 <script lang="ts">
-	import Description from '$lib/components/About/Description.svelte';
-	import Experiences from '$lib/components/About/Experiences.svelte';
-	import Interests from '$lib/components/About/Interests.svelte';
-	import Skills from '$lib/components/About/Skills.svelte';
-	import Trivia from '$lib/components/About/Trivia.svelte';
+	import Description from '$lib/components/about/Description.svelte';
+	import Experiences from '$lib/components/about/Experiences.svelte';
+	import Skills from '$lib/components/about/Skills.svelte';
+	import Trivia from '$lib/components/about/Trivia.svelte';
 	import ViewContainer from '$lib/components/shared/ViewContainer.svelte';
 </script>
 
@@ -18,22 +17,20 @@
 			<Description />
 		</section>
 
-		<h1>Skills</h1>
-		<section class="skills-content">
+		<h2>Skills</h2>
+		<section>
 			<Skills />
 		</section>
 
-		<h1>Notable Experiences</h1>
+		<div>
+			<h2>Notable</h2>
+			<h2>Experiences</h2>
+		</div>
 		<section>
 			<Experiences />
 		</section>
 
-		<h1>Interests</h1>
-		<section>
-			<Interests />
-		</section>
-
-		<h1>Trivia</h1>
+		<h2>Trivia</h2>
 		<section>
 			<Trivia />
 		</section>
@@ -43,12 +40,16 @@
 <style lang="scss">
 	@use '$lib/styles/mixin';
 
-	h1 {
+	h1,
+	h2 {
+		display: inline-block;
+		font-size: 2em;
 		margin: 0;
 		margin-bottom: 0.25rem;
 		text-align: left;
 
 		@include mixin.respond-to('xl') {
+			display: block;
 			margin-bottom: 0;
 			text-align: right;
 		}
@@ -74,13 +75,9 @@
 		@include mixin.respond-to('xl') {
 			align-content: start;
 			display: grid;
-			grid-template-columns: 12vw auto;
+			grid-template-columns: minmax(12vw, max-content) auto;
 			grid-auto-rows: max-content;
 			justify-content: center;
 		}
-	}
-
-	.skills-content {
-		flex-grow: 1;
 	}
 </style>

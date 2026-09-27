@@ -2,6 +2,9 @@
 /dist
 /.svelte-kit/
 
+# SvelteKit
+/.svelte-kit/
+
 /yarn-error.log
 
 /.aider*

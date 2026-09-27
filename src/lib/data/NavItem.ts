@@ -18,12 +18,12 @@ const NavItem: NavItem[] = [
 		link: '/about',
 		icon: 'address-card',
 	},
-	{
-		name: 'projects',
-		text: 'Projects',
-		link: '/projects',
-		icon: 'terminal',
-	},
+	// {
+	// 	name: 'projects',
+	// 	text: 'Projects',
+	// 	link: '/projects',
+	// 	icon: 'terminal',
+	// },
 	{
 		name: 'blog',
 		text: 'Blog',
