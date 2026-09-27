@@ -3,6 +3,7 @@ title: Test Blogpost
 layout: blog
 draft: true
 random: abc
+date: 2026-09-27T21:01:00+09:00
 ---
 
 # Hello, world!
