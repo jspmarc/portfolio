@@ -1,12 +1,14 @@
 type Experience = {
 	title: string;
 	description: string;
+	company?: string;
+	role?: string;
 	year: {
 		from: {
 			month: string;
 			year: string;
 		};
-		to: {
+		to?: {
 			month: string;
 			year: string;
 		};
@@ -19,6 +21,118 @@ type Experience = {
 };
 
 const Experiences: Experience[] = [
+	{
+		title: 'Data Engineer at Sales Marker Co., Ltd.',
+		company: 'Sales Marker Co., Ltd.',
+		role: 'Data Engineer',
+		description: `
+  <ul>
+    <li>Maintaining and improving ETL pipelines and batch jobs behind daily operations (Python, AWS Batch, Airflow), including web-scraper jobs, with 4 other engineers.</li>
+    <li>Upgrading Superset 3 to 6 along with Docker to Kubernetes and SQLite to PostgreSQL migrations.</li>
+    <li>Migrated AWS batch job authorization from long-lived tokens to IAM roles.</li>
+    <li>Established naming conventions for Kafka topics and AWS SQS queues.</li>
+  </ul>
+`,
+		year: {
+			from: {
+				month: 'Jul',
+				year: '2026',
+			},
+		},
+	},
+	{
+		title: 'Full-stack Software Engineer at Sales Marker Co., Ltd.',
+		company: 'Sales Marker Co., Ltd.',
+		role: 'Full-stack Software Engineer',
+		description: `
+  <ul>
+    <li>Built the Sequence feature on Sales Marker's main services (Go, TypeScript, React.js) in a 4-engineer team.</li>
+    <li>Overhauled a prototype form-filling service into LLM-driven automation, building a test suite, output-quality evaluation cases, and a dashboard for tracking agent results.</li>
+    <li>Led three customer-facing feature projects end-to-end, from planning to production release.</li>
+    <li>Set up CI/CD for two undocumented services and wrote the handoff docs.</li>
+  </ul>
+`,
+		year: {
+			from: {
+				month: 'Nov',
+				year: '2025',
+			},
+			to: {
+				month: 'Jul',
+				year: '2026',
+			},
+		},
+	},
+	{
+		title: 'Full-stack Software Engineer at Money Forward, Inc.',
+		company: 'Money Forward, Inc.',
+		role: 'Full-stack Software Engineer',
+		description: `
+  <ul>
+    <li>Designed, implemented, and maintained GraphQL APIs integrated into Vue.js/Nuxt.js features for a B2B SaaS HR platform, while initiating a Kotlin migration in a ~20-engineer organization spanning Rails, Next.js, and Nuxt.js services.</li>
+    <li>Architected an audit log system recording every change to SQL data, archiving logs older than 6 months to S3, reading archives directly from S3, and syncing with the company-wide audit system.</li>
+    <li>Improved the onboarding experience for new engineers by improving project set-up duration from around 1 week to just 1 day.</li>
+    <li>Architected a navigation system to seamlessly navigate between Next.js pages, Nuxt.js pages, and Nuxt-within-Next pages, accelerating the Next.js migration.</li>
+    <li>One of the initiators of the Rails-to-Kotlin migration; wrote two feature migration plans.</li>
+    <li>Led a two-person project to simplify the application's permissions system, improving user experience and creating a coordinated release process for users and engineers.</li>
+  </ul>
+`,
+		year: {
+			from: {
+				month: 'Apr',
+				year: '2024',
+			},
+			to: {
+				month: 'Oct',
+				year: '2025',
+			},
+		},
+	},
+	{
+		title: 'Software Engineer I at Tiket.com',
+		company: 'Tiket.com',
+		role: 'Software Engineer I',
+		description: `
+  <ul>
+    <li>Owned and maintained all five accommodation demand post-purchase services (booking, reschedule, and refund)&mdash;built with Java 8 and Spring Boot&mdash;in a 3-engineer team.</li>
+    <li>Led the Spring Boot 1.5 to 2 upgrade of my team's core service, cutting CPU usage from ~41% to just ~13%.</li>
+    <li>Refactored the booking API to make it more readable and to prevent hotel double-booking, reducing customer complaints.</li>
+    <li>Served as the interim point of contact for the multi-currency feature, keeping stakeholders and engineers aligned on delivery.</li>
+  </ul>
+`,
+		year: {
+			from: {
+				month: 'Jun',
+				year: '2022',
+			},
+			to: {
+				month: 'Mar',
+				year: '2024',
+			},
+		},
+	},
+	{
+		title: 'Junior Backend Engineer at Kenangan.com',
+		company: 'Kenangan.com',
+		role: 'Junior Backend Engineer',
+		description: `
+  <ul>
+    <li>Owned and maintained the order feature on the backend (in TypeScript) with 4 other engineers.</li>
+    <li>Architected the order system of the application, enabling users to create orders.</li>
+    <li>Integrated Shipper.id's shipping API end-to-end, improving the seller experience from order creation through order shipment.</li>
+  </ul>
+`,
+		year: {
+			from: {
+				month: 'Dec',
+				year: '2021',
+			},
+			to: {
+				month: 'Jun',
+				year: '2022',
+			},
+		},
+	},
 	{
 		title: 'Head of Perayaan Wisuda Juli ITB 2021 Website Development',
 		description: `

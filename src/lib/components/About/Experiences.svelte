@@ -9,7 +9,7 @@
 			.slice(0, 10);
 </script>
 
-{#each Experiences as { title, description, year, links }, idx (idx)}
+{#each Experiences as { title, description, company, role, year, links }, idx (idx)}
 	{@const detailsId = slugifyTitle(title) + idx}
 
 	<div class="container">
@@ -21,10 +21,10 @@
 				<h4>{year.from.month}</h4>
 				<h4>{year.to.month}</h4>
 			{:else}
-				<h4>
-					{year.from.month}
-					{year.from.year}
-				</h4>
+				<h4>{year.from.year}</h4>
+				<h4 class="em-dash">&mdash;</h4>
+				<h4 class="present">Present</h4>
+				<h4>{year.from.month}</h4>
 			{/if}
 		</div>
 
@@ -48,7 +48,12 @@
 			<details id={detailsId}>
 				<summary class="title">
 					<i class="fas fa-chevron-right accordion-arrow"></i>
-					<h4>{title}</h4>
+					<h4>
+						{role ?? title}
+						{#if company}
+							<span class="company">&middot; {company}</span>
+						{/if}
+					</h4>
 				</summary>
 				<div class="experience-content-description">
 					<section>
@@ -206,6 +211,11 @@
 		h4 {
 			font-weight: 700;
 		}
+
+		.company {
+			font-weight: 400;
+			opacity: 0.8;
+		}
 	}
 
 	.timeline {
@@ -253,9 +263,13 @@
 
 		text-align: center;
 
-		.em-dash {
+		.em-dash, .present {
 			grid-row-start: span 2;
 			align-self: center;
+		}
+
+		.present {
+			padding-left: 0.2rem;
 		}
 	}
 </style>
