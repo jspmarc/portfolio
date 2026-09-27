@@ -10,7 +10,15 @@ const Skills: Skills = [
 	},
 	{
 		category: 'Frameworks & Libraries',
-		items: ['Spring Boot', 'React.js', 'Next.js', 'Vue.js', 'Nuxt.js', 'Tailwind CSS', 'Ruby on Rails'],
+		items: [
+			'Spring Boot',
+			'React.js',
+			'Next.js',
+			'Vue.js',
+			'Nuxt.js',
+			'Tailwind CSS',
+			'Ruby on Rails',
+		],
 	},
 	{
 		category: 'Development tools',
