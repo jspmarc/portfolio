@@ -11,6 +11,11 @@
 	<div class="main-content content">
 		<h1>Blog</h1>
 
+		<p>
+			This is where I put my thoughts down to writing. May contain my thoughts and
+			writeups about my projects, life, and everything in between.
+		</p>
+
 		{#if BlogPost.length > 0}
 			<ul class="post-list">
 				{#each BlogPost as post (post.slug)}
@@ -40,6 +45,7 @@
 
 	h1 {
 		margin-top: 0;
+		font-weight: 400;
 	}
 
 	.post-list {
