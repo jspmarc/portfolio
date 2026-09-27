@@ -114,7 +114,7 @@ const Experiences: Experience[] = [
 	{
 		title: 'Junior Backend Engineer at Kenangan.com',
 		company: 'Kenangan.com',
-		role: 'Junior Backend Engineer',
+		role: 'Part-time Junior Backend Engineer',
 		description: `
   <ul>
     <li>Owned and maintained the order feature on the backend (in TypeScript) with 4 other engineers.</li>
@@ -135,7 +135,7 @@ const Experiences: Experience[] = [
 	},
 	{
 		title: 'Head of Perayaan Wisuda Juli ITB 2021 Website Development',
-		company: 'Perayaan Wisuda Juli ITB 2021 (Bandung Institute of Technology July 2021 Graduation Committee)',
+		company: 'Perayaan Wisuda Juli ITB 2021 (ITB July 2021 Graduation Committee)',
 		role: 'Head of Website Development',
 		description: `
   <p><em>Perayaan Wisuda Juli</em> (July Graduation Celebration) is one of many prestigious events in my university. On 2021, I was given the honor to work as the head of development for the event's website.</p>
@@ -186,7 +186,7 @@ const Experiences: Experience[] = [
 	{
 		title: 'Data Analyst Intern at CoLearn',
 		company: 'CoLearn',
-		role: 'Data Analyst',
+		role: 'Data Analyst Intern',
 		description: `
   <p>During my time as an intern at CoLearn, I was tasked to optimize machine learning algorithm by evaluating over 10,000 pictures from machine learning predicition.</p>
   <p>I also optimized my team's workflow by creating a Python script to automatically download JSON data from an API and then automatically parsing it into a CSV file.</p>
