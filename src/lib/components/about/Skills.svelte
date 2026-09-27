@@ -18,8 +18,6 @@
 		grid-template-columns: 1fr;
 		margin: 0;
 
-		// Side-by-side label/value columns once there is room for them; below
-		// that the label sits on its own line above its values.
 		@include mixin.respond-to('md') {
 			column-gap: 1.5rem;
 			grid-template-columns: max-content 1fr;
@@ -31,7 +29,6 @@
 		font-weight: 700;
 	}
 
-	// Reset the UA's 40px inline indent, which would offset the value column.
 	dd {
 		margin: 0;
 	}

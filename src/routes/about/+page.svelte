@@ -1,8 +1,8 @@
 <script lang="ts">
-	import Description from '$lib/components/About/Description.svelte';
-	import Experiences from '$lib/components/About/Experiences.svelte';
-	import Skills from '$lib/components/About/Skills.svelte';
-	import Trivia from '$lib/components/About/Trivia.svelte';
+	import Description from '$lib/components/about/Description.svelte';
+	import Experiences from '$lib/components/about/Experiences.svelte';
+	import Skills from '$lib/components/about/Skills.svelte';
+	import Trivia from '$lib/components/about/Trivia.svelte';
 	import ViewContainer from '$lib/components/shared/ViewContainer.svelte';
 </script>
 
