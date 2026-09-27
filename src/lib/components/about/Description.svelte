@@ -4,13 +4,12 @@
 	and learning.
 </p>
 <p>
-	Although I am a software engineer, I am a programmer at heart. As such, I am currently working
-	as a data engineer. I like to expand my horizon and learn new things. So I grabbed the
-	opportunity to try data engineering when it appeared (and the fact that I have always had an
-	inkling of interest with data engineering). In the future, I would like to try other roles as
-	well, like game programming.
+	Although I am a software engineer, I am a programmer at heart. I also like to expand my horizons
+	and learn new things, so after taking software engineering roles for years, I am currently
+	working as a data engineer. In the future, I would like to try other programming-related roles
+	as well, like game programming.
 </p>
 <p>
 	In my spare time, I play video games, read books (comics, sci-fi, fiction), build side projects,
-	tinker with my homelab, or go out to eat ramen.
+	tinker with my homelab, or go out for ramen.
 </p>
