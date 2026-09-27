@@ -1,21 +1,22 @@
-<ul>
-	<li>
-		<h4 class="title">Text editor/IDE</h4>
+<dl>
+	<dt>Text editor/IDE</dt>
+	<dd>
 		Neovim and JetBrain IDEs. Sometimes I test other editors. However, none have sticked like JB
 		IDEs nor Neovim.
-	</li>
-	<li>
-		<h4 class="title">Song</h4>
-		I mainly listen to J-Pop, Indonesian pop, city pop, video game soundtrack, rock, and metal. Some
-		artists/bands I really like are Bring me the Horizon, Christopher Larkin, Ado, Tuki., Bad Omens,
-		Chrisye, Glenn Fredly.
-	</li>
-	<li>
-		<h4 class="title">Hobbies</h4>
-		Video games, programming, homelabbing, walks, reading, airsoft gun, ramen hunting.
-	</li>
-	<li>
-		<h4 class="title">Favorite Games</h4>
+	</dd>
+
+	<dt>Song</dt>
+	<dd>
+		I mainly listen to J-Pop, Indonesian pop, city pop, video game soundtrack, rock, and metal.
+		Some artists/bands I really like are Bring me the Horizon, Christopher Larkin, Ado, Tuki.,
+		Bad Omens, Chrisye, Glenn Fredly.
+	</dd>
+
+	<dt>Hobbies</dt>
+	<dd>Video games, programming, homelabbing, walks, reading, airsoft gun, ramen hunting.</dd>
+
+	<dt>Favorite Games</dt>
+	<dd>
 		Counter-Strike 2, Hollow Knight, The Witcher 3, Cyberpunk 2077, Ready or Not.
 		<br />
 		<a
@@ -24,32 +25,20 @@
 		>
 			These are "My 9 Games."
 		</a>
-	</li>
-	<li>
-		<h4 class="title">Favorite ramen shop</h4>
+	</dd>
+
+	<dt>Favorite ramen shop</dt>
+	<dd>
 		<a href="https://tabelog.com/tokyo/A1321/A132102/13154616/" target="_blank">
 			<ruby>
 				麺<rp>(</rp><rt>めん</rt><rp>)</rp>酒<rp>(</rp><rt>しゅ</rt><rp>)</rp>やまの
 			</ruby>
 		</a>
-	</li>
-</ul>
+	</dd>
+</dl>
 
 <style lang="scss">
-	ul {
-		list-style: none;
-		margin: 0;
-		padding: 0;
+	@use '$lib/styles/mixin';
 
-		li {
-			margin: 0.5rem 0;
-		}
-	}
-
-	.title {
-		font-family: 'Nunito', sans-serif;
-		font-weight: 700;
-		margin: 0;
-		font-size: inherit;
-	}
+	@include mixin.label-value-grid;
 </style>

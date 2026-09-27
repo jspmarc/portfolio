@@ -141,7 +141,6 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-start;
-		margin-bottom: 1rem;
 
 		details {
 			align-self: stretch;
@@ -155,18 +154,19 @@
 		justify-self: stretch;
 		margin-top: 1rem;
 		margin-left: 1rem;
+		margin-bottom: 0.5rem;
 		padding: 1rem;
 
 		color: var(--white);
 
 		:global(p) {
 			margin-top: 0;
-			margin-bottom: 0.5rem;
+			margin-bottom: 0;
 		}
 
 		:global(ul) {
 			margin-top: 0;
-			margin-bottom: 0.5rem;
+			margin-bottom: 0;
 		}
 	}
 
@@ -263,7 +263,8 @@
 
 		text-align: center;
 
-		.em-dash, .present {
+		.em-dash,
+		.present {
 			grid-row-start: span 2;
 			align-self: center;
 		}
