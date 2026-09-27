@@ -1,8 +1,8 @@
 <script lang="ts">
 	import Description from '$lib/components/About/Description.svelte';
 	import Experiences from '$lib/components/About/Experiences.svelte';
-	import Interests from '$lib/components/About/Interests.svelte';
-	import Skills from '$lib/components/About/Skills.svelte';
+	// import Interests from '$lib/components/About/Interests.svelte';
+	// import Skills from '$lib/components/About/Skills.svelte';
 	import Trivia from '$lib/components/About/Trivia.svelte';
 	import ViewContainer from '$lib/components/shared/ViewContainer.svelte';
 </script>
@@ -18,20 +18,20 @@
 			<Description />
 		</section>
 
-		<h1>Skills</h1>
-		<section class="skills-content">
-			<Skills />
-		</section>
+		<!-- <h1>Skills</h1> -->
+		<!-- <section class="skills-content"> -->
+		<!-- 	<Skills /> -->
+		<!-- </section> -->
 
 		<h1>Notable Experiences</h1>
 		<section>
 			<Experiences />
 		</section>
 
-		<h1>Interests</h1>
-		<section>
-			<Interests />
-		</section>
+		<!-- <h1>Interests</h1> -->
+		<!-- <section> -->
+		<!-- 	<Interests /> -->
+		<!-- </section> -->
 
 		<h1>Trivia</h1>
 		<section>
