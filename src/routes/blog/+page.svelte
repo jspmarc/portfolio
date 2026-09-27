@@ -12,8 +12,8 @@
 		<h1>Blog</h1>
 
 		<p>
-			This is where I put my thoughts down to writing. May contain my thoughts and
-			writeups about my projects, life, and everything in between.
+			This is where I put my thoughts down to writing. May contain my thoughts and writeups
+			about my projects, life, and everything in between.
 		</p>
 
 		{#if BlogPost.length > 0}

@@ -1,4 +1,4 @@
-import rehypeExternalLinks from "rehype-external-links";
+import rehypeExternalLinks from 'rehype-external-links';
 
 /** @type {import('mdsvex').MdsvexOptions} */
 const mdsvexOptions = {
@@ -12,8 +12,8 @@ const mdsvexOptions = {
 		[
 			rehypeExternalLinks,
 			{
-				target: "_blank",
-				rel: ["noopener", "noreferrer"],
+				target: '_blank',
+				rel: ['noopener', 'noreferrer'],
 			},
 		],
 	],

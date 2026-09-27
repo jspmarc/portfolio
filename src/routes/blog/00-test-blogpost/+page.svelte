@@ -3,11 +3,11 @@
 </script>
 
 <svelte:head>
-	<title>{metadata.title ?? "Blog" } | Josep Marcello</title>
+	<title>{metadata.title ?? 'Blog'} | Josep Marcello</title>
 </svelte:head>
 
 <pre>
-{ JSON.stringify(metadata, undefined, 4) }
+{JSON.stringify(metadata, undefined, 4)}
 </pre>
 
 <Content />
