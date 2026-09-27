@@ -12,7 +12,7 @@
 	</li>
 	<li>
 		<h4 class="title">Hobbies</h4>
-		Video games, programming, homelabbing, walks, reading, airsoftgun, ramen hunting.
+		Video games, programming, homelabbing, walks, reading, airsoft gun, ramen hunting.
 	</li>
 	<li>
 		<h4 class="title">Favorite Games</h4>
