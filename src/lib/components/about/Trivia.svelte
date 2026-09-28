@@ -13,7 +13,7 @@
 	</dd>
 
 	<dt>Hobbies</dt>
-	<dd>Video games, programming, homelabbing, walks, reading, airsoft gun, ramen hunting.</dd>
+	<dd>Video games, programming, homelabbing, walks, reading, airsoft/サバゲー, ramen hunting.</dd>
 
 	<dt>Favorite Games</dt>
 	<dd>
@@ -27,7 +27,7 @@
 		</a>
 	</dd>
 
-	<dt>Favorite ramen shop</dt>
+	<dt>Favorite Noodle Shop</dt>
 	<dd>
 		<a href="https://tabelog.com/tokyo/A1321/A132102/13154616/" target="_blank">
 			<ruby>
