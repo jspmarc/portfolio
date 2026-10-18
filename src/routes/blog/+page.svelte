@@ -25,7 +25,13 @@
 							<h2>{post.title ?? post.slug}</h2>
 						</a>
 						{#if post.date}
-							<time datetime={post.date}>{post.date}</time>
+							<time datetime={post.date}>
+								{new Date(post.date).toLocaleDateString('en-GB', {
+									day: 'numeric',
+									month: 'long',
+									year: 'numeric',
+								})}
+							</time>
 						{/if}
 						{#if post.description}
 							<p>{post.description}</p>
