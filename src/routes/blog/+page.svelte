@@ -1,6 +1,7 @@
 <script lang="ts">
 	import BlogPost from '$lib/data/BlogPost';
 	import ViewContainer from '$lib/components/shared/ViewContainer.svelte';
+	import ComingSoon from '$lib/components/shared/ComingSoon.svelte';
 </script>
 
 <svelte:head>
@@ -33,7 +34,7 @@
 				{/each}
 			</ul>
 		{:else}
-			<p>No posts yet. Please come back soon! ( *^-^)ρ(*╯^╰)</p>
+			<ComingSoon />
 		{/if}
 	</div>
 </ViewContainer>
