@@ -97,6 +97,48 @@
 		}
 	}
 
+	// Rendered markdown (mdsvex) is a separate component, so scoped styles
+	// cannot reach its elements. These rules are global and anchored under
+	// .prose so they never leak to the rest of the site. Each selector stays
+	// fully qualified because anything nested inside :global() would be
+	// scoped again.
+	:global(.prose pre) {
+		padding: 1rem;
+		border-radius: 0.5rem;
+		overflow-x: auto;
+	}
+
+	:global(.prose img) {
+		max-width: 100%;
+	}
+
+	:global(.prose blockquote) {
+		margin: 1rem 0;
+		padding: 0.25rem 1rem;
+		border-left: 3px solid var(--teal);
+		background: color-mix(in srgb, var(--teal) 8%, transparent);
+	}
+
+	:global(.prose blockquote p) {
+		margin: 0.5rem 0;
+	}
+
+	:global(.prose table) {
+		width: 100%;
+		border-collapse: collapse;
+	}
+
+	:global(.prose table th),
+	:global(.prose table td) {
+		padding: 0.5rem 0.75rem;
+		border: 1px solid var(--blue);
+		text-align: left;
+	}
+
+	:global(.prose table th) {
+		background: color-mix(in srgb, var(--blue) 25%, transparent);
+	}
+
 	.gradient-bg {
 		background: linear-gradient(180deg, var(--white) 90%, var(--blue) 100%);
 		max-width: 100vw;
