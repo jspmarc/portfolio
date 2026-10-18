@@ -14,19 +14,19 @@ The earlier plan was written against `main`, where the blog was a `ComingSoon` s
 
 Concretely, `marked` and `gray-matter` are **not** needed and should not be added:
 
-| Old recommendation | Status on this branch |
-|---|---|
-| `marked` for rendering | **obsolete** — mdsvex renders markdown directly into Svelte components |
-| `gray-matter` / `yaml` for frontmatter | **obsolete** — mdsvex parses frontmatter and exports it as `metadata` |
-| `highlight.js` for code | **obsolete** — mdsvex ships Prism highlighting internally |
-| `vitest` for tests | still open (D1 below) |
+| Old recommendation                     | Status on this branch                                                  |
+| -------------------------------------- | ---------------------------------------------------------------------- |
+| `marked` for rendering                 | **obsolete** — mdsvex renders markdown directly into Svelte components |
+| `gray-matter` / `yaml` for frontmatter | **obsolete** — mdsvex parses frontmatter and exports it as `metadata`  |
+| `highlight.js` for code                | **obsolete** — mdsvex ships Prism highlighting internally              |
+| `vitest` for tests                     | still open (D1 below)                                                  |
 
 ### Architecture as built
 
 - **Renderer:** mdsvex `0.12.8`, registered in `svelte.config.js:8` alongside `vitePreprocess()`, with `extensions: ['.svx', '.md']` declared on both the preprocessor and `kit.extensions` (line 10). Config lives in `mdsvex.config.js` with `smartypants` (quotes off, backticks, oldschool dashes) and `rehype-external-links` forcing `target="_blank"` + `rel="noopener noreferrer"`.
-- **Post shape:** one folder per post under `src/routes/blog/`, each containing `content.md` (the body) and `+page.svelte` (the route). The post *is* a Svelte page, so its URL is the folder path.
+- **Post shape:** one folder per post under `src/routes/blog/`, each containing `content.md` (the body) and `+page.svelte` (the route). The post _is_ a Svelte page, so its URL is the folder path.
 - **Registry:** `src/lib/data/BlogPost.ts` globs `../../routes/blog/*/content.md` with `import.meta.glob`, reads each module's `metadata` export, derives `slug` from the folder name via regex (`BlogPost.ts:21`), builds `url`, filters `draft !== true`, and sorts newest-first with a title tiebreak.
-- **List page:** `src/routes/blog/+page.svelte` renders `<h1>Blog</h1>`, an intro paragraph, then an ordered `<ul>` of posts showing title, `<time>` and description, with a "No posts yet" empty state.
+- **List page:** `src/routes/blog/+page.svelte` renders `<h1>Blog</h1>`, an intro paragraph, then an ordered `<ul>` of posts showing title, `<time>` and description, with a `ComingSoon` component as the empty state (added in `6292ef6`).
 
 ### Verified state
 
@@ -43,7 +43,7 @@ So the pipeline works end to end: markdown → route → prerendered HTML.
 
 `content.md:4` sets `draft: true`. `BlogPost.ts:29` correctly filters it out of the list — `dist/blog.html` contains zero occurrences of the slug. **But `dist/blog/00-test-blogpost.html` is still built and publicly served.**
 
-Cause: each post folder is a route in its own right, so SvelteKit prerenders it regardless of what the metadata says. `draft` currently controls *listing*, not *existence*. Anything marked draft is one direct URL away from being public.
+Cause: each post folder is a route in its own right, so SvelteKit prerenders it regardless of what the metadata says. `draft` currently controls _listing_, not _existence_. Anything marked draft is one direct URL away from being public.
 
 This is a security-relevant property for a writing workflow: "draft" needs to mean unpublished, not just unlisted. Two fixes, different costs — see Phase 1.
 
@@ -51,7 +51,7 @@ This is a security-relevant property for a writing workflow: "draft" needs to me
 
 mdsvex bundles Prism (`prismjs` `1.30.0`, `prism-svelte` `0.4.7`, both direct deps of mdsvex) and highlights fenced code **with no configuration at all**. Two things follow:
 
-1. **No theme CSS is imported anywhere.** Prism emits `token` classes; without a stylesheet they render as unstyled text. Add `import 'prismjs/themes/prism.css'` (or a theme matching the palette) in `+layout.svelte` next to the existing `@fortawesome` import.
+1. **No theme CSS is imported anywhere.** Prism emits `token` classes; without a stylesheet they render as unstyled text. Add `import 'prismjs/themes/prism.css'` (or a theme matching the palette) in `+layout.svelte` next to the existing `@fortawesome` import, and add `prismjs` as a **direct** devDependency — under pnpm's strict linking mdsvex's transitive copy is not resolvable, so the import fails the build until it is.
 2. **The sample post's fence is ` ```python3 `, which Prism does not define.** Checked `prism-python.js` in `1.30.0`: it registers `python` and aliases only `py`. There is no `python3` alias, so that block silently highlights nothing. Not a crash, just dead output — confirmed in the built HTML, where the `<code>` carries `class="language-python3"` and no token spans at all.
 
 Use `py` or `python` in fences, or add `highlight: { alias: { python3: 'python' } }` to `mdsvexOptions` so existing fences keep working.
@@ -103,9 +103,9 @@ export function load() {
 }
 ```
 
-`error(404)` during prerendering makes SvelteKit skip writing that page, so no HTML is emitted for the draft. Pair it with `prerender.handleHttpError: 'ignore'` in `svelte.config.js` so the intentional 404 does not fail the build.
+`error(404)` during prerendering makes SvelteKit skip writing that page, so no HTML is emitted for the draft. Pair it with a `prerender.handleHttpError` in `svelte.config.js` that ignores errors under `/blog/` so the intentional 404 does not fail the build, while any other broken link still does.
 
-Chosen over the structural alternative (delete `+page.svelte` from drafts) because the component is genuinely load-bearing — it holds the per-post title and is where a post's JS lives. Making drafts depend on *absence* of a file would mean every published post needs a hand-written component, and every draft is invisible at its own URL while being written, which is the case where you most want to preview.
+Chosen over the structural alternative (delete `+page.svelte` from drafts) because the component is genuinely load-bearing — it holds the per-post title and is where a post's JS lives. Making drafts depend on _absence_ of a file would mean every published post needs a hand-written component, and every draft is invisible at its own URL while being written, which is the case where you most want to preview.
 
 Cost: one extra file per post folder, and the check is duplicated per post rather than structural. Acceptable at this scale; if post count grows, the move is a dynamic `[slug]` route with `entries()`.
 
@@ -115,52 +115,54 @@ Cost: one extra file per post folder, and the check is duplicated per post rathe
 
 ### Phase 1 — Close the draft leak
 
-- [ ] **1.1** Add `src/routes/blog/00-test-blogpost/+page.ts` that `error(404)`s when `metadata.draft === true`. Keep `+page.svelte` untouched — it holds the per-post title and is the right place for post JS.
-- [ ] **1.2** Add `prerender: { handleHttpError: 'ignore' }` to `kit` in `svelte.config.js` so the intentional 404 is skipped rather than failing the build.
-- [ ] **1.3** `pnpm build`, then `find dist -name '*.html'` — `dist/blog/00-test-blogpost.html` must be absent while `dist/blog.html` still exists. That assertion is the whole point of the phase.
+- [x] **1.1** Add `src/routes/blog/00-test-blogpost/+page.ts` that `error(404)`s when `metadata.draft === true`. Keep `+page.svelte` untouched — it holds the per-post title and is the right place for post JS.
+- [x] **1.2** Add `prerender: { handleHttpError: ({ status, path, referrer, referenceType, message }) => path.startsWith('/blog') ? 'ignore' : '' }` to `kit` in `svelte.config.js` so the intentional 404 is skipped rather than failing the build.
+- [x] **1.3** `pnpm build`, then `find dist -name '*.html'` — `dist/blog/00-test-blogpost.html` must be absent while `dist/blog.html` still exists. That assertion is the whole point of the phase. Verified: build logs `Skipping prerender error for /blog/00-test-blogpost: 404`, and `dist/` holds only `404`, `about`, `blog`, `index`, `projects`.
 - [ ] **1.4** Repeat the guard for every new post folder as they are created; there is no shared enforcement yet.
 
 ### Phase 2 — Highlighting
 
-- [ ] **2.1** `import 'prismjs/themes/prism.css'` in `+layout.svelte` next to the `@fortawesome` import (line 2). Stock theme per D2.
-- [ ] **2.2** Add `highlight: { alias: { python3: 'python' } }` to `mdsvexOptions` in `mdsvex.config.js` so the existing `python3` fence resolves; Prism aliases only `py`, and unknown languages fail silently.
-- [ ] **2.3** Confirm token spans in the built HTML — `grep -o 'token[a-z-]*' dist/blog/**/*.html` — and that colours actually render in the browser. Note this needs a published post to inspect; pair with a temporary non-draft, or check via `pnpm dev` first.
+- [x] **2.1** `import 'prismjs/themes/prism.css'` in `+layout.svelte` next to the `@fortawesome` import (line 2). Stock theme per D2. **Also add `prismjs` as a direct devDependency** — under pnpm's strict linking mdsvex's transitive copy is not resolvable and the build fails on `Rolldown failed to resolve import "prismjs/themes/prism.css"`.
+- [x] **2.2** Add `highlight: { alias: { python3: 'python' } }` to `mdsvexOptions` in `mdsvex.config.js` so the existing `python3` fence resolves; Prism aliases only `py`, and unknown languages fail silently.
+- [x] **2.3** Confirm token spans in the built HTML — `grep -o 'token[a-z-]*' dist/blog/**/*.html` — and that colours actually render in the browser. Note this needs a published post to inspect; pair with a temporary non-draft, or check via `pnpm dev` first. Verified with a temporary published post: `class="token keyword|function|string|operator|punctuation"` present, and `.token` rules ship in `dist/_app/immutable/assets/*.css`.
 
 ### Phase 3 — Post page polish
 
-- [ ] **3.1** Remove the `JSON.stringify(metadata)` debug block from `00-test-blogpost/+page.svelte:9-11`.
-- [ ] **3.2** Add a "Back to Blog" link to the post page (`$lib/components/shared/` or inline). Required by the spec and currently missing.
-- [ ] **3.3** Add prose styling for rendered markdown: cap measure around 70ch, `pre` scrolls horizontally rather than overflowing, images capped at `100%`, blockquote and table styling in palette colors. Because mdsvex output is real Svelte markup, this can be a normal scoped `<style>` block — **no `:global()` needed**, which was the main drawback of the old `{@html}` plan.
-- [ ] **3.4** Verify the post page passes **neither** `nextViewPath` nor `prevViewPath` to `ViewContainer` (see Context).
+- [x] **3.1** Remove the `JSON.stringify(metadata)` debug block from `00-test-blogpost/+page.svelte:9-11`.
+- [x] **3.2** Add a "Back to Blog" link to the post page (`$lib/components/shared/` or inline). Required by the spec and currently missing.
+- [x] **3.3** Add prose styling for rendered markdown: cap measure ~70ch, pre scrolls horizontally, images capped at 100%, blockquote and table styling in palette colors. mdsvex compiles content.md into a separate component, so styles in the post's +page.svelte cannot reach its elements — the "no :global() needed" claim in the previous revision was wrong. Instead: wrap <Content /> in <div class="prose">, define rules once as :global(.prose) { ... } in +layout.svelte beside the other global base styles. Anchor every selector under .prose.
+- [x] **3.4** Verify the post page passes **neither** `nextViewPath` nor `prevViewPath` to `ViewContainer` (see Context).
+- [x] **3.5** Remove `layout: blog` from the test post's `content.md` frontmatter. mdsvex ignores it — it only resolves frontmatter layouts when `layout` is set in `mdsvexOptions` and a layouts directory exists, and neither is true (`src/layouts/` absent) — so it is dead config. Revisit a shared post layout only when a second post needs one.
 
 ### Phase 4 — List page polish
 
-- [ ] **4.1** Format the date. `blog/+page.svelte:27` renders the raw ISO string `2026-09-27T21:01:00+09:00`; use `toLocaleDateString` and keep the `datetime` attribute machine-readable.
-- [ ] **4.2** Decide Prettier's handling of `.md` files (see Housekeeping), then apply consistently.
+- [x] **4.1** Format the date. `blog/+page.svelte:28` renders the raw ISO string `2026-09-27T21:01:00+09:00`; use `toLocaleDateString` and keep the `datetime` attribute machine-readable. Done for the list and the post page.
+- [x] **4.2** Decide Prettier's handling of `.md` files (see Housekeeping), then apply consistently. Decision: `src/routes/blog/**/*.md` added to `.prettierignore`; prose formatting stays with the editor.
 - [ ] **4.3** Responsive pass at 320 / 768 / 1280 — especially `pre` blocks and wide tables on a post page.
 
 ### Phase 5 — Verify and ship
 
-- [ ] **5.1** `pnpm check`, `pnpm lint`, `pnpm format`, `pnpm build` all clean.
-- [ ] **5.2** Browser pass: list → click a post → back link → direct URL to a draft (must 404) → bogus URL shows the 404 page.
-- [ ] **5.3** Replace the test post with real content, or mark it `draft: true` and remove its route per Phase 1.
-- [ ] **5.4** `git add` `Josep-Marcello.md` to `.gitignore`.
-- [ ] **5.5** Update `.swarm/spec.md` to match reality: it still describes a `svelte-spa-router` hash-routed SPA, paths under `src/data/` and `src/styles/`, entities named `BlogListView`/`BlogPostView`, and a "renderer MUST produce safe HTML" requirement that does not apply (author-owned content, build-time compile, no untrusted input path).
+- [x] **5.1** `pnpm check`, `pnpm lint`, `pnpm format`, `pnpm build` all clean.
+- [x] **5.2** Browser pass: list → click a post → back link → direct URL to a draft (must 404) → bogus URL shows the 404 page. Verified over `pnpm preview`: `/blog` renders (ComingSoon, since the only post is a draft), `/blog/00-test-blogpost` and `/blog/nope` both 404.
+- [x] **5.3** Replace the test post with real content, or mark it `draft: true` and remove its route per Phase 1. Taken as: test post stays `draft: true`; its route is kept per D3 and the guard 404s it.
+- [ ] **5.4** Update `.swarm/spec.md` to match reality: it still describes a `svelte-spa-router` hash-routed SPA, paths under `src/data/` and `src/styles/`, entities named `BlogListView`/`BlogPostView`, and a "renderer MUST produce safe HTML" requirement that does not apply (author-owned content, build-time compile, no untrusted input path). When rewriting FR-005, **drop the "posts without a publish date" half** of its draft rule: `draft: true` in frontmatter is the only draft signal, and missing-date posts still list, sorted last. That requirement was never implemented, and the decision is not to.
+
+Note: the old "add `Josep-Marcello.md` to `.gitignore`" step is dropped — no such file exists anywhere in the repo.
 
 ---
 
 ## Part 4 — Risks
 
-| Risk | Mitigation |
-|---|---|
-| Draft posts publicly reachable at a direct URL | Phase 1; asserted in 1.3 by checking `dist/` |
-| Draft guard is per-folder, so a new post can forget it | documented in 1.4; migrate to a dynamic `[slug]` route if post count grows |
-| No automated tests | accepted for now (D1); verification is build output + browser pass |
-| Unregistered fence language renders unhighlighted, silently | Phase 2.2 alias; Prism gives no warning for unknown languages |
-| Stock Prism theme clashes with the site palette | Phase 3.3 + D2 |
-| Long code blocks overflow horizontally on mobile | Phase 4.3; `pre { overflow-x: auto }` |
-| `ViewContainer` wheel-capture would hijack article scrolling | omit both path props on post views (3.4); component is fine as-is |
-| Prettier reflows prose unexpectedly | resolve in 4.2 before mass-formatting |
+| Risk                                                         | Mitigation                                                                 |
+| ------------------------------------------------------------ | -------------------------------------------------------------------------- |
+| Draft posts publicly reachable at a direct URL               | Phase 1; asserted in 1.3 by checking `dist/`                               |
+| Draft guard is per-folder, so a new post can forget it       | documented in 1.4; migrate to a dynamic `[slug]` route if post count grows |
+| No automated tests                                           | accepted for now (D1); verification is build output + browser pass         |
+| Unregistered fence language renders unhighlighted, silently  | Phase 2.2 alias; Prism gives no warning for unknown languages              |
+| Stock Prism theme clashes with the site palette              | Phase 3.3 + D2                                                             |
+| Long code blocks overflow horizontally on mobile             | Phase 4.3; `pre { overflow-x: auto }`                                      |
+| `ViewContainer` wheel-capture would hijack article scrolling | omit both path props on post views (3.4); component is fine as-is          |
+| Prettier reflows prose unexpectedly                          | resolve in 4.2 before mass-formatting                                      |
 
 ---
 
