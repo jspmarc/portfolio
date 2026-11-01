@@ -9,7 +9,7 @@ const config = {
 	kit: {
 		adapter: adapter({ pages: 'dist', assets: 'dist' }),
 		prerender: {
-			// Draft posts 404 on purpose (see src/routes/blog/*/+page.ts); skip
+			// Draft posts 404 on purpose (see src/routes/blog/+layout.ts); skip
 			// those pages instead of failing the build, but keep failing on any
 			// other broken link.
 			handleHttpError: ({ path, message }) => {

@@ -16,9 +16,18 @@ const modules = import.meta.glob<{ metadata: BlogPostMetadata }>('../../routes/b
 	eager: true,
 });
 
+const slugFromPath = (path: string) => path.match(/([^/]+)\/content\.md$/)?.[1] ?? path;
+
+// Every post's raw metadata (drafts included), keyed by slug. The blog layout
+// uses this to 404 draft posts at their direct URL, so draft means
+// unpublished, not just unlisted.
+export const metadataBySlug: Record<string, BlogPostMetadata> = Object.fromEntries(
+	Object.entries(modules).map(([path, module]) => [slugFromPath(path), module.metadata])
+);
+
 const BlogPost: BlogPost[] = Object.entries(modules)
 	.map(([path, module]) => {
-		const slug = path.match(/([^/]+)\/content\.md$/)?.[1] ?? path;
+		const slug = slugFromPath(path);
 
 		return {
 			...module.metadata,
