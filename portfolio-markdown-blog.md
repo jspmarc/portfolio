@@ -107,7 +107,7 @@ export function load() {
 
 Chosen over the structural alternative (delete `+page.svelte` from drafts) because the component is genuinely load-bearing — it holds the per-post title and is where a post's JS lives. Making drafts depend on _absence_ of a file would mean every published post needs a hand-written component, and every draft is invisible at its own URL while being written, which is the case where you most want to preview.
 
-Cost: one extra file per post folder, and the check is duplicated per post rather than structural. Acceptable at this scale; if post count grows, the move is a dynamic `[slug]` route with `entries()`.
+Cost as originally implemented: one extra file per post folder, and the check is duplicated per post rather than structural. Later superseded (1.4): the check now lives once in `src/routes/blog/+layout.ts` — same build-time 404, same kept page components, no per-post file. The dynamic `[slug]` route with `entries()` remains the escape hatch if post count ever justifies restructuring.
 
 ---
 
@@ -118,7 +118,7 @@ Cost: one extra file per post folder, and the check is duplicated per post rathe
 - [x] **1.1** Add `src/routes/blog/00-test-blogpost/+page.ts` that `error(404)`s when `metadata.draft === true`. Keep `+page.svelte` untouched — it holds the per-post title and is the right place for post JS.
 - [x] **1.2** Add `prerender: { handleHttpError: ({ status, path, referrer, referenceType, message }) => path.startsWith('/blog') ? 'ignore' : '' }` to `kit` in `svelte.config.js` so the intentional 404 is skipped rather than failing the build.
 - [x] **1.3** `pnpm build`, then `find dist -name '*.html'` — `dist/blog/00-test-blogpost.html` must be absent while `dist/blog.html` still exists. That assertion is the whole point of the phase. Verified: build logs `Skipping prerender error for /blog/00-test-blogpost: 404`, and `dist/` holds only `404`, `about`, `blog`, `index`, `projects`.
-- [ ] **1.4** Repeat the guard for every new post folder as they are created; there is no shared enforcement yet.
+- [x] **1.4** Superseded by a shared guard: `src/routes/blog/+layout.ts` 404s any `/blog/<slug>` whose frontmatter has `draft: true`, looked up in `metadataBySlug` (exported from `BlogPost.ts` — same `import.meta.glob`, drafts included). The per-post `+page.ts` guard is deleted; every new post folder is covered automatically, with no file to remember. Verified: build logs `Skipping prerender error for /blog/00-test-blogpost: 404`, and `dist/` holds only `404`, `about`, `blog`, `index`, `projects`.
 
 ### Phase 2 — Highlighting
 
@@ -138,7 +138,7 @@ Cost: one extra file per post folder, and the check is duplicated per post rathe
 
 - [x] **4.1** Format the date. `blog/+page.svelte:28` renders the raw ISO string `2026-09-27T21:01:00+09:00`; use `toLocaleDateString` and keep the `datetime` attribute machine-readable. Done for the list and the post page.
 - [x] **4.2** Decide Prettier's handling of `.md` files (see Housekeeping), then apply consistently. Decision: `src/routes/blog/**/*.md` added to `.prettierignore`; prose formatting stays with the editor.
-- [ ] **4.3** Responsive pass at 320 / 768 / 1280 — especially `pre` blocks and wide tables on a post page.
+- [x] **4.3** Responsive pass at 320 / 768 / 1280 — especially `pre` blocks and wide tables on a post page. Verified with headless-Chrome screenshots of both pages at all three widths: `pre` highlights and fits; the wide table scrolls inside the article at 320 and fills the measure with collapsed borders at 768/1280; long URLs and inline-code tokens break instead of overflowing; blockquote holds up. Changes, all global in `+layout.svelte`: `.prose table` becomes `display: block; overflow-x: auto` so a wide table scrolls instead of stretching the page; inline code gets `overflow-wrap: anywhere` via `:not(pre) > code` (code blocks keep scrolling, never wrapping); `.prose p`/`li` get `overflow-wrap: break-word` for long URLs; `img` gets `height: auto` beside `max-width: 100%`. Known tradeoff: at 320, a table wide enough for 768+ squeezes its columns (standard mobile-table behavior; the overflowing part stays reachable by scrolling the table itself).
 
 ### Phase 5 — Verify and ship
 
@@ -156,7 +156,7 @@ Note: the old "add `Josep-Marcello.md` to `.gitignore`" step is dropped — no s
 | Risk                                                         | Mitigation                                                                 |
 | ------------------------------------------------------------ | -------------------------------------------------------------------------- |
 | Draft posts publicly reachable at a direct URL               | Phase 1; asserted in 1.3 by checking `dist/`                               |
-| Draft guard is per-folder, so a new post can forget it       | documented in 1.4; migrate to a dynamic `[slug]` route if post count grows |
+| Draft guard missed for a new post                            | resolved in 1.4 — shared `blog/+layout.ts` guards every post folder automatically |
 | No automated tests                                           | accepted for now (D1); verification is build output + browser pass         |
 | Unregistered fence language renders unhighlighted, silently  | Phase 2.2 alias; Prism gives no warning for unknown languages              |
 | Stock Prism theme clashes with the site palette              | Phase 3.3 + D2                                                             |
