@@ -108,8 +108,22 @@
 		overflow-x: auto;
 	}
 
+	// Code blocks (pre > code) keep scrolling, never wrapping; only inline
+	// code gets the break rule, so a long token breaks instead of pushing
+	// the page wide on phones.
+	:global(.prose :not(pre) > code) {
+		overflow-wrap: anywhere;
+	}
+
+	// Long words and URLs in prose break instead of overflowing the measure.
+	:global(.prose p),
+	:global(.prose li) {
+		overflow-wrap: break-word;
+	}
+
 	:global(.prose img) {
 		max-width: 100%;
+		height: auto;
 	}
 
 	:global(.prose blockquote) {
@@ -123,9 +137,13 @@
 		margin: 0.5rem 0;
 	}
 
+	// display:block + overflow-x:auto keeps a wide table inside the article
+	// (it scrolls itself) instead of stretching the whole page on phones.
 	:global(.prose table) {
+		display: block;
 		width: 100%;
 		border-collapse: collapse;
+		overflow-x: auto;
 	}
 
 	:global(.prose table th),
