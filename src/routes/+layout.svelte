@@ -1,5 +1,6 @@
 <script lang="ts">
 	import '@fortawesome/fontawesome-free/css/all.min.css';
+	import 'prismjs/themes/prism.css';
 	import type { Snippet } from 'svelte';
 	import Footer from '$lib/components/shared/Footer.svelte';
 	import Navbar from '$lib/components/shared/Navbar.svelte';
@@ -94,6 +95,66 @@
 		@include mixin.respond-to('xl') {
 			padding: 5vh 10vw;
 		}
+	}
+
+	// Rendered markdown (mdsvex) is a separate component, so scoped styles
+	// cannot reach its elements. These rules are global and anchored under
+	// .prose so they never leak to the rest of the site. Each selector stays
+	// fully qualified because anything nested inside :global() would be
+	// scoped again.
+	:global(.prose pre) {
+		padding: 1rem;
+		border-radius: 0.5rem;
+		overflow-x: auto;
+	}
+
+	// Code blocks (pre > code) keep scrolling, never wrapping; only inline
+	// code gets the break rule, so a long token breaks instead of pushing
+	// the page wide on phones.
+	:global(.prose :not(pre) > code) {
+		overflow-wrap: anywhere;
+	}
+
+	// Long words and URLs in prose break instead of overflowing the measure.
+	:global(.prose p),
+	:global(.prose li) {
+		overflow-wrap: break-word;
+	}
+
+	:global(.prose img) {
+		max-width: 100%;
+		height: auto;
+	}
+
+	:global(.prose blockquote) {
+		margin: 1rem 0;
+		padding: 0.25rem 1rem;
+		border-left: 3px solid var(--teal);
+		background: color-mix(in srgb, var(--teal) 8%, transparent);
+	}
+
+	:global(.prose blockquote p) {
+		margin: 0.5rem 0;
+	}
+
+	// display:block + overflow-x:auto keeps a wide table inside the article
+	// (it scrolls itself) instead of stretching the whole page on phones.
+	:global(.prose table) {
+		display: block;
+		width: 100%;
+		border-collapse: collapse;
+		overflow-x: auto;
+	}
+
+	:global(.prose table th),
+	:global(.prose table td) {
+		padding: 0.5rem 0.75rem;
+		border: 1px solid var(--blue);
+		text-align: left;
+	}
+
+	:global(.prose table th) {
+		background: color-mix(in srgb, var(--blue) 25%, transparent);
 	}
 
 	.gradient-bg {
