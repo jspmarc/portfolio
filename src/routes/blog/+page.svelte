@@ -1,7 +1,10 @@
 <script lang="ts">
-	import BlogPost from '$lib/data/BlogPost';
 	import ViewContainer from '$lib/components/shared/ViewContainer.svelte';
 	import ComingSoon from '$lib/components/shared/ComingSoon.svelte';
+	import type { PageProps } from './$types';
+
+	let { data }: PageProps = $props();
+	const posts = $derived(data.posts);
 </script>
 
 <svelte:head>
@@ -17,9 +20,9 @@
 			about my projects, life, and everything in between.
 		</p>
 
-		{#if BlogPost.length > 0}
+		{#if posts.length > 0}
 			<ul class="post-list">
-				{#each BlogPost as post (post.slug)}
+				{#each posts as post (post.slug)}
 					<li class="post">
 						<a href={post.url}>
 							<h2>{post.title ?? post.slug}</h2>

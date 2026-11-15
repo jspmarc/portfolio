@@ -9,14 +9,11 @@ const config = {
 	kit: {
 		adapter: adapter({ pages: 'dist', assets: 'dist' }),
 		prerender: {
-			// Draft posts 404 on purpose (see src/routes/blog/+layout.ts); skip
-			// those pages instead of failing the build, but keep failing on any
-			// other broken link.
-			handleHttpError: ({ path, message }) => {
-				if (path.startsWith('/blog/')) {
-					console.warn(`Skipping prerender error for ${path}: ${message}`);
-					return;
-				}
+			// `/blog/[slug]` is only reached through links from the post list, so
+			// it stays unseen whenever no post is published. Any other unseen
+			// route is a real mistake and still fails the build.
+			handleUnseenRoutes: ({ routes, message }) => {
+				if (routes.every(route => route === '/blog/[slug]')) return;
 				throw new Error(message);
 			},
 		},

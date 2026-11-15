@@ -1,16 +1,22 @@
 <script lang="ts">
 	import ViewContainer from '$lib/components/shared/ViewContainer.svelte';
-	import Content, { metadata } from './content.md';
+	import type { PageProps } from './$types';
+
+	let { data }: PageProps = $props();
+	const Content = $derived(data.default);
+	const metadata = $derived(data.metadata);
 
 	// metadata is untyped beyond Record<string, unknown>; narrow once here.
-	const postDate = typeof metadata.date === 'string' ? metadata.date : undefined;
-	const formattedDate = postDate
-		? new Date(postDate).toLocaleDateString('en-GB', {
-				day: 'numeric',
-				month: 'long',
-				year: 'numeric',
-			})
-		: undefined;
+	const postDate = $derived(typeof metadata.date === 'string' ? metadata.date : undefined);
+	const formattedDate = $derived(
+		postDate
+			? new Date(postDate).toLocaleDateString('en-GB', {
+					day: 'numeric',
+					month: 'long',
+					year: 'numeric',
+				})
+			: undefined
+	);
 </script>
 
 <svelte:head>
