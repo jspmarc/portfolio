@@ -3,3 +3,6 @@ pnpm-lock.yaml
 docker-compose.yml
 build/
 .svelte-kit/
+
+# prose: let the editor handle formatting of blog content
+src/routes/blog/**/*.md

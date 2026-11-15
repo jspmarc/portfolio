@@ -56,6 +56,7 @@
 		--transition-speed: 0.3s;
 
 		font-size: clamp(14px, 2.05vmin, 20px);
+		font-optical-sizing: auto;
 
 		@include mixin.respond-to('xl') {
 			--min-content-height: calc(100vh - var(--footer-height));
@@ -88,11 +89,16 @@
 		padding: 0;
 	}
 
+	:global(pre, code) {
+		font-family: 'JetBrains Mono', monospace;
+		font-size: clamp(12px, 1.95vmin, 18px);
+	}
+
 	:global(.main-content) {
 		padding: 2rem;
 
 		@include mixin.respond-to('xl') {
-			padding: 5vh 10vw;
+			padding: 5vh 20vw;
 		}
 	}
 

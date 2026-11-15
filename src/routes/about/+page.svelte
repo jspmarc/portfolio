@@ -12,7 +12,7 @@
 
 <ViewContainer>
 	<div class="main-content content">
-		<h1>Who Am I?</h1>
+		<h1>About Me</h1>
 		<section class="description">
 			<Description />
 		</section>
@@ -39,20 +39,11 @@
 
 <style lang="scss">
 	@use '$lib/styles/mixin';
+	@use '$lib/styles/content';
 
 	h1,
 	h2 {
-		display: inline-block;
-		font-size: 2em;
-		margin: 0;
-		margin-bottom: 0.25rem;
-		text-align: left;
-
-		@include mixin.respond-to('xl') {
-			display: block;
-			margin-bottom: 0;
-			text-align: right;
-		}
+		@include content.page-heading;
 	}
 
 	section {
@@ -69,8 +60,9 @@
 	}
 
 	.content {
+		@include content.page-shell;
+
 		gap: 2rem;
-		min-height: var(--min-content-height);
 
 		@include mixin.respond-to('xl') {
 			align-content: start;

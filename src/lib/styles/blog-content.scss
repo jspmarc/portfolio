@@ -1,0 +1,101 @@
+// Rendered markdown (mdsvex) is a separate component, so scoped styles
+// cannot reach its elements. This file is imported globally from the blog
+// page and anchored under .blog-content so nothing leaks site-wide.
+@use 'catppuccin-latte';
+//@use 'gruvbox-light-medium';
+
+.blog-content {
+	pre {
+		padding: 1rem;
+		border-radius: 0.5rem;
+		overflow-x: auto;
+		color: #4c4f69;
+		background: #e6e9ef;
+		// For gruvbox:
+		// color: #3c3836;
+		// background: #fbf1c7;
+		tab-size: 4;
+	}
+
+	:not(pre) > code {
+		padding: 0.1rem 0.3rem;
+		border-radius: 0.25rem;
+		color: #4c4f69;
+		background: #e6e9ef;
+		// For gruvbox:
+		// color: #3c3836;
+		// background: #fbf1c7;
+
+		// Inline code breaks long tokens instead of pushing the page wide.
+		overflow-wrap: anywhere;
+	}
+
+	$headers: h1, h2, h3, h4, h5, h6;
+	@each $header in $headers {
+		#{$header} {
+			font-weight: 500;
+		}
+	}
+
+	// Long words and URLs in prose break instead of overflowing the measure.
+	p,
+	li {
+		overflow-wrap: break-word;
+	}
+
+	img {
+		max-width: 100%;
+		height: auto;
+	}
+
+	blockquote {
+		margin: 1rem 0;
+		padding: 0.25rem 1rem;
+		border-left: 3px solid var(--teal);
+		background: color-mix(in srgb, var(--teal) 8%, transparent);
+
+		p {
+			margin: 0.5rem 0;
+		}
+	}
+
+	figure.code-figure {
+		margin: 1.5rem 0;
+
+		pre {
+			margin: 0;
+		}
+
+		figcaption {
+			margin-top: 0.5rem;
+			color: var(--brown);
+			font-size: 0.875rem;
+			text-align: center;
+			font-style: italic;
+
+			p {
+				margin: 0;
+			}
+		}
+	}
+
+	// display:block + overflow-x:auto keeps a wide table inside the article
+	// (it scrolls itself) instead of stretching the whole page on phones.
+	table {
+		display: block;
+		width: 100%;
+		border-collapse: collapse;
+		overflow-x: auto;
+
+		th,
+		td {
+			padding: 0.5rem 0.75rem;
+			border: 1px solid var(--blue);
+			text-align: left;
+		}
+
+		th {
+			background: color-mix(in srgb, var(--blue) 25%, transparent);
+		}
+	}
+}

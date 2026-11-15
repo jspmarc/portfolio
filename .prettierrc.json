@@ -1,9 +1,10 @@
 {
-	"trailingComma": "es5",
 	"arrowParens": "avoid",
-	"singleQuote": true,
-	"semi": true,
+	"overrides": [{ "files": "*.svelte", "options": { "parser": "svelte" } }],
 	"printWidth": 100,
 	"plugins": ["prettier-plugin-svelte"],
-	"overrides": [{ "files": "*.svelte", "options": { "parser": "svelte" } }]
+	"singleQuote": true,
+	"semi": true,
+	"trailingComma": "es5",
+	"useTabs": true
 }

@@ -1,0 +1,22 @@
+@use 'mixin';
+
+/// Shared page shell: fills at least the viewport below the chrome.
+@mixin page-shell {
+	min-height: var(--min-content-height);
+}
+
+/// Section heading: inline label on small screens, right-aligned label
+/// column on wide screens where the page uses a label/content grid.
+@mixin page-heading {
+	display: inline-block;
+	font-size: 2em;
+	margin: 0;
+	margin-bottom: 0.25rem;
+	text-align: left;
+
+	@include mixin.respond-to('xl') {
+		display: block;
+		margin-bottom: 0;
+		text-align: right;
+	}
+}
