@@ -27,7 +27,7 @@
 <ViewContainer>
 	<div class="main-content post">
 		<nav class="back">
-			<a href="/blog">&larr; Back to Blog</a>
+			<a href="/blog">&larr; Back to Blog Posts List</a>
 		</nav>
 
 		<h1>
