@@ -6,8 +6,8 @@ description: A small story of my last 8 years learning to build software.
 ---
 
 I have been programming since 2017 or 2018. It all started at the computer club
-at my senior high school (or rather, computer extracurricular activity) where I
-started with **Pascal**.
+(or rather, the computer extracurricular activity) in my senior high school
+where I started with **Pascal**.
 
 Back then, we didn't do any complex programming where we need to manage states
 between multiple machines. We wrote code to display a running text on the
@@ -43,14 +43,14 @@ emphasize:
 Because of that, we still had tests where we needed to write code on _paper_ (yes,
 literally by hand). And we weren't supposed to use actual programming
 languages, we had to use an abstract language for pseudocode which the university
-called _Notasi Algoritmik_ (literally Algorithm Notation). Which is basically
+called _Notasi Algoritmik_ (literally: Algorithm Notation). Which is basically
 just Pascal with a bit different syntax and not compilable.
 
 But honestly, I am grateful that my professors pushed us to learn programming
 by pattern. Now, I can easily transition between languages and even
 programming paradigms.
 
-In any case, during my years of studying, I stumbled upon this legendary piece
+In any case, during my years of university, I stumbled upon this legendary piece
 of code called the
 [**Fast Inverse Square Root**](https://en.wikipedia.org/wiki/Fast_inverse_square_root),
 which is most often attributed to John Carmack. This function has always been
