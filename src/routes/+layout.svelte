@@ -93,7 +93,7 @@
 		padding: 2rem;
 
 		@include mixin.respond-to('xl') {
-			padding: 5vh 10vw;
+			padding: 5vh 20vw;
 		}
 	}
 
