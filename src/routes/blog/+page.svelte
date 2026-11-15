@@ -1,6 +1,5 @@
 <script lang="ts">
 	import ViewContainer from '$lib/components/shared/ViewContainer.svelte';
-	import ComingSoon from '$lib/components/shared/ComingSoon.svelte';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
@@ -43,7 +42,9 @@
 				{/each}
 			</ul>
 		{:else}
-			<ComingSoon />
+			<p>
+				No posts just yet ( *^-^)ρ(*╯^╰)
+			</p>
 		{/if}
 	</div>
 </ViewContainer>
