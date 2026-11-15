@@ -30,27 +30,31 @@
 			<a href="/blog">&larr; Back to Blog Posts List</a>
 		</nav>
 
-		<h1>
-			{metadata.title || 'A Blog Post'}
-		</h1>
+		<article>
+			<header>
+				<h1>
+					{metadata.title || 'A Blog Post'}
+				</h1>
 
-		{#if postDate}
-			<p class="post-date">
-				<time datetime={postDate}>{formattedDate}</time>
-			</p>
-		{/if}
+				{#if postDate}
+					<p class="post-date">
+						<time datetime={postDate}>{formattedDate}</time>
+					</p>
+				{/if}
 
-		{#if metadata.description}
-			<p class="post-date">
-				{metadata.description}
-			</p>
-		{/if}
+				{#if metadata.description}
+					<p class="post-date">
+						{metadata.description}
+					</p>
+				{/if}
+			</header>
 
-		<!-- mdsvex compiles content.md into a separate component, so scoped
-			styles can't reach its elements — blog-content.scss is imported globally
-			and anchored under .blog-content. -->
-		<article class="blog-content">
-			<Content />
+			<!-- mdsvex compiles content.md into a separate component, so scoped
+				styles can't reach its elements — blog-content.scss is imported globally
+				and anchored under .blog-content. -->
+			<div class="blog-content">
+				<Content />
+			</div>
 		</article>
 	</div>
 </ViewContainer>
