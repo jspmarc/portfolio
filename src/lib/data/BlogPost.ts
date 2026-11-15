@@ -1,4 +1,6 @@
 import type { Component } from 'svelte';
+import { resolve } from '$app/paths';
+import type { ResolvedPathname } from '$app/types';
 
 export type BlogPostMetadata = {
 	title?: string;
@@ -9,7 +11,7 @@ export type BlogPostMetadata = {
 
 export type BlogPost = BlogPostMetadata & {
 	slug: string;
-	url: string;
+	url: ResolvedPathname;
 };
 
 // mdsvex compiles each post into its own component. Lazy glob: the list only
@@ -28,7 +30,7 @@ export async function loadPosts(): Promise<BlogPost[]> {
 			const slug = slugFromPath(path);
 			const { metadata } = await load();
 
-			return { ...metadata, slug, url: `/blog/${slug}` };
+			return { ...metadata, slug, url: resolve('/blog/[slug]', { slug }) };
 		})
 	);
 

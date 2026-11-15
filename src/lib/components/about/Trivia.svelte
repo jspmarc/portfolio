@@ -38,7 +38,7 @@
 </dl>
 
 <style lang="scss">
-	@use '$lib/styles/mixin';
+	@use '../../styles/mixin';
 
 	@include mixin.label-value-grid;
 </style>

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Skills from '$lib/data/Skills';
+	import Skills from '#lib/data/Skills.ts';
 </script>
 
 <dl>
@@ -10,7 +10,7 @@
 </dl>
 
 <style lang="scss">
-	@use '$lib/styles/mixin';
+	@use '../../styles/mixin';
 
 	@include mixin.label-value-grid;
 </style>
