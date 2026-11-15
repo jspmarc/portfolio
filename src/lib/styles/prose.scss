@@ -1,0 +1,59 @@
+// Rendered markdown (mdsvex) is a separate component, so scoped styles
+// cannot reach its elements. This file is imported globally from
+// +layout.svelte and anchored under .prose so nothing leaks site-wide.
+.prose {
+	pre {
+		padding: 1rem;
+		border-radius: 0.5rem;
+		overflow-x: auto;
+	}
+
+	// Code blocks (pre > code) keep scrolling, never wrapping; only inline
+	// code gets the break rule, so a long token breaks instead of pushing
+	// the page wide on phones.
+	:not(pre) > code {
+		overflow-wrap: anywhere;
+	}
+
+	// Long words and URLs in prose break instead of overflowing the measure.
+	p,
+	li {
+		overflow-wrap: break-word;
+	}
+
+	img {
+		max-width: 100%;
+		height: auto;
+	}
+
+	blockquote {
+		margin: 1rem 0;
+		padding: 0.25rem 1rem;
+		border-left: 3px solid var(--teal);
+		background: color-mix(in srgb, var(--teal) 8%, transparent);
+
+		p {
+			margin: 0.5rem 0;
+		}
+	}
+
+	// display:block + overflow-x:auto keeps a wide table inside the article
+	// (it scrolls itself) instead of stretching the whole page on phones.
+	table {
+		display: block;
+		width: 100%;
+		border-collapse: collapse;
+		overflow-x: auto;
+
+		th,
+		td {
+			padding: 0.5rem 0.75rem;
+			border: 1px solid var(--blue);
+			text-align: left;
+		}
+
+		th {
+			background: color-mix(in srgb, var(--blue) 25%, transparent);
+		}
+	}
+}

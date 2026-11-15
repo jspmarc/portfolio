@@ -12,12 +12,14 @@
 
 <ViewContainer>
 	<div class="main-content content">
-		<h1>Blog</h1>
+		<div class="page-header">
+			<h1>Blog</h1>
 
-		<p>
-			This is where I put my thoughts down to writing. May contain my thoughts and writeups
-			about my projects, life, and everything in between.
-		</p>
+			<p>
+				This is where I put my thoughts down to writing. May contain my thoughts and writeups
+				about my projects, life, and everything in between.
+			</p>
+		</div>
 
 		{#if posts.length > 0}
 			<ul class="post-list">
@@ -50,13 +52,31 @@
 </ViewContainer>
 
 <style lang="scss">
+	@use '$lib/styles/content';
+
 	.content {
 		min-height: var(--min-content-height);
 	}
 
 	h1 {
-		margin-top: 0;
 		font-weight: 400;
+	}
+
+	.page-header {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		align-items: flex-start;
+
+		margin-bottom: 2rem;
+
+		h1 {
+			margin: 0;
+		}
+
+		p {
+			margin: 0;
+		}
 	}
 
 	.post-list {
