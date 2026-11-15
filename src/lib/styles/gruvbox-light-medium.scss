@@ -1,0 +1,70 @@
+// Gruvbox light medium palette for Prism tokens emitted by mdsvex.
+.blog-content {
+	.token.comment,
+	.token.prolog,
+	.token.doctype,
+	.token.cdata {
+		color: #928374;
+		font-style: italic;
+	}
+
+	.token.punctuation {
+		color: #7c6f64;
+	}
+
+	.token.property,
+	.token.tag,
+	.token.constant,
+	.token.symbol,
+	.token.deleted {
+		color: #9d0006;
+	}
+
+	.token.boolean,
+	.token.number {
+		color: #8f3f71;
+	}
+
+	.token.selector,
+	.token.attr-name,
+	.token.string,
+	.token.char,
+	.token.builtin,
+	.token.inserted {
+		color: #79740e;
+	}
+
+	.token.operator,
+	.token.entity,
+	.token.url,
+	.language-css .token.string,
+	.style .token.string {
+		color: #427b58;
+	}
+
+	.token.atrule,
+	.token.attr-value,
+	.token.keyword {
+		color: #9d0006;
+	}
+
+	.token.function,
+	.token.class-name {
+		color: #b57614;
+	}
+
+	.token.regex,
+	.token.important,
+	.token.variable {
+		color: #af3a03;
+	}
+
+	.token.important,
+	.token.bold {
+		font-weight: bold;
+	}
+
+	.token.italic {
+		font-style: italic;
+	}
+}
