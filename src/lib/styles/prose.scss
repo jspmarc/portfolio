@@ -1,17 +1,24 @@
 // Rendered markdown (mdsvex) is a separate component, so scoped styles
-// cannot reach its elements. This file is imported globally from
-// +layout.svelte and anchored under .prose so nothing leaks site-wide.
+// cannot reach its elements. This file is imported globally from the blog
+// page and anchored under .prose so nothing leaks site-wide.
+@use 'catppuccin-latte';
+
 .prose {
 	pre {
 		padding: 1rem;
 		border-radius: 0.5rem;
 		overflow-x: auto;
+		color: #4c4f69;
+		background: #e6e9ef;
+		tab-size: 4;
 	}
 
-	// Code blocks (pre > code) keep scrolling, never wrapping; only inline
-	// code gets the break rule, so a long token breaks instead of pushing
-	// the page wide on phones.
 	:not(pre) > code {
+		padding: 0.1rem 0.3rem;
+		border-radius: 0.25rem;
+		color: #4c4f69;
+		background: #e6e9ef;
+		// Inline code breaks long tokens instead of pushing the page wide.
 		overflow-wrap: anywhere;
 	}
 

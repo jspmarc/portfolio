@@ -1,6 +1,5 @@
 <script lang="ts">
 	import '@fortawesome/fontawesome-free/css/all.min.css';
-	import 'prismjs/themes/prism.css';
 	import type { Snippet } from 'svelte';
 	import Footer from '$lib/components/shared/Footer.svelte';
 	import Navbar from '$lib/components/shared/Navbar.svelte';

@@ -1,0 +1,70 @@
+// Catppuccin Latte palette for Prism tokens emitted by mdsvex.
+.prose {
+	.token.comment,
+	.token.prolog,
+	.token.doctype,
+	.token.cdata {
+		color: #9ca0b0;
+		font-style: italic;
+	}
+
+	.token.punctuation {
+		color: #6c6f85;
+	}
+
+	.token.property,
+	.token.tag,
+	.token.constant,
+	.token.symbol,
+	.token.deleted {
+		color: #d20f39;
+	}
+
+	.token.boolean,
+	.token.number {
+		color: #fe640b;
+	}
+
+	.token.selector,
+	.token.attr-name,
+	.token.string,
+	.token.char,
+	.token.builtin,
+	.token.inserted {
+		color: #40a02b;
+	}
+
+	.token.operator,
+	.token.entity,
+	.token.url,
+	.language-css .token.string,
+	.style .token.string {
+		color: #179299;
+	}
+
+	.token.atrule,
+	.token.attr-value,
+	.token.keyword {
+		color: #8839ef;
+	}
+
+	.token.function,
+	.token.class-name {
+		color: #1e66f5;
+	}
+
+	.token.regex,
+	.token.important,
+	.token.variable {
+		color: #df8e1d;
+	}
+
+	.token.important,
+	.token.bold {
+		font-weight: bold;
+	}
+
+	.token.italic {
+		font-style: italic;
+	}
+}
