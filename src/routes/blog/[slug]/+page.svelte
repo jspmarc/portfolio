@@ -3,10 +3,10 @@
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
-	const Content = $derived(data.default);
-	const metadata = $derived(data.metadata);
+	const Content = $derived(data.post.default);
+	const metadata = $derived(data.post.metadata);
 
-	// metadata is untyped beyond Record<string, unknown>; narrow once here.
+	// Load returns mdsvex metadata, so date can be non-string at runtime.
 	const postDate = $derived(typeof metadata.date === 'string' ? metadata.date : undefined);
 	const formattedDate = $derived(
 		postDate

@@ -9,5 +9,5 @@ export const load: PageLoad = async ({ params }) => {
 	const post = await getContent();
 	if (post.metadata.draft === true) error(404, 'Post not found');
 
-	return post;
+	return { post };
 };
