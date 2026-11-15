@@ -1,10 +1,11 @@
 <script lang="ts">
 	import { fly } from 'svelte/transition';
 	import { goto } from '$app/navigation';
+	import type { ResolvedPathname } from '$app/types';
 
 	interface Props {
-		nextViewPath?: string | undefined;
-		prevViewPath?: string | undefined;
+		nextViewPath?: ResolvedPathname | undefined;
+		prevViewPath?: ResolvedPathname | undefined;
 		children?: import('svelte').Snippet;
 	}
 

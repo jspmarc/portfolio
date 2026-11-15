@@ -1,5 +1,5 @@
 import { error } from '@sveltejs/kit';
-import { contentFor } from '$lib/data/BlogPost';
+import { contentFor } from '#lib/data/BlogPost.ts';
 import type { PageLoad } from './$types';
 
 export const load: PageLoad = async ({ params }) => {

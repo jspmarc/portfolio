@@ -2,7 +2,8 @@
 	import { onMount } from 'svelte';
 	import { slide } from 'svelte/transition';
 	import { quartInOut } from 'svelte/easing';
-	import ViewContainer from '$lib/components/shared/ViewContainer.svelte';
+	import { resolve } from '$app/paths';
+	import ViewContainer from '#lib/components/shared/ViewContainer.svelte';
 
 	const roles = ['software engineer', 'tech-enthusiast', 'gamer', 'ramen lover'];
 	let activeIndex = $state(0);
@@ -18,7 +19,7 @@
 	});
 </script>
 
-<ViewContainer nextViewPath="/about">
+<ViewContainer nextViewPath={resolve('/about')}>
 	<div class="container">
 		<section class="content">
 			<img src="/assets/profil.jpg" alt="Foto profil" class="foto-profil" />
@@ -46,7 +47,7 @@
 </ViewContainer>
 
 <style lang="scss">
-	@use '$lib/styles/mixin';
+	@use '../lib/styles/mixin';
 
 	p {
 		margin: 0;

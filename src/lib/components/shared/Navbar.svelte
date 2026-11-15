@@ -5,8 +5,8 @@
 -->
 <script lang="ts">
 	import { page } from '$app/state';
-	import NavItems from '$lib/data/NavItem';
-	import SocialMedias from '$lib/data/SocialMedia';
+	import NavItems from '#lib/data/NavItem.ts';
+	import SocialMedias from '#lib/data/SocialMedia.ts';
 
 	let navbarExpanded = $state(false);
 
@@ -41,7 +41,12 @@
 			<ul class="social-medias">
 				{#each SocialMedias as { text, link, icon, isBrand }, idx (idx)}
 					<li class="social-item">
-						<a href={link} target="_blank" class="nav-item-inner-container">
+						<a
+							href={link}
+							target="_blank"
+							rel="external noopener noreferrer"
+							class="nav-item-inner-container"
+						>
 							<i class="{isBrand ? 'fab' : 'fas'} fa-{icon} fa-2x icon"></i>
 							<span class="text">
 								{text}
@@ -67,6 +72,7 @@
 					<a
 						href={link}
 						target="_blank"
+						rel="external noopener noreferrer"
 						class="nav-item-inner-container"
 						onclick={() => (navbarExpanded = false)}
 					>
@@ -82,7 +88,7 @@
 </nav>
 
 <style lang="scss">
-	@use '$lib/styles/mixin';
+	@use '../../styles/mixin';
 
 	nav {
 		--navbar-open-width: 12rem; // FIXME: Kecilin dan mungkin jgn pake rem?

@@ -1,6 +1,7 @@
 <script lang="ts">
-	import ViewContainer from '$lib/components/shared/ViewContainer.svelte';
-	import '$lib/styles/blog-content.scss';
+	import { resolve } from '$app/paths';
+	import ViewContainer from '#lib/components/shared/ViewContainer.svelte';
+	import '#lib/styles/blog-content.scss';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
@@ -27,7 +28,7 @@
 <ViewContainer>
 	<div class="main-content post">
 		<nav class="back">
-			<a href="/blog">&larr; Back to Blog Posts List</a>
+			<a href={resolve('/blog')}>&larr; Back to Blog Posts List</a>
 		</nav>
 
 		<article>
@@ -60,8 +61,8 @@
 </ViewContainer>
 
 <style lang="scss">
-	@use '$lib/styles/content';
-	@use '$lib/styles/mixin';
+	@use '../../../lib/styles/content';
+	@use '../../../lib/styles/mixin';
 
 	h1 {
 		font-weight: 500;

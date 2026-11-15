@@ -3,7 +3,8 @@ import rehypeExternalLinks from 'rehype-external-links';
 // A code fence followed directly by a blockquote renders as <figure> with the
 // blockquote as <figcaption>.
 function remarkCodeFigures() {
-	const walk = (node) => {
+	/** @param {{ children?: any[] }} node */
+	const walk = node => {
 		if (!node.children) return;
 		for (let i = 0; i < node.children.length; i++) {
 			const child = node.children[i];
@@ -19,7 +20,8 @@ function remarkCodeFigures() {
 			walk(child);
 		}
 	};
-	return (tree) => walk(tree);
+	/** @param {{ children?: any[] }} tree */
+	return tree => walk(tree);
 }
 
 /** @type {import('mdsvex').MdsvexOptions} */

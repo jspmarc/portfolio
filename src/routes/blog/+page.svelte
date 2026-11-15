@@ -1,5 +1,5 @@
 <script lang="ts">
-	import ViewContainer from '$lib/components/shared/ViewContainer.svelte';
+	import ViewContainer from '#lib/components/shared/ViewContainer.svelte';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
@@ -16,8 +16,8 @@
 			<h1>Blog</h1>
 
 			<p>
-				This is where I put my thoughts down to writing. May contain my thoughts and writeups
-				about my projects, life, and everything in between.
+				This is where I put my thoughts down to writing. May contain my thoughts and
+				writeups about my projects, life, and everything in between.
 			</p>
 		</div>
 
@@ -44,15 +44,13 @@
 				{/each}
 			</ul>
 		{:else}
-			<p>
-				No posts just yet ( *^-^)ρ(*╯^╰)
-			</p>
+			<p>No posts just yet ( *^-^)ρ(*╯^╰)</p>
 		{/if}
 	</div>
 </ViewContainer>
 
 <style lang="scss">
-	@use '$lib/styles/content';
+	@use '../../lib/styles/content';
 
 	.content {
 		min-height: var(--min-content-height);

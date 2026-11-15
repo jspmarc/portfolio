@@ -1,9 +1,9 @@
 <script lang="ts">
-	import Description from '$lib/components/about/Description.svelte';
-	import Experiences from '$lib/components/about/Experiences.svelte';
-	import Skills from '$lib/components/about/Skills.svelte';
-	import Trivia from '$lib/components/about/Trivia.svelte';
-	import ViewContainer from '$lib/components/shared/ViewContainer.svelte';
+	import Description from '#lib/components/about/Description.svelte';
+	import Experiences from '#lib/components/about/Experiences.svelte';
+	import Skills from '#lib/components/about/Skills.svelte';
+	import Trivia from '#lib/components/about/Trivia.svelte';
+	import ViewContainer from '#lib/components/shared/ViewContainer.svelte';
 </script>
 
 <svelte:head>
@@ -38,8 +38,8 @@
 </ViewContainer>
 
 <style lang="scss">
-	@use '$lib/styles/mixin';
-	@use '$lib/styles/content';
+	@use '../../lib/styles/mixin';
+	@use '../../lib/styles/content';
 
 	h1,
 	h2 {

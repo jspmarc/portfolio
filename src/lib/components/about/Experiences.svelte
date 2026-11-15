@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Experiences from '$lib/data/Experiences';
+	import Experiences from '#lib/data/Experiences.ts';
 
 	const slugifyTitle = (text: string) =>
 		text
@@ -63,7 +63,11 @@
 						{#if links}
 							<div class="links">
 								{#if links.gitRepo}
-									<a href={links.gitRepo} target="_blank">
+									<a
+										href={links.gitRepo}
+										target="_blank"
+										rel="external noopener noreferrer"
+									>
 										<button class="links-button git-repo">
 											<!-- TODO: Change this to the project's page when the Project view/page is done -->
 											<i class="fab fa-git-alt"></i>
@@ -72,7 +76,11 @@
 									</a>
 								{/if}
 								{#if links.website}
-									<a href={links.website} target="_blank">
+									<a
+										href={links.website}
+										target="_blank"
+										rel="external noopener noreferrer"
+									>
 										<button class="links-button git-repo">
 											<i class="fas fa-external-link-alt"></i>
 											Visit the website
@@ -80,7 +88,11 @@
 									</a>
 								{/if}
 								{#if links.certificate}
-									<a href={links.certificate} target="_blank">
+									<a
+										href={links.certificate}
+										target="_blank"
+										rel="external noopener noreferrer"
+									>
 										<button class="links-button git-repo">
 											<i class="fas fa-certificate"></i>
 											View my certificate
