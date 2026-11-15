@@ -59,7 +59,7 @@
 	}
 
 	h1 {
-		font-weight: 400;
+		@include content.page-heading;
 	}
 
 	.page-header {

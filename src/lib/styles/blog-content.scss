@@ -1,9 +1,9 @@
 // Rendered markdown (mdsvex) is a separate component, so scoped styles
 // cannot reach its elements. This file is imported globally from the blog
-// page and anchored under .prose so nothing leaks site-wide.
+// page and anchored under .blog-content so nothing leaks site-wide.
 @use 'catppuccin-latte';
 
-.prose {
+.blog-content {
 	pre {
 		padding: 1rem;
 		border-radius: 0.5rem;
@@ -20,6 +20,13 @@
 		background: #e6e9ef;
 		// Inline code breaks long tokens instead of pushing the page wide.
 		overflow-wrap: anywhere;
+	}
+
+	$headers: h1, h2, h3, h4, h5, h6;
+	@each $header in $headers {
+		#{$header} {
+			font-weight: 500;
+		}
 	}
 
 	// Long words and URLs in prose break instead of overflowing the measure.

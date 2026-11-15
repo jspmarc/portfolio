@@ -1,6 +1,6 @@
 <script lang="ts">
 	import ViewContainer from '$lib/components/shared/ViewContainer.svelte';
-	import '$lib/styles/prose.scss';
+	import '$lib/styles/blog-content.scss';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
@@ -41,9 +41,9 @@
 		{/if}
 
 		<!-- mdsvex compiles content.md into a separate component, so scoped
-			styles can't reach its elements — prose.scss is imported globally
-			and anchored under .prose. -->
-		<article class="prose">
+			styles can't reach its elements — blog-content.scss is imported globally
+			and anchored under .blog-content. -->
+		<article class="blog-content">
 			<Content />
 		</article>
 	</div>
@@ -51,6 +51,18 @@
 
 <style lang="scss">
 	@use '$lib/styles/content';
+	@use '$lib/styles/mixin';
+
+	h1 {
+		@include content.page-heading;
+
+		font-weight: 500;
+		text-align: left;
+
+		@include mixin.respond-to('xl') {
+			text-align: left;
+		}
+	}
 
 	.post {
 		@include content.page-shell;
