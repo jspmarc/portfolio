@@ -40,6 +40,12 @@
 			</p>
 		{/if}
 
+		{#if metadata.description}
+			<p class="post-date">
+				{metadata.description}
+			</p>
+		{/if}
+
 		<!-- mdsvex compiles content.md into a separate component, so scoped
 			styles can't reach its elements — blog-content.scss is imported globally
 			and anchored under .blog-content. -->
@@ -54,10 +60,10 @@
 	@use '$lib/styles/mixin';
 
 	h1 {
-		@include content.page-heading;
-
 		font-weight: 500;
 		text-align: left;
+
+		@include content.page-heading;
 
 		@include mixin.respond-to('xl') {
 			text-align: left;

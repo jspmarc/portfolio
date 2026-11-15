@@ -12,7 +12,7 @@
 
 <ViewContainer>
 	<div class="main-content content">
-		<h1>Who Am I?</h1>
+		<h1>About Me</h1>
 		<section class="description">
 			<Description />
 		</section>
