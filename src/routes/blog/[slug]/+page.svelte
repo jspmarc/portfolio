@@ -29,6 +29,10 @@
 			<a href="/blog">&larr; Back to Blog</a>
 		</nav>
 
+		<h1>
+			{metadata.title || 'A Blog Post'}
+		</h1>
+
 		{#if postDate}
 			<p class="post-date">
 				<time datetime={postDate}>{formattedDate}</time>
